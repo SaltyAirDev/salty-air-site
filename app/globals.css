@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #2b6064;
+  --color-accent: #f5c593;
+  --color-accent-warm: #df7643;
+  --color-background: #faf8f6;
+  --color-dark: #1a1a1a;
+  --color-body: #3d3d3d;
+
+  --color-sand: #eadcc8;
+  --color-sage: #c0dad0;
+  --color-peach: #f5c593;
+  --color-orange: #f6a243;
+
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-heading: var(--font-sans), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-drama: var(--font-drama), "Cormorant Garamond", Georgia, serif;
+  --font-data: var(--font-data), "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-organic: 1.5rem;
+}
+
+html,
+body {
+  background: var(--color-background);
+  color: var(--color-dark);
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.04;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee 60s linear infinite;
+}
+
+.animate-marquee:hover,
+.animate-marquee-slow:hover {
+  animation-play-state: paused;
+}
+
+.aurora-layer {
+  position: absolute;
+  inset: -20%;
+  filter: blur(60px);
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  will-change: background-position;
+}
+
+.aurora-sage {
+  background: radial-gradient(
+    ellipse 50% 45% at var(--aurora-x, 25%) var(--aurora-y, 35%),
+    var(--color-sage) 0%,
+    transparent 65%
+  );
+  animation: aurora-drift-a 22s ease-in-out infinite;
+}
+
+.aurora-peach {
+  background: radial-gradient(
+    ellipse 55% 40% at var(--aurora-x, 75%) var(--aurora-y, 30%),
+    var(--color-peach) 0%,
+    transparent 60%
+  );
+  animation: aurora-drift-b 28s ease-in-out infinite;
+  opacity: 0.4;
+}
+
+.aurora-teal {
+  background: radial-gradient(
+    ellipse 60% 50% at var(--aurora-x, 50%) var(--aurora-y, 75%),
+    var(--color-primary) 0%,
+    transparent 65%
+  );
+  animation: aurora-drift-c 18s ease-in-out infinite;
+  opacity: 0.55;
+}
+
+@keyframes aurora-drift-a {
+  0%, 100% { --aurora-x: 25%; --aurora-y: 35%; }
+  33%      { --aurora-x: 60%; --aurora-y: 55%; }
+  66%      { --aurora-x: 15%; --aurora-y: 65%; }
+}
+
+@keyframes aurora-drift-b {
+  0%, 100% { --aurora-x: 75%; --aurora-y: 30%; }
+  50%      { --aurora-x: 35%; --aurora-y: 60%; }
+}
+
+@keyframes aurora-drift-c {
+  0%, 100% { --aurora-x: 50%; --aurora-y: 75%; }
+  40%      { --aurora-x: 80%; --aurora-y: 55%; }
+  70%      { --aurora-x: 20%; --aurora-y: 80%; }
+}
+
+@property --aurora-x {
+  syntax: "<percentage>";
+  initial-value: 50%;
+  inherits: false;
+}
+
+@property --aurora-y {
+  syntax: "<percentage>";
+  initial-value: 50%;
+  inherits: false;
+}
+
