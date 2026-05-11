@@ -121,7 +121,7 @@ export const pricing = {
       desc: "We walk your firm through Claude and AI tools in the context of your actual workflows. One full day, on-site or remote, with a written playbook specific to your practice areas. Your team runs it independently after delivery.",
       highlight: false,
       ctaType: "checkout",
-      cta: { label: "Book your training day", href: "#" }, // TODO: replace with payment link
+      cta: { label: "Book your training day", href: "https://buy.stripe.com/cNi28qh1LfEoahua9fd7q09" },
       note: "Training fee applied toward your assessment if you move forward within 90 days.",
       features: [
         "Pre-work intake to understand your practice areas",
@@ -137,7 +137,7 @@ export const pricing = {
       desc: "A full audit of your firm's workflows with a written implementation roadmap, ROI estimates, and a prioritized 90-day plan — presented to firm leadership.",
       highlight: true,
       ctaType: "checkout",
-      cta: { label: "Request your assessment", href: "#" }, // TODO: replace with payment link
+      cta: { label: "Request your assessment", href: "https://buy.stripe.com/fZu7sKcLveAk0GUepvd7q0a" },
       note: null,
       features: [
         "Workflow audit across loan, M&A, and real estate document types",

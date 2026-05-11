@@ -70,6 +70,8 @@ export function Pricing() {
                   {tier.ctaType === "checkout" ? (
                     <a
                       href={tier.cta.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-block w-full text-center px-6 py-3.5 rounded-full bg-accent text-dark font-sans font-bold text-sm hover:-translate-y-0.5 hover:scale-[1.01] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] overflow-hidden relative group shadow-lg"
                     >
                       <span className="relative z-10 block transition-colors group-hover:text-white">{tier.cta.label}</span>
