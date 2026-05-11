@@ -111,7 +111,7 @@ export const process = {
 
 export const pricing = {
   eyebrow: "Engagements",
-  headline: "Pricing built around your firm's goals.",
+  headline: "Pricing built around the firm's goals.",
   sub: "From a single training day to a full-service retainer, every engagement is scoped to where your firm is today.",
   tiers: [
     {

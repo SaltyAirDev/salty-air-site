@@ -10,7 +10,7 @@ export function Process() {
             {process.eyebrow}
           </span>
           <h2 className="text-4xl md:text-6xl font-heading font-bold text-dark tracking-tight mt-4 leading-[1.1]">
-            {process.headline}
+            From first call to fully <span className="text-accent-warm">automated.</span>
           </h2>
           <p className="mt-6 text-body font-sans text-lg leading-relaxed">
             {process.sub}

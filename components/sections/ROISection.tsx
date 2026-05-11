@@ -11,8 +11,8 @@ export function ROISection() {
             <span className="font-data text-xs text-accent uppercase tracking-[0.3em]">
               {roi.eyebrow}
             </span>
-            <h2 className="text-4xl md:text-6xl font-heading font-bold tracking-tight mt-4 leading-[1.1] whitespace-pre-line">
-              {roi.headline}
+            <h2 className="text-4xl md:text-6xl font-heading font-bold tracking-tight mt-4 leading-[1.1]">
+              More billable hours.<br />Less <span className="text-accent">admin work</span>.
             </h2>
             <p className="mt-6 font-sans text-lg leading-relaxed text-background/88">
               {roi.sub}
