@@ -264,7 +264,7 @@ export const footer = {
       title: "Stay close",
       links: [
         { label: "Newsletter", href: "#newsletter" },
-        { label: "LinkedIn", href: "#" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/company/salty-air/" },
       ],
     },
   ],
