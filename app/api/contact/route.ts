@@ -63,8 +63,9 @@ export async function POST(req: NextRequest) {
     const confirmFailed = confirmation.status === "rejected";
 
     if (notifFailed && confirmFailed) {
+      const reason = notification.status === "rejected" ? String(notification.reason) : String((confirmation as PromiseRejectedResult).reason);
       console.error("Both emails failed:", notification, confirmation);
-      return NextResponse.json({ error: "Failed to send. Please email us directly at hello@saltyair.co." }, { status: 500 });
+      return NextResponse.json({ error: `Email failed: ${reason}` }, { status: 500 });
     }
 
     if (notifFailed) console.error("Notification email failed:", notification);
