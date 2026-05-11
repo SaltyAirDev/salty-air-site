@@ -165,7 +165,7 @@ export const pricing = {
       ],
     },
     {
-      title: "One-Off Project",
+      title: "Custom Project",
       price: "Starting at $5,000",
       period: "Per project",
       desc: "Already have tools in place and need a specific workflow built? We scope and deliver individual automation projects without a retainer commitment. Most projects evolve into two or three once the first one ships.",

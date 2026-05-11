@@ -34,12 +34,10 @@ export function Pricing() {
                   {tier.title}
                 </h3>
                 <div className="font-heading text-3xl md:text-4xl font-bold mb-4">
-                  {tier.price.startsWith("Starting at ") ? (
-                    <>
-                      <span className="block font-sans text-xs font-normal text-background/55 mb-1 tracking-wide">Starting at</span>
-                      {tier.price.replace("Starting at ", "")}
-                    </>
-                  ) : tier.price}
+                  <span className={`block font-sans text-xs font-normal tracking-wide mb-1 ${tier.price.startsWith("Starting at ") ? "text-background/55" : "invisible"}`}>
+                    Starting at
+                  </span>
+                  {tier.price.startsWith("Starting at ") ? tier.price.replace("Starting at ", "") : tier.price}
                 </div>
                 <p className="font-data text-xs text-accent tracking-wide mb-5">
                   {tier.period}
