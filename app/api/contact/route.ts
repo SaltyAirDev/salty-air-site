@@ -2,9 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 export async function POST(req: NextRequest) {
-  if (!process.env.RESEND_API_KEY) {
-    return NextResponse.json({ error: "Missing RESEND_API_KEY env var." }, { status: 500 });
-  }
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   let name: string, firm: string, email: string, phone: string, interest: string, message: string;
@@ -66,9 +63,8 @@ export async function POST(req: NextRequest) {
     const confirmFailed = confirmation.status === "rejected";
 
     if (notifFailed && confirmFailed) {
-      const reason = notification.status === "rejected" ? String(notification.reason) : String((confirmation as PromiseRejectedResult).reason);
       console.error("Both emails failed:", notification, confirmation);
-      return NextResponse.json({ error: `Email failed: ${reason}` }, { status: 500 });
+      return NextResponse.json({ error: "Failed to send. Please email us directly at hello@saltyair.co." }, { status: 500 });
     }
 
     if (notifFailed) console.error("Notification email failed:", notification);
@@ -77,6 +73,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Contact form error:", err);
-    return NextResponse.json({ error: `Caught error: ${String(err)}` }, { status: 500 });
+    return NextResponse.json({ error: "Failed to send. Please email us directly at hello@saltyair.co." }, { status: 500 });
   }
 }
