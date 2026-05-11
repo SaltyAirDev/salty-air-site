@@ -3,7 +3,13 @@ import { Resend } from "resend";
 
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const { name, firm, email, phone, interest, message } = await req.json();
+
+  let name: string, firm: string, email: string, phone: string, interest: string, message: string;
+  try {
+    ({ name, firm, email, phone, interest, message } = await req.json());
+  } catch {
+    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+  }
 
   if (!name || !email || !message) {
     return NextResponse.json({ error: "Missing required fields." }, { status: 400 });

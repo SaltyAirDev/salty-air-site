@@ -23,8 +23,9 @@ export function FinalCTA() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      const text = await res.text();
+      const data = text ? JSON.parse(text) : {};
+      if (!res.ok) throw new Error(data.error || `Server error ${res.status}. Please email hello@saltyair.co directly.`);
       setStatus("success");
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
