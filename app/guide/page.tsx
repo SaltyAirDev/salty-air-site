@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
+import { SectionFade } from "@/components/ui/SectionFade";
 
 export const metadata: Metadata = {
   title: "5 Workflows Law Firms Automate First | Salty Air",
@@ -107,19 +108,19 @@ export default function GuidePage() {
       <Navbar />
       <main>
 
-        {/* Cover */}
+        {/* Cover — matches hero dark treatment */}
         <section className="w-full bg-primary text-background pt-40 pb-24 px-6 md:px-16 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-primary to-primary" />
           <div className="absolute inset-x-0 top-0 h-[60%]">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(204,88,51,0.3),transparent_60%)]" />
           </div>
-          <div className="relative max-w-4xl mx-auto">
+          <div className="relative max-w-7xl mx-auto">
             <span className="font-data text-xs text-accent uppercase tracking-[0.3em]">
               Salty Air · Resource Guide
             </span>
-            <h1 className="font-heading text-5xl md:text-7xl font-bold tracking-tight mt-5 leading-[1.05]">
+            <h1 className="font-heading text-5xl md:text-7xl font-bold tracking-tight mt-5 leading-[1.05] max-w-4xl">
               5 Workflows Law Firms{" "}
-              <span className="text-accent italic">Automate First</span>
+              <span className="text-accent">Automate First</span>
             </h1>
             <p className="mt-6 font-sans text-lg md:text-xl text-background/72 max-w-2xl leading-relaxed">
               The highest-ROI places to apply AI automation in a boutique or mid-size practice — and what each one actually looks like in operation.
@@ -133,127 +134,145 @@ export default function GuidePage() {
 
         {/* Intro */}
         <section className="w-full bg-background border-b border-primary/10 py-16 px-6 md:px-16">
-          <div className="max-w-3xl mx-auto space-y-5 font-sans text-body text-[1.05rem] leading-relaxed">
-            <p>Most law firms don't have an AI problem. They have a <strong className="font-semibold text-dark">time problem</strong> — and they're spending it in the wrong places.</p>
-            <p>The attorneys we work with are sharp, experienced, and genuinely good at what they do. But somewhere between intake calls, chasing documents, following up with clients, and reconciling billing, the week disappears before the real legal work gets the attention it deserves.</p>
-            <p>This guide covers the five places we start with every firm we work with. Not because they're the flashiest use of AI — but because they deliver the most measurable return, the fastest, with the least disruption to how your team already operates.</p>
-            <p>No ripping out your practice management software. No steep learning curves. Just systems that handle the work that shouldn't require an attorney's time.</p>
-          </div>
+          <SectionFade>
+            <div className="max-w-7xl mx-auto max-w-3xl space-y-5 font-sans text-body text-base md:text-lg leading-relaxed">
+              <p>Most law firms don't have an AI problem. They have a <strong className="font-semibold text-dark">time problem</strong> — and they're spending it in the wrong places.</p>
+              <p>The attorneys we work with are sharp, experienced, and genuinely good at what they do. But somewhere between intake calls, chasing documents, following up with clients, and reconciling billing, the week disappears before the real legal work gets the attention it deserves.</p>
+              <p>This guide covers the five places we start with every firm we work with. Not because they're the flashiest use of AI — but because they deliver the most measurable return, the fastest, with the least disruption to how your team already operates.</p>
+              <p>No ripping out your practice management software. No steep learning curves. Just systems that handle the work that shouldn't require an attorney's time.</p>
+            </div>
+          </SectionFade>
         </section>
 
-        {/* Stat strip */}
-        <section className="w-full bg-white border-b border-primary/10">
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-primary/10">
-            {stats.map((s) => (
-              <div key={s.label} className="px-10 py-10 text-center">
-                <div className="font-heading text-4xl md:text-5xl font-bold text-primary mb-2">
-                  {s.value}
-                </div>
-                <div className="font-data text-xs uppercase tracking-widest text-body/60">
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Workflows */}
-        <section className="w-full bg-background py-20 px-6 md:px-16">
-          <div className="max-w-4xl mx-auto">
-            <span className="font-data text-xs text-accent-warm uppercase tracking-[0.3em]">
-              The Five Workflows
-            </span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-dark mt-3 mb-14">
-              Where the hours are hiding.
-            </h2>
-
-            <div className="flex flex-col gap-8">
-              {workflows.map((w) => (
-                <div key={w.number} className="rounded-2xl border border-primary/10 overflow-hidden bg-white">
-                  {/* Card header */}
-                  <div className="flex items-start gap-6 px-8 py-7 border-b border-primary/10 bg-background">
-                    <span className="font-heading text-5xl font-bold text-primary/15 leading-none pt-1 min-w-[3rem]">
-                      {w.number}
-                    </span>
-                    <div>
-                      <p className="font-data text-xs text-accent-warm uppercase tracking-widest mb-1">
-                        {w.tag}
-                      </p>
-                      <h3 className="font-heading text-xl md:text-2xl font-bold text-dark">
-                        {w.title}
-                      </h3>
-                    </div>
+        {/* Stat strip — matches ROI section metric style */}
+        <SectionFade>
+          <section className="w-full bg-white border-b border-primary/10">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-primary/10">
+              {stats.map((s) => (
+                <div key={s.label} className="px-10 py-10 text-center">
+                  <div className="font-heading text-5xl md:text-6xl font-bold text-primary mb-3">
+                    {s.value}
                   </div>
+                  <div className="font-data text-xs uppercase tracking-[0.2em] text-body/55">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </SectionFade>
 
-                  {/* Card body */}
-                  <div className="px-8 py-8">
-                    <p className="font-data text-xs uppercase tracking-widest text-body/50 mb-2">
-                      The problem
-                    </p>
-                    <p className="font-sans text-sm md:text-base text-body leading-relaxed mb-7">
-                      {w.problem}
-                    </p>
+        {/* Workflows — matches Solutions card style */}
+        <section className="w-full bg-background py-24 px-6 md:px-16">
+          <div className="max-w-7xl mx-auto">
+            <SectionFade>
+              <span className="font-data text-xs text-accent-warm uppercase tracking-[0.3em]">
+                The Five Workflows
+              </span>
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-dark tracking-tight mt-4 leading-[1.1] mb-14">
+                Where the hours are hiding.
+              </h2>
+            </SectionFade>
 
-                    <p className="font-data text-xs uppercase tracking-widest text-body/50 mb-4">
-                      What gets automated
-                    </p>
-                    <ul className="flex flex-col gap-3 mb-7">
-                      {w.items.map((item) => (
-                        <li key={item} className="flex items-start gap-3 font-sans text-sm md:text-base text-body leading-snug">
-                          <svg className="shrink-0 mt-0.5 text-accent-warm" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <circle cx="8" cy="8" r="7" stroke="currentColor" strokeOpacity="0.4" />
-                            <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="rounded-xl bg-primary text-background px-6 py-5">
-                      <span className="font-data text-xs text-accent uppercase tracking-widest">
-                        What firms report
+            <div className="flex flex-col gap-6">
+              {workflows.map((w, i) => (
+                <SectionFade key={w.number} delay={i * 0.05}>
+                  <div className="rounded-organic border border-primary/5 overflow-hidden bg-white hover:shadow-xl hover:-translate-y-0.5 transition-all duration-500">
+                    {/* Card header */}
+                    <div className="flex items-start gap-6 px-8 md:px-10 py-7 border-b border-primary/5 bg-background/60">
+                      <span className="font-data text-3xl font-bold text-body/20 leading-none pt-1 min-w-[2.5rem]">
+                        0{i + 1}
                       </span>
-                      <p className="mt-2 font-sans text-sm leading-relaxed text-background/85">
-                        {w.result}
-                      </p>
+                      <div>
+                        <p className="font-data text-xs text-body/50 uppercase tracking-widest mb-1">
+                          {w.tag}
+                        </p>
+                        <h3 className="font-heading text-2xl md:text-3xl font-bold text-dark">
+                          {w.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Card body */}
+                    <div className="px-8 md:px-10 py-8 md:grid md:grid-cols-2 md:gap-10">
+                      <div>
+                        <p className="font-data text-xs uppercase tracking-widest text-body/45 mb-2">
+                          The problem
+                        </p>
+                        <p className="font-sans text-base text-body leading-relaxed">
+                          {w.problem}
+                        </p>
+                      </div>
+
+                      <div className="mt-8 md:mt-0">
+                        <p className="font-data text-xs uppercase tracking-widest text-body/45 mb-4">
+                          What gets automated
+                        </p>
+                        <ul className="flex flex-col gap-3 mb-7">
+                          {w.items.map((item) => (
+                            <li key={item} className="flex items-start gap-3 font-sans text-sm text-body leading-snug">
+                              <svg className="shrink-0 mt-0.5 text-accent-warm" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeOpacity="0.4" />
+                                <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+
+                        <div className="rounded-2xl bg-primary text-background px-6 py-5">
+                          <span className="font-data text-xs text-accent uppercase tracking-[0.2em]">
+                            What firms report
+                          </span>
+                          <p className="mt-2 font-sans text-sm leading-relaxed text-background/80">
+                            {w.result}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </SectionFade>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Closing CTA */}
-        <section className="w-full bg-white border-t border-primary/10 py-20 px-6 md:px-16">
-          <div className="max-w-3xl mx-auto">
-            <span className="font-data text-xs text-accent-warm uppercase tracking-[0.3em]">
-              Next Step
-            </span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-dark mt-3 mb-5">
-              Not sure where your firm should start?
-            </h2>
-            <p className="font-sans text-base text-body leading-relaxed mb-8">
-              Every firm is different — different practice areas, different tech stacks, different team dynamics. The five workflows above are where we typically begin, but the right starting point depends on where your hours are actually going.
-            </p>
-            <div className="border-l-2 border-accent-warm pl-6 mb-8">
-              <p className="font-sans text-base text-body leading-relaxed mb-3">
-                We offer a <strong className="font-semibold text-dark">no-obligation Practice Audit</strong> — a quick-fit conversation to identify which of these workflows would deliver the most meaningful return for your specific firm.
-              </p>
-              <p className="font-sans text-base text-body leading-relaxed">
-                If there's not a strong fit, we'll tell you. If there is, we'll scope exactly what implementation looks like before you commit to anything.
-              </p>
-            </div>
-            <a
-              href="/#contact"
-              className="inline-block px-10 py-4 rounded-full bg-primary text-background font-sans font-bold text-base hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] overflow-hidden relative group shadow-md"
-            >
-              <span className="relative z-10 block transition-colors group-hover:text-white">
-                Request a Practice Audit
-              </span>
-              <span className="absolute inset-0 rounded-full bg-accent-warm translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" />
-            </a>
+        {/* Closing CTA — matches Solutions CTA style */}
+        <section className="w-full bg-primary text-background py-32 md:py-40 px-6 md:px-16 relative overflow-hidden rounded-t-[3rem]">
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-primary to-primary" />
+          <div className="absolute inset-x-0 top-0 h-[60%]">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(204,88,51,0.25),transparent_60%)]" />
           </div>
+          <SectionFade>
+            <div className="relative max-w-7xl mx-auto max-w-3xl">
+              <span className="font-data text-xs text-accent uppercase tracking-[0.3em]">
+                Next Step
+              </span>
+              <h2 className="font-heading text-4xl md:text-6xl font-bold tracking-tight mt-4 leading-[1.1] mb-6">
+                Not sure where your firm should start?
+              </h2>
+              <p className="font-sans text-lg text-background/78 leading-relaxed mb-8 max-w-2xl">
+                Every firm is different — different practice areas, different tech stacks, different team dynamics. The five workflows above are where we typically begin, but the right starting point depends on where your hours are actually going.
+              </p>
+              <div className="border-l-2 border-accent/40 pl-6 mb-10">
+                <p className="font-sans text-base text-background/78 leading-relaxed mb-3">
+                  We offer a <strong className="font-semibold text-background">no-obligation Practice Audit</strong> — a quick-fit conversation to identify which of these workflows would deliver the most meaningful return for your specific firm.
+                </p>
+                <p className="font-sans text-base text-background/78 leading-relaxed">
+                  If there's not a strong fit, we'll tell you. If there is, we'll scope exactly what implementation looks like before you commit to anything.
+                </p>
+              </div>
+              <a
+                href="/#contact"
+                className="inline-block px-10 py-4 rounded-full bg-accent text-dark font-sans font-bold text-base hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] overflow-hidden relative group shadow-lg"
+              >
+                <span className="relative z-10 block transition-colors group-hover:text-white">
+                  Request a Practice Audit
+                </span>
+                <span className="absolute inset-0 rounded-full bg-dark translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" />
+              </a>
+            </div>
+          </SectionFade>
         </section>
 
       </main>
