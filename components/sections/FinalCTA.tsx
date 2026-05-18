@@ -142,6 +142,7 @@ export function FinalCTA() {
                   className={`${inputClass} cursor-pointer`}
                 >
                   <option value="" disabled>Select one…</option>
+                  <option value="Practice Audit">Practice Audit</option>
                   <option value="AI Training Day">AI Training Day</option>
                   <option value="Strategic Assessment">Strategic Assessment</option>
                   <option value="Ongoing Retainer">Ongoing Retainer</option>
