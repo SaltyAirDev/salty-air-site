@@ -120,8 +120,8 @@ export const pricing = {
       period: "One-time · delivered in 5 business days",
       desc: "A focused audit of your practice's workflows. We find where the hours are going, identify the highest-ROI automations, and hand you a written report you can act on immediately.",
       highlight: true,
-      ctaType: "contact",
-      cta: { label: "Request your audit", href: "#contact" },
+      ctaType: "checkout",
+      cta: { label: "Book your audit", href: "https://buy.stripe.com/4gM5kC9zj2RCcpCa9fd7q0b" },
       note: "Fee applied toward any engagement if you move forward.",
       features: [
         "45-min workflow interview on Google Meet (recorded via Fathom)",
