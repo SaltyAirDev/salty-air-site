@@ -13,7 +13,7 @@ export function SolutionsGrid() {
             {solutions.eyebrow}
           </span>
           <h2 className="text-4xl md:text-6xl font-heading font-bold text-dark tracking-tight mt-4 leading-[1.1]">
-            Built with <span className="text-accent-warm">law firms</span> in mind.
+            Built with <span className="text-accent-warm">law practices</span> in mind.
           </h2>
           <p className="mt-6 text-body font-sans text-lg leading-relaxed">
             {solutions.sub}
