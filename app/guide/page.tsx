@@ -30,7 +30,7 @@ const workflows = [
     tag: "New Business",
     title: "Client Intake & Triage",
     problem:
-      "New matters sit cold for hours — sometimes days — while someone tracks down the right attorney, runs a conflict check, and figures out whether the lead is even qualified. By the time a human responds, the prospect has already called two other firms.",
+      "New matters sit cold for hours — sometimes days — while someone tracks down the right attorney, runs a conflict check, and figures out whether the lead is even qualified. By the time a human responds, the prospect has already called two other practices.",
     items: [
       "Smart intake forms that capture the right information upfront based on practice area",
       "Automated conflict checks against your existing matter database",
@@ -47,7 +47,7 @@ const workflows = [
     problem:
       "Demand letters, engagement agreements, discovery responses — every one of them starts from scratch or from a template that needs heavy customization. Associates spend billable hours on first drafts that a partner then rewrites anyway.",
     items: [
-      "AI-drafted documents trained on your firm's actual voice and formatting preferences",
+      "AI-drafted documents trained on your practice's voice and formatting preferences",
       "Engagement agreements generated from intake data — no re-keying information",
       "Demand letters and discovery responses drafted from matter notes and uploaded documents",
       "Automatic routing to the reviewing attorney with a clean approval workflow",
@@ -83,16 +83,16 @@ const workflows = [
       "Billing discrepancy flags before invoices go to the client",
     ],
     result:
-      "Write-offs decrease because time is captured more completely. Invoice disputes drop because errors are caught before they leave the firm. Partners stop touching billing ops entirely.",
+      "Write-offs decrease because time is captured more completely. Invoice disputes drop because errors are caught before they leave the practice. Partners stop touching billing ops entirely.",
   },
   {
     number: "05",
     tag: "Team Capability",
     title: "AI Training & Internal Tooling",
     problem:
-      "Most firms know AI can help them — but attorneys don't know how to use it effectively for legal work, and no one has time to figure it out. Generic AI tools get tried, produce mediocre output, and get abandoned. The opportunity stays on the table.",
+      "Most practices know AI can help them — but attorneys don't know how to use it effectively for legal work, and no one has time to figure it out. Generic AI tools get tried, produce mediocre output, and get abandoned. The opportunity stays on the table.",
     items: [
-      "A full-day hands-on training session built around your firm's actual practice areas and document types",
+      "A full-day hands-on training session built around your practice's actual document types and workflows",
       "A custom prompt library so attorneys get high-quality output from day one — no guessing",
       "Workflow guides specific to your document types: demand letters, agreements, discovery, memos",
       "30-day support so adoption actually sticks after the training day",
@@ -136,9 +136,9 @@ export default function GuidePage() {
         <section className="w-full bg-background border-b border-primary/10 py-16 px-6 md:px-16">
           <SectionFade>
             <div className="max-w-7xl mx-auto max-w-3xl space-y-5 font-sans text-body text-base md:text-lg leading-relaxed">
-              <p>Most law firms don't have an AI problem. They have a <strong className="font-semibold text-dark">time problem</strong> — and they're spending it in the wrong places.</p>
+              <p>Most law practices don't have an AI problem. They have a <strong className="font-semibold text-dark">time problem</strong> — and they're spending it in the wrong places.</p>
               <p>The attorneys we work with are sharp, experienced, and genuinely good at what they do. But somewhere between intake calls, chasing documents, following up with clients, and reconciling billing, the week disappears before the real legal work gets the attention it deserves.</p>
-              <p>This guide covers the five places we start with every firm we work with. Not because they're the flashiest use of AI — but because they deliver the most measurable return, the fastest, with the least disruption to how your team already operates.</p>
+              <p>This guide covers the five places we start with every practice we work with. Not because they're the flashiest use of AI — but because they deliver the most measurable return, the fastest, with the least disruption to how your team already operates.</p>
               <p>No ripping out your practice management software. No steep learning curves. Just systems that handle the work that shouldn't require an attorney's time.</p>
             </div>
           </SectionFade>
@@ -222,7 +222,7 @@ export default function GuidePage() {
 
                         <div className="rounded-2xl bg-primary text-background px-6 py-5">
                           <span className="font-data text-xs text-accent uppercase tracking-[0.2em]">
-                            What firms report
+                            What practices report
                           </span>
                           <p className="mt-2 font-sans text-sm leading-relaxed text-background/80">
                             {w.result}
@@ -249,14 +249,14 @@ export default function GuidePage() {
                 Next Step
               </span>
               <h2 className="font-heading text-4xl md:text-6xl font-bold tracking-tight mt-4 leading-[1.1] mb-6">
-                Not sure where your firm should start?
+                Not sure where your practice should start?
               </h2>
               <p className="font-sans text-lg text-background/78 leading-relaxed mb-8 max-w-2xl">
-                Every firm is different — different practice areas, different tech stacks, different team dynamics. The five workflows above are where we typically begin, but the right starting point depends on where your hours are actually going.
+                Every practice is different — different specialties, different tech stacks, different team dynamics. The five workflows above are where we typically begin, but the right starting point depends on where your hours are actually going.
               </p>
               <div className="border-l-2 border-accent/40 pl-6 mb-10">
                 <p className="font-sans text-base text-background/78 leading-relaxed mb-3">
-                  We offer a <strong className="font-semibold text-background">no-obligation Practice Audit</strong> — a quick-fit conversation to identify which of these workflows would deliver the most meaningful return for your specific firm.
+                  We offer a <strong className="font-semibold text-background">no-obligation Practice Audit</strong> — a quick-fit conversation to identify which of these workflows would deliver the most meaningful return for your specific practice.
                 </p>
                 <p className="font-sans text-base text-background/78 leading-relaxed">
                   If there's not a strong fit, we'll tell you. If there is, we'll scope exactly what implementation looks like before you commit to anything.

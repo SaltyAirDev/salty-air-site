@@ -24,7 +24,7 @@ export function Navbar() {
             : "bg-transparent text-white border border-transparent",
         )}
       >
-        <a href="#" className="flex items-center" aria-label={nav.brand}>
+        <a href="/" className="flex items-center" aria-label={nav.brand}>
           <Image
             src={scrolled ? "/logo-green.png" : "/logo-white.png"}
             alt={nav.brand}
@@ -47,8 +47,6 @@ export function Navbar() {
         </div>
         <a
           href={nav.cta.href}
-          target="_blank"
-          rel="noopener noreferrer"
           className={cn(
             "px-5 py-2.5 rounded-full font-sans font-semibold text-sm transition-transform hover:scale-[1.03] active:scale-95 overflow-hidden relative group",
             scrolled ? "bg-accent-warm text-white" : "bg-white text-dark",
