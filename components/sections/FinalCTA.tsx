@@ -93,7 +93,7 @@ export function FinalCTA() {
 
               <div>
                 <label className="block font-data text-xs uppercase tracking-widest text-background/78 mb-2">
-                  Firm name
+                  Practice name
                 </label>
                 <input
                   type="text"
@@ -157,7 +157,7 @@ export function FinalCTA() {
                 <textarea
                   required
                   rows={4}
-                  placeholder="Tell us about your firm, your current bottlenecks, and what you'd most like to get off your plate..."
+                  placeholder="Tell us about your practice, your current bottlenecks, and what you'd most like to get off your plate..."
                   value={form.message}
                   onChange={set("message")}
                   className={`${inputClass} resize-none`}

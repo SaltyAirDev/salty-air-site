@@ -45,7 +45,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto border-t border-background/15 pt-8 flex flex-col md:flex-row items-center justify-between text-xs font-data text-background/55">
         <p>{footer.bottom}</p>
         <p className="mt-4 md:mt-0 uppercase tracking-widest">
-          Built for law firms
+          Built for law practices
         </p>
       </div>
     </footer>

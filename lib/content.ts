@@ -14,7 +14,7 @@ export const hero = {
   eyebrow: "",
   headline: "Practice growth,",
   headlineAccent: "automated.",
-  sub: "Bespoke AI workflows for law firms: intake, drafting, follow-ups, and matter management, automated end-to-end.",
+  sub: "Bespoke AI workflows for law practices: intake, drafting, follow-ups, and matter management, automated end-to-end.",
   trust: "Designed with ABA Rule 1.6 and client confidentiality requirements in mind.",
   primaryCta: { label: "Get Started", href: "#contact" },
 };
@@ -43,7 +43,7 @@ export const solutions = {
     },
     {
       title: "Document Drafting & Routing",
-      desc: "AI-drafted demand letters, engagement agreements, and discovery responses in your firm's voice — routed to the right attorney for review and sign-off.",
+      desc: "AI-drafted demand letters, engagement agreements, and discovery responses in your practice's voice — routed to the right attorney for review and sign-off.",
     },
     {
       title: "Follow-Up & Nurture",
@@ -55,7 +55,7 @@ export const solutions = {
     },
     {
       title: "Bespoke Automations",
-      desc: "Have a workflow that doesn't fit a category? We build bespoke AI automations and one-off projects scoped to your firm's specific edge cases.",
+      desc: "Have a workflow that doesn't fit a category? We build bespoke AI automations and one-off projects scoped to your practice's specific edge cases.",
     },
   ],
 };
@@ -68,7 +68,7 @@ export const trust = {
 export const roi = {
   eyebrow: "Outcomes",
   headline: "More billable hours.\nLess admin work.",
-  sub: "Firms we work with reclaim 15–25 non-billable hours per attorney each week and cut intake-to-engagement time by more than half.",
+  sub: "Practices we work with reclaim 15–25 non-billable hours per attorney each week and cut intake-to-engagement time by more than half.",
   metrics: [
     { label: "Intake response", value: "6 min", trend: "−94%", desc: "Time from form submission to first attorney touchpoint" },
     { label: "Engagement rate", value: "41%", trend: "+22 pts", desc: "Leads that converted to signed engagement agreements" },
@@ -80,11 +80,11 @@ export const roi = {
 export const process = {
   eyebrow: "How we work",
   headline: "From first call to fully automated.",
-  sub: "A six-step engagement we've refined to fit how law firms actually adopt new tooling — measured, documented, and reversible at every stage.",
+  sub: "A six-step engagement we've refined to fit how law practices actually adopt new tooling — measured, documented, and reversible at every stage.",
   steps: [
     {
       title: "Practice Audit",
-      desc: "Quick-fit check to confirm we can deliver meaningful results for your firm's caseload, tech stack, and team size.",
+      desc: "Quick-fit check to confirm we can deliver meaningful results for your practice's caseload, tech stack, and team size.",
     },
     {
       title: "Discovery",
@@ -92,7 +92,7 @@ export const process = {
     },
     {
       title: "Workflow Design",
-      desc: "We design AI agents that handle the work end-to-end, slotting into the tools your firm already uses (with no impact on live operations until we have your approval).",
+      desc: "We design AI agents that handle the work end-to-end, slotting into the tools your practice already uses (with no impact on live operations until we have your approval).",
     },
     {
       title: "Deploy",
@@ -112,13 +112,13 @@ export const process = {
 export const pricing = {
   eyebrow: "Engagements",
   headline: "Pricing built around your goals.",
-  sub: "From a single training day to a full-service retainer, every engagement is scoped to where your firm is today.",
+  sub: "From a single training day to a full-service retainer, every engagement is scoped to where your practice is today.",
   tiers: [
     {
       title: "AI Training Day",
       price: "$7,500",
       period: "One-time engagement",
-      desc: "We walk your firm through Claude and AI tools in the context of your actual workflows. One full day, on-site or remote, with a written playbook specific to your practice areas. Your team runs it independently after delivery.",
+      desc: "We walk your practice through Claude and AI tools in the context of your actual workflows. One full day, on-site or remote, with a written playbook specific to your practice areas. Your team runs it independently after delivery.",
       highlight: false,
       ctaType: "checkout",
       cta: { label: "Book your training day", href: "https://buy.stripe.com/cNi28qh1LfEoahua9fd7q09" },
@@ -134,7 +134,7 @@ export const pricing = {
       title: "Strategic AI Assessment",
       price: "$12,000",
       period: "One-time engagement · 14 business days",
-      desc: "A full audit of your firm's workflows with a written implementation roadmap, ROI estimates, and a prioritized 90-day plan — presented to firm leadership.",
+      desc: "A full audit of your practice's workflows with a written implementation roadmap, ROI estimates, and a prioritized 90-day plan — presented to practice leadership.",
       highlight: true,
       ctaType: "checkout",
       cta: { label: "Request your assessment", href: "https://buy.stripe.com/fZu7sKcLveAk0GUepvd7q0a" },
@@ -144,14 +144,14 @@ export const pricing = {
         "Minimum 5 prioritized automation opportunities identified",
         "Associate-hours recovery projections",
         "90-day implementation roadmap",
-        "90-minute presentation to firm leadership",
+        "90-minute presentation to practice leadership",
       ],
     },
     {
       title: "Monthly Retainer",
       price: "Starting at $5,000",
-      period: "Per month · scoped to your firm",
-      desc: "We build and run your automations for you. Scoped around your firm's volume, document complexity, and growth goals. You focus on practicing law.",
+      period: "Per month · scoped to your practice",
+      desc: "We build and run your automations for you. Scoped around your practice's volume, document complexity, and growth goals. You focus on practicing law.",
       highlight: false,
       ctaType: "contact",
       cta: { label: "Let's scope your retainer", href: "#contact" },
@@ -160,7 +160,7 @@ export const pricing = {
         "2–3 new automation buildouts per month",
         "Full platform operation and maintenance",
         "Monthly outcomes reporting with ROI metrics",
-        "Quarterly business reviews with firm leadership",
+        "Quarterly business reviews with practice leadership",
         "Up to 8–10 hours strategic consultation per month",
       ],
     },
@@ -184,15 +184,15 @@ export const pricing = {
   howItWorks: {
     eyebrow: "How retainer pricing works",
     headline: "Priced by capacity, not by hours.",
-    body: "We don't bill hourly. Your retainer is scoped around how many automations you need built each month, the volume of documents processed, and how deeply embedded we are in your operations. Every engagement is different because every firm is different.",
+    body: "We don't bill hourly. Your retainer is scoped around how many automations you need built each month, the volume of documents processed, and how deeply embedded we are in your operations. Every engagement is different because every practice is different.",
     tiers: ["$5,000/mo — Focused", "$12,500/mo — Growth", "$25,000+/mo — Full partnership"],
   },
-  note: "Salty Air works with a select number of law firms. We limit new engagements to ensure every client receives focused attention. If we're at capacity, we'll let you know and hold your place for the next available start date.",
+  note: "Salty Air works with a select number of law practices. We limit new engagements to ensure every client receives focused attention. If we're at capacity, we'll let you know and hold your place for the next available start date.",
 };
 
 export const faq = {
   eyebrow: "Common questions",
-  headline: "What firms ask us first.",
+  headline: "What practices ask us first.",
   items: [
     {
       q: "How do you handle client confidentiality?",
@@ -211,8 +211,8 @@ export const faq = {
       a: "The first workflow typically goes live within two to three weeks of the discovery call. We run a parallel test period before anything touches live matters, so there's no disruption to ongoing cases.",
     },
     {
-      q: "Is this only for large firms?",
-      a: "The opposite. Our best results come from boutique and mid-size practices (2–30 attorneys) where the partners are still doing work that should be automated. Larger firms have IT departments and enterprise contracts. Smaller firms are where the efficiency gap is biggest.",
+      q: "Is this only for large practices?",
+      a: "The opposite. Our best results come from boutique and mid-size practices (2–30 attorneys) where the partners are still doing work that should be automated. Larger practices have IT departments and enterprise contracts. Smaller practices are where the efficiency gap is biggest.",
     },
     {
       q: "What happens if we want to stop?",
@@ -242,13 +242,13 @@ export const finalCta = {
     { lead: "Stop the bottleneck." },
     { lead: "Start ", highlight: "automating." },
   ],
-  sub: "Tell us about your firm and we'll reach out within one business day to map out where you're leaving billable hours on the table.",
+  sub: "Tell us about your practice and we'll reach out within one business day to map out where you're leaving billable hours on the table.",
   bookingHref: "https://calendar.app.google/ipYDWHD4YrQpLedJ9",
 };
 
 export const footer = {
   brand: "Salty Air",
-  tagline: "AI automation for law firms.",
+  tagline: "AI automation for law practices.",
   email: "hello@saltyair.co",
   columns: [
     {
