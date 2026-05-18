@@ -103,16 +103,6 @@ export function Pricing() {
             <p className="font-sans text-sm md:text-base text-background/78 leading-relaxed max-w-2xl mb-8">
               {pricing.howItWorks.body}
             </p>
-            <div className="flex flex-wrap gap-3">
-              {pricing.howItWorks.tiers.map((t) => (
-                <span
-                  key={t}
-                  className="px-4 py-2 rounded-full border border-white/20 font-sans text-sm text-background/88"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
           </div>
         </SectionFade>
 
