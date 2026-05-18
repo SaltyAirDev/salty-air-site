@@ -144,9 +144,8 @@ export function FinalCTA() {
                   <option value="" disabled>Select one…</option>
                   <option value="Practice Audit">Practice Audit</option>
                   <option value="AI Training Day">AI Training Day</option>
-                  <option value="Strategic Assessment">Strategic Assessment</option>
-                  <option value="Ongoing Retainer">Ongoing Retainer</option>
                   <option value="Custom Project">Custom Project</option>
+                  <option value="Monthly Retainer">Monthly Retainer</option>
                   <option value="Just exploring">Just exploring</option>
                 </select>
               </div>
