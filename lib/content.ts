@@ -61,7 +61,7 @@ export const solutions = {
 };
 
 export const trust = {
-  headline: "Built for boutique and mid-size law firms.",
+  headline: "Built for law practices.",
   link: { label: "See what we build →", href: "#solutions" },
 };
 
