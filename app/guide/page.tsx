@@ -4,14 +4,14 @@ import { Footer } from "@/components/ui/Footer";
 import { SectionFade } from "@/components/ui/SectionFade";
 
 export const metadata: Metadata = {
-  title: "5 Workflows Law Firms Automate First | Salty Air",
+  title: "5 Workflows Law Practices Automate First | Salty Air",
   description:
-    "The highest-ROI places to apply AI automation in a boutique or mid-size practice — and what each one actually looks like in operation.",
+    "The highest-ROI places to apply AI automation in a practice and what each one actually looks like in operation.",
   alternates: { canonical: "https://saltyair.co/guide" },
   openGraph: {
-    title: "5 Workflows Law Firms Automate First | Salty Air",
+    title: "5 Workflows Law Practices Automate First | Salty Air",
     description:
-      "The highest-ROI places to apply AI automation in a boutique or mid-size practice — and what each one actually looks like in operation.",
+      "The highest-ROI places to apply AI automation in a practice and what each one actually looks like in operation.",
     type: "article",
     url: "https://saltyair.co/guide",
     siteName: "Salty Air",
@@ -30,30 +30,30 @@ const workflows = [
     tag: "New Business",
     title: "Client Intake & Triage",
     problem:
-      "New matters sit cold for hours — sometimes days — while someone tracks down the right attorney, runs a conflict check, and figures out whether the lead is even qualified. By the time a human responds, the prospect has already called two other practices.",
+      "New matters sit cold for hours, sometimes days, while someone tracks down the right attorney, runs a conflict check, and figures out whether the lead is even qualified. By the time a human responds, the prospect has already called two other practices.",
     items: [
       "Smart intake forms that capture the right information upfront based on practice area",
       "Automated conflict checks against your existing matter database",
-      "Instant routing to the right attorney with a complete intake summary — before they pick up the phone",
+      "Instant routing to the right attorney with a complete intake summary, before they pick up the phone",
       "Immediate acknowledgment to the prospect so they know they're in the queue",
     ],
     result:
-      "Intake response time drops from hours to under 10 minutes. Engagement rates on qualified leads increase significantly — simply because you're first to respond.",
+      "Intake response time drops from hours to under 10 minutes. Engagement rates on qualified leads increase significantly. Simply because you're first to respond.",
   },
   {
     number: "02",
     tag: "Document Work",
     title: "Document Drafting & Routing",
     problem:
-      "Demand letters, engagement agreements, discovery responses — every one of them starts from scratch or from a template that needs heavy customization. Associates spend billable hours on first drafts that a partner then rewrites anyway.",
+      "Demand letters, engagement agreements, discovery responses. Every one of them starts from scratch or from a template that needs heavy customization. Associates spend billable hours on first drafts that a partner then rewrites anyway.",
     items: [
       "AI-drafted documents trained on your practice's voice and formatting preferences",
-      "Engagement agreements generated from intake data — no re-keying information",
+      "Engagement agreements generated from intake data. No re-keying information",
       "Demand letters and discovery responses drafted from matter notes and uploaded documents",
       "Automatic routing to the reviewing attorney with a clean approval workflow",
     ],
     result:
-      "First drafts that require editing — not rewriting. Associates focus on review and strategy rather than blank-page drafting. Document turnaround time cuts by more than half.",
+      "First drafts that require editing, not rewriting. Associates focus on review and strategy rather than blank-page drafting. Document turnaround time cuts by more than half.",
   },
   {
     number: "03",
@@ -62,20 +62,20 @@ const workflows = [
     problem:
       "Clients want to feel like the partner is thinking about them. In reality, status updates, check-ins, and referral asks fall through the cracks because no one has time to do them consistently. The result: clients feel neglected, and referral opportunities evaporate.",
     items: [
-      "Scheduled client check-ins triggered by matter milestones — written in the partner's voice",
+      "Scheduled client check-ins triggered by matter milestones, written in the partner's voice",
       "Status update emails that pull from your practice management system automatically",
       "Post-close referral asks timed appropriately after matter resolution",
       "Unopened email follow-ups so no communication falls through the cracks",
     ],
     result:
-      "Clients comment that communication improved significantly — without the partner sending a single additional email. Referral volume increases as a direct result of consistent post-close outreach.",
+      "Clients comment that communication improved significantly, without the partner sending a single additional email. Referral volume increases as a direct result of consistent post-close outreach.",
   },
   {
     number: "04",
     tag: "Operations & Billing",
     title: "Matter & Billing Ops",
     problem:
-      "Time entry gets captured late, inconsistently, or not at all. Invoice review is manual. Trust account reconciliation is a monthly ordeal. None of it requires an attorney's judgment — but it consistently ends up on one.",
+      "Time entry gets captured late, inconsistently, or not at all. Invoice review is manual. Trust account reconciliation is a monthly ordeal. None of it requires an attorney's judgment. It consistently ends up on one anyway.",
     items: [
       "Time capture suggestions pulled from calendar entries, emails, and document activity",
       "Invoice drafts generated from logged time with AI-assisted narrative cleanup",
@@ -90,10 +90,10 @@ const workflows = [
     tag: "Team Capability",
     title: "AI Training & Internal Tooling",
     problem:
-      "Most practices know AI can help them — but attorneys don't know how to use it effectively for legal work, and no one has time to figure it out. Generic AI tools get tried, produce mediocre output, and get abandoned. The opportunity stays on the table.",
+      "Most practices know AI can help them. Attorneys just don't know how to use it effectively for legal work, and no one has time to figure it out. Generic AI tools get tried, produce mediocre output, and get abandoned. The opportunity stays on the table.",
     items: [
       "A full-day hands-on training session built around your practice's actual document types and workflows",
-      "A custom prompt library so attorneys get high-quality output from day one — no guessing",
+      "A custom prompt library so attorneys get high-quality output from day one. No guessing",
       "Workflow guides specific to your document types: demand letters, agreements, discovery, memos",
       "30-day support so adoption actually sticks after the training day",
     ],
@@ -119,11 +119,11 @@ export default function GuidePage() {
               Salty Air · Resource Guide
             </span>
             <h1 className="font-heading text-5xl md:text-7xl font-bold tracking-tight mt-5 leading-[1.05] max-w-4xl">
-              5 Workflows Law Firms{" "}
+              5 Workflows Law Practices{" "}
               <span className="text-accent">Automate First</span>
             </h1>
             <p className="mt-6 font-sans text-lg md:text-xl text-background/72 max-w-2xl leading-relaxed">
-              The highest-ROI places to apply AI automation in a boutique or mid-size practice — and what each one actually looks like in operation.
+              The highest-ROI places to apply AI automation in a practice and what each one actually looks like in operation.
             </p>
             <div className="mt-10 w-12 h-px bg-accent" />
             <p className="mt-6 font-data text-xs text-background/40 tracking-wide">
@@ -136,9 +136,9 @@ export default function GuidePage() {
         <section className="w-full bg-background border-b border-primary/10 py-16 px-6 md:px-16">
           <SectionFade>
             <div className="max-w-7xl mx-auto max-w-3xl space-y-5 font-sans text-body text-base md:text-lg leading-relaxed">
-              <p>Most law practices don't have an AI problem. They have a <strong className="font-semibold text-dark">time problem</strong> — and they're spending it in the wrong places.</p>
+              <p>Most law practices don't have an AI problem. They have a <strong className="font-semibold text-dark">time problem</strong>, and they're spending it in the wrong places.</p>
               <p>The attorneys we work with are sharp, experienced, and genuinely good at what they do. But somewhere between intake calls, chasing documents, following up with clients, and reconciling billing, the week disappears before the real legal work gets the attention it deserves.</p>
-              <p>This guide covers the five places we start with every practice we work with. Not because they're the flashiest use of AI — but because they deliver the most measurable return, the fastest, with the least disruption to how your team already operates.</p>
+              <p>This guide covers the five places we start with every practice we work with. Not because they're the flashiest use of AI. Because they deliver the most measurable return, the fastest, with the least disruption to how your team already operates.</p>
               <p>No ripping out your practice management software. No steep learning curves. Just systems that handle the work that shouldn't require an attorney's time.</p>
             </div>
           </SectionFade>
@@ -252,11 +252,11 @@ export default function GuidePage() {
                 Not sure where your practice should start?
               </h2>
               <p className="font-sans text-lg text-background/78 leading-relaxed mb-8 max-w-2xl">
-                Every practice is different — different specialties, different tech stacks, different team dynamics. The five workflows above are where we typically begin, but the right starting point depends on where your hours are actually going.
+                Every practice is different. Different specialties, different tech stacks, different team dynamics. The five workflows above are where we typically begin, but the right starting point depends on where your hours are actually going.
               </p>
               <div className="border-l-2 border-accent/40 pl-6 mb-10">
                 <p className="font-sans text-base text-background/78 leading-relaxed mb-3">
-                  We offer a <strong className="font-semibold text-background">no-obligation Practice Audit</strong> — a quick-fit conversation to identify which of these workflows would deliver the most meaningful return for your specific practice.
+                  We offer a <strong className="font-semibold text-background">no-obligation Practice Audit</strong>, a quick-fit conversation to identify which of these workflows would deliver the most meaningful return for your specific practice.
                 </p>
                 <p className="font-sans text-base text-background/78 leading-relaxed">
                   If there's not a strong fit, we'll tell you. If there is, we'll scope exactly what implementation looks like before you commit to anything.
