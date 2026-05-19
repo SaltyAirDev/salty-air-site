@@ -138,7 +138,7 @@ export const pricing = {
       highlight: false,
       ctaType: "checkout",
       cta: { label: "Book your training day", href: "https://buy.stripe.com/cNi28qh1LfEoahua9fd7q09" },
-      note: "Training fee applied toward your retainer if you move forward within 90 days.",
+      note: null,
       features: [
         "Pre-work intake to understand your practice areas",
         "Full-day hands-on training session",
