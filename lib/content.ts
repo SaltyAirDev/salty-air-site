@@ -11,7 +11,7 @@ export const nav = {
 };
 
 export const hero = {
-  eyebrow: "",
+  eyebrow: "Work Less. Live More. Automate.",
   headline: "Practice growth,",
   headlineAccent: "automated.",
   sub: "Bespoke AI workflows for law practices: intake, drafting, follow-ups, and matter management, automated end-to-end.",
@@ -236,7 +236,7 @@ export const social = {
 };
 
 export const finalCta = {
-  eyebrow: "Ready to systematize?",
+  eyebrow: "Work Less. Live More. Automate.",
   headline: [
     { lead: "Stop the bottleneck." },
     { lead: "Start ", highlight: "automating." },
@@ -247,7 +247,7 @@ export const finalCta = {
 
 export const footer = {
   brand: "Salty Air",
-  tagline: "AI automation for law practices.",
+  tagline: "Work Less. Live More. Automate.",
   email: "hello@saltyair.co",
   columns: [
     {

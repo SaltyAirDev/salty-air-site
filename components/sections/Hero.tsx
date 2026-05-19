@@ -37,7 +37,12 @@ export function Hero() {
       <AuroraGradient />
 
       <div className="relative z-10 flex flex-col justify-center w-full min-h-[100dvh] px-8 md:px-16 max-w-7xl mx-auto pt-12 pb-12">
-<h1 className="text-5xl md:text-8xl font-heading font-bold tracking-tight hero-anim leading-[1.05]">
+        {hero.eyebrow && (
+          <span className="font-data text-xs text-accent uppercase tracking-[0.3em] mb-5 hero-anim">
+            {hero.eyebrow}
+          </span>
+        )}
+        <h1 className="text-5xl md:text-8xl font-heading font-bold tracking-tight hero-anim leading-[1.05]">
           <span className="text-white">{hero.headline}</span>{" "}
           <span className="text-accent">{hero.headlineAccent}</span>
         </h1>
