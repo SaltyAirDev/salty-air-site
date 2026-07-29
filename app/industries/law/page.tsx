@@ -3,13 +3,16 @@ import { SitePage } from "@/components/SitePage";
 import { lawContent } from "@/lib/content";
 import { industriesNavLink } from "@/lib/industries";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SITE_URL } from "@/lib/site";
+
+const LAW_URL = `${SITE_URL}/industries/law`;
 
 export const metadata: Metadata = {
   // Suffixed with "| Salty Air" by the template in app/layout.tsx.
   title: "AI Automation for Law Firms",
   description:
     "Salty Air builds custom AI workflows for boutique and mid-size law firms — automating intake, document drafting, follow-ups, and billing ops. Reclaim 15–25 non-billable hours per attorney per week.",
-  alternates: { canonical: "https://saltyair.co/industries/law" },
+  alternates: { canonical: LAW_URL },
   keywords: [
     "AI automation for law firms",
     "law firm AI workflows",
@@ -27,7 +30,7 @@ export const metadata: Metadata = {
     description:
       "Custom AI workflows for boutique and mid-size law firms. Automate intake, drafting, follow-ups, and billing ops. Reclaim 15–25 hours per attorney per week.",
     type: "website",
-    url: "https://saltyair.co/industries/law",
+    url: LAW_URL,
     siteName: "Salty Air",
     locale: "en_US",
   },
@@ -82,27 +85,27 @@ const jsonLd = {
       name: "AI Automation for Law Firms",
       description:
         "Custom AI workflows for boutique and mid-size law firms: client intake and triage, document drafting and routing, follow-up and nurture, and matter and billing operations.",
-      url: "https://saltyair.co/industries/law",
+      url: LAW_URL,
       serviceType: "AI Workflow Automation",
-      provider: { "@id": "https://saltyair.co/#organization" },
+      provider: { "@id": `${SITE_URL}/#organization` },
       areaServed: { "@type": "Country", name: "United States" },
       audience: { "@type": "Audience", audienceType: "Law Firms" },
     },
     {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://saltyair.co" },
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
         {
           "@type": "ListItem",
           position: 2,
           name: "Industries",
-          item: "https://saltyair.co/industries/law",
+          item: LAW_URL,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "Law Practices",
-          item: "https://saltyair.co/industries/law",
+          item: LAW_URL,
         },
       ],
     },

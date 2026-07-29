@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { SectionFade } from "@/components/ui/SectionFade";
+import { SITE_URL } from "@/lib/site";
+
+const GUIDE_URL = `${SITE_URL}/guide`;
 
 export const metadata: Metadata = {
   // Suffixed with "| Salty Air" by the template in app/layout.tsx.
   title: "5 Workflows Law Practices Automate First",
   description:
     "The highest-ROI places to apply AI automation in a practice and what each one actually looks like in operation.",
-  alternates: { canonical: "https://saltyair.co/guide" },
+  alternates: { canonical: GUIDE_URL },
   keywords: [
     "law firm workflow automation",
     "legal intake automation",
@@ -21,7 +24,7 @@ export const metadata: Metadata = {
     description:
       "The highest-ROI places to apply AI automation in a practice and what each one actually looks like in operation.",
     type: "article",
-    url: "https://saltyair.co/guide",
+    url: GUIDE_URL,
     siteName: "Salty Air",
   },
   twitter: {

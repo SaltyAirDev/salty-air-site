@@ -5,6 +5,7 @@ import {
   IBM_Plex_Mono,
 } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "@/lib/site";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -33,12 +34,12 @@ export const metadata: Metadata = {
   // `%s` is filled by each page's own title; `/` uses the default.
   title: { default: TITLE, template: "%s | Salty Air" },
   description: DESCRIPTION,
-  metadataBase: new URL("https://saltyair.co"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: "https://saltyair.co",
+    canonical: SITE_URL,
   },
   applicationName: "Salty Air",
-  authors: [{ name: "Salty Air", url: "https://saltyair.co" }],
+  authors: [{ name: "Salty Air", url: SITE_URL }],
   creator: "Salty Air",
   publisher: "Salty Air",
   category: "technology",
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     type: "website",
-    url: "https://saltyair.co",
+    url: SITE_URL,
     siteName: "Salty Air",
     locale: "en_US",
   },
@@ -89,13 +90,13 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "@id": "https://saltyair.co/#organization",
+    "@id": `${SITE_URL}/#organization`,
     name: "Salty Air",
     description:
       "AI automation agency building custom workflows for small and mid-size businesses.",
-    url: "https://saltyair.co",
-    logo: "https://saltyair.co/logo-green.png",
-    image: "https://saltyair.co/logo-green.png",
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo-green.png`,
+    image: `${SITE_URL}/logo-green.png`,
     email: "hello@saltyair.co",
     slogan: "Work Less. Live More. Automate.",
     serviceType: "AI Workflow Automation",

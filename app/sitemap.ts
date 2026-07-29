@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { industries, industryHref } from "@/lib/industries";
+import { SITE_URL } from "@/lib/site";
 
-const BASE = "https://saltyair.co";
+const BASE = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
