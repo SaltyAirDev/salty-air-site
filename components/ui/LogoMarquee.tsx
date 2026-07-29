@@ -1,6 +1,6 @@
-import { tools } from "@/lib/content";
+import { tools as lawTools } from "@/lib/content";
 
-export function LogoMarquee() {
+export function LogoMarquee({ tools = lawTools }: { tools?: string[] }) {
   const doubled = [...tools, ...tools];
   return (
     <div className="relative w-full overflow-hidden mask-edges py-7">

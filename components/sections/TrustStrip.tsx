@@ -1,7 +1,8 @@
-import { trust } from "@/lib/content";
+import { trust as lawTrust } from "@/lib/content";
+import type { TrustContent } from "@/lib/content-types";
 import { SectionFade } from "@/components/ui/SectionFade";
 
-export function TrustStrip() {
+export function TrustStrip({ content: trust = lawTrust }: { content?: TrustContent }) {
   return (
     <section className="w-full py-32 md:py-40 px-6 md:px-16 max-w-5xl mx-auto text-center">
       <SectionFade>

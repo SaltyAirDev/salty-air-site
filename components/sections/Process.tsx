@@ -1,7 +1,9 @@
-import { process } from "@/lib/content";
+import { process as lawProcess } from "@/lib/content";
+import type { ProcessContent } from "@/lib/content-types";
 import { SectionFade } from "@/components/ui/SectionFade";
+import { RichHeadline } from "@/components/ui/RichHeadline";
 
-export function Process() {
+export function Process({ content: process = lawProcess }: { content?: ProcessContent }) {
   return (
     <section className="w-full py-32 md:py-40 px-6 md:px-16 max-w-7xl mx-auto">
       <SectionFade>
@@ -10,7 +12,10 @@ export function Process() {
             {process.eyebrow}
           </span>
           <h2 className="text-4xl md:text-6xl font-heading font-bold text-dark tracking-tight mt-4 leading-[1.1]">
-            From first call to fully <span className="text-accent-warm">automated.</span>
+            <RichHeadline
+              lines={process.headlineRich}
+              accentClass="text-accent-warm"
+            />
           </h2>
           <p className="mt-6 text-body font-sans text-lg leading-relaxed">
             {process.sub}

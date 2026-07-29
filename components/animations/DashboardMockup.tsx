@@ -1,17 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { roi } from "@/lib/content";
+import { roi as lawRoi } from "@/lib/content";
+import type { RoiContent } from "@/lib/content-types";
 
-export function DashboardMockup() {
+export function DashboardMockup({
+  metrics = lawRoi.metrics,
+  label = lawRoi.dashboardLabel,
+}: {
+  metrics?: RoiContent["metrics"];
+  label?: string;
+}) {
   const [pulse, setPulse] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setPulse((p) => (p + 1) % roi.metrics.length);
+      setPulse((p) => (p + 1) % metrics.length);
     }, 2200);
     return () => clearInterval(interval);
-  }, []);
+  }, [metrics.length]);
 
   return (
     <div className="w-full bg-dark rounded-[2rem] border border-primary/30 p-6 md:p-8 shadow-2xl">
@@ -19,7 +26,7 @@ export function DashboardMockup() {
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
           <span className="font-data text-xs uppercase tracking-widest text-background/78">
-            Owner Dashboard · Live
+            {label}
           </span>
         </div>
         <span className="font-data text-xs text-background/55">
@@ -28,7 +35,7 @@ export function DashboardMockup() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {roi.metrics.map((metric, i) => (
+        {metrics.map((metric, i) => (
           <div
             key={metric.label}
             className={`rounded-[1.25rem] p-4 transition-all duration-500 ${

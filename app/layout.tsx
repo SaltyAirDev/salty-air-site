@@ -25,34 +25,49 @@ const plexMono = IBM_Plex_Mono({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const TITLE = "AI Automation for Businesses | Salty Air";
+const DESCRIPTION =
+  "Salty Air builds custom AI workflows for small and mid-size businesses — automating lead intake, proposals, follow-ups, and back-office ops. Reclaim 15–25 hours per person per week.";
+
 export const metadata: Metadata = {
-  title: "AI Automation for Law Firms | Salty Air",
-  description:
-    "Salty Air builds custom AI workflows for boutique and mid-size law firms — automating intake, document drafting, follow-ups, and billing ops. Reclaim 15–25 non-billable hours per attorney per week.",
+  // `%s` is filled by each page's own title; `/` uses the default.
+  title: { default: TITLE, template: "%s | Salty Air" },
+  description: DESCRIPTION,
   metadataBase: new URL("https://saltyair.co"),
   alternates: {
     canonical: "https://saltyair.co",
   },
+  applicationName: "Salty Air",
+  authors: [{ name: "Salty Air", url: "https://saltyair.co" }],
+  creator: "Salty Air",
+  publisher: "Salty Air",
+  category: "technology",
   keywords: [
-    "AI automation for law firms",
-    "law firm AI workflows",
-    "legal intake automation",
-    "law firm document drafting AI",
-    "legal workflow automation",
-    "AI for lawyers",
-    "law practice management automation",
-    "boutique law firm technology",
-    "legal AI software",
-    "law firm billing automation",
+    "AI automation for business",
+    "business workflow automation",
+    "AI workflows for small business",
+    "lead intake automation",
+    "proposal automation AI",
+    "back office automation",
+    "AI automation agency",
+    "n8n automation consultant",
+    "business process automation",
+    "AI for business owners",
   ],
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   openGraph: {
-    title: "AI Automation for Law Firms | Salty Air",
-    description:
-      "Custom AI workflows for boutique and mid-size law firms. Automate intake, drafting, follow-ups, and billing ops. Reclaim 15–25 hours per attorney per week.",
+    title: TITLE,
+    description: DESCRIPTION,
     type: "website",
     url: "https://saltyair.co",
     siteName: "Salty Air",
@@ -60,9 +75,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Automation for Law Firms | Salty Air",
-    description:
-      "Custom AI workflows for boutique and mid-size law firms. Automate intake, drafting, follow-ups, and billing ops. Reclaim 15–25 hours per attorney per week.",
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
 
@@ -71,28 +85,62 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Offer names mirror the tiers in lib/content-business.ts — keep them in sync.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": "https://saltyair.co/#organization",
     name: "Salty Air",
     description:
-      "AI automation agency building custom workflows for boutique and mid-size law firms.",
+      "AI automation agency building custom workflows for small and mid-size businesses.",
     url: "https://saltyair.co",
+    logo: "https://saltyair.co/logo-green.png",
+    image: "https://saltyair.co/logo-green.png",
     email: "hello@saltyair.co",
+    slogan: "Work Less. Live More. Automate.",
     serviceType: "AI Workflow Automation",
-    areaServed: "United States",
-    audience: {
-      "@type": "Audience",
-      audienceType: "Law Firms",
+    areaServed: {
+      "@type": "Country",
+      name: "United States",
     },
+    sameAs: ["https://www.linkedin.com/company/salty-air/"],
+    audience: {
+      "@type": "BusinessAudience",
+      audienceType: "Small and mid-size businesses",
+    },
+    knowsAbout: [
+      "Business process automation",
+      "AI workflow design",
+      "Lead intake automation",
+      "Document and proposal drafting",
+      "Back-office and billing operations",
+    ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Law Firm AI Automation Services",
+      name: "AI Automation Services",
       itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Training Day" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Strategic AI Assessment" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Monthly Retainer" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "One-Off Project" } },
+        {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          price: "499",
+          itemOffered: { "@type": "Service", name: "Business Audit" },
+        },
+        {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          price: "7500",
+          itemOffered: { "@type": "Service", name: "AI Training Day" },
+        },
+        {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          itemOffered: { "@type": "Service", name: "Custom Project" },
+        },
+        {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          itemOffered: { "@type": "Service", name: "Monthly Retainer" },
+        },
       ],
     },
   };

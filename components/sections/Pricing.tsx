@@ -1,7 +1,9 @@
-import { pricing } from "@/lib/content";
+import { pricing as lawPricing } from "@/lib/content";
+import type { PricingContent } from "@/lib/content-types";
 import { SectionFade } from "@/components/ui/SectionFade";
+import { RichHeadline } from "@/components/ui/RichHeadline";
 
-export function Pricing() {
+export function Pricing({ content: pricing = lawPricing }: { content?: PricingContent }) {
   return (
     <section className="w-full bg-primary text-background py-32 md:py-40">
       <div className="max-w-7xl mx-auto px-6 md:px-16">
@@ -98,7 +100,10 @@ export function Pricing() {
               {pricing.howItWorks.eyebrow}
             </span>
             <h3 className="font-heading text-2xl md:text-3xl font-bold mt-3 mb-4 text-background">
-              Priced by <span className="text-accent">capacity</span>, not by <span className="text-accent">hours</span>.
+              <RichHeadline
+                lines={pricing.howItWorks.headlineRich}
+                accentClass="text-accent"
+              />
             </h3>
             <p className="font-sans text-sm md:text-base text-background/78 leading-relaxed max-w-2xl mb-8">
               {pricing.howItWorks.body}

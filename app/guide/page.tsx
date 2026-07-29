@@ -4,10 +4,18 @@ import { Footer } from "@/components/ui/Footer";
 import { SectionFade } from "@/components/ui/SectionFade";
 
 export const metadata: Metadata = {
-  title: "5 Workflows Law Practices Automate First | Salty Air",
+  // Suffixed with "| Salty Air" by the template in app/layout.tsx.
+  title: "5 Workflows Law Practices Automate First",
   description:
     "The highest-ROI places to apply AI automation in a practice and what each one actually looks like in operation.",
   alternates: { canonical: "https://saltyair.co/guide" },
+  keywords: [
+    "law firm workflow automation",
+    "legal intake automation",
+    "law firm document drafting AI",
+    "matter and billing automation",
+    "AI training for law firms",
+  ],
   openGraph: {
     title: "5 Workflows Law Practices Automate First | Salty Air",
     description:
@@ -15,6 +23,12 @@ export const metadata: Metadata = {
     type: "article",
     url: "https://saltyair.co/guide",
     siteName: "Salty Air",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "5 Workflows Law Practices Automate First | Salty Air",
+    description:
+      "The highest-ROI places to apply AI automation in a practice and what each one actually looks like in operation.",
   },
 };
 

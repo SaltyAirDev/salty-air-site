@@ -1,12 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { finalCta } from "@/lib/content";
+import { finalCta as lawFinalCta } from "@/lib/content";
+import type { FinalCtaContent } from "@/lib/content-types";
 import { SectionFade } from "@/components/ui/SectionFade";
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export function FinalCTA() {
+export function FinalCTA({
+  content: finalCta = lawFinalCta,
+}: {
+  content?: FinalCtaContent;
+}) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [form, setForm] = useState({ name: "", firm: "", email: "", phone: "", interest: "", message: "" });
@@ -54,9 +59,14 @@ export function FinalCTA() {
           <h2 className="text-5xl md:text-7xl font-heading font-bold tracking-tight mt-4 leading-[1.05]">
             {finalCta.headline.map((line, i) => (
               <span key={i} className="block">
-                {line.lead}
-                {line.highlight && (
-                  <span className="text-accent">{line.highlight}</span>
+                {line.map((span, j) =>
+                  span.accent ? (
+                    <span key={j} className="text-accent">
+                      {span.text}
+                    </span>
+                  ) : (
+                    <span key={j}>{span.text}</span>
+                  ),
                 )}
               </span>
             ))}
@@ -93,11 +103,11 @@ export function FinalCTA() {
 
               <div>
                 <label className="block font-data text-xs uppercase tracking-widest text-background/78 mb-2">
-                  Practice name
+                  {finalCta.form.orgLabel}
                 </label>
                 <input
                   type="text"
-                  placeholder="Smith & Associates"
+                  placeholder={finalCta.form.orgPlaceholder}
                   value={form.firm}
                   onChange={set("firm")}
                   className={inputClass}
@@ -111,7 +121,7 @@ export function FinalCTA() {
                 <input
                   required
                   type="email"
-                  placeholder="jane@smithlaw.com"
+                  placeholder={finalCta.form.emailPlaceholder}
                   value={form.email}
                   onChange={set("email")}
                   className={inputClass}
@@ -142,22 +152,22 @@ export function FinalCTA() {
                   className={`${inputClass} cursor-pointer`}
                 >
                   <option value="" disabled>Select one…</option>
-                  <option value="Practice Audit">Practice Audit</option>
-                  <option value="AI Training Day">AI Training Day</option>
-                  <option value="Custom Project">Custom Project</option>
-                  <option value="Monthly Retainer">Monthly Retainer</option>
-                  <option value="Just exploring">Just exploring</option>
+                  {finalCta.form.interests.map((interest) => (
+                    <option key={interest} value={interest}>
+                      {interest}
+                    </option>
+                  ))}
                 </select>
               </div>
 
               <div className="md:col-span-2">
                 <label className="block font-data text-xs uppercase tracking-widest text-background/78 mb-2">
-                  What are you looking to automate? *
+                  {finalCta.form.messageLabel}
                 </label>
                 <textarea
                   required
                   rows={4}
-                  placeholder="Tell us about your practice, your current bottlenecks, and what you'd most like to get off your plate..."
+                  placeholder={finalCta.form.messagePlaceholder}
                   value={form.message}
                   onChange={set("message")}
                   className={`${inputClass} resize-none`}

@@ -1,0 +1,123 @@
+import type { Metadata } from "next";
+import { SitePage } from "@/components/SitePage";
+import { lawContent } from "@/lib/content";
+import { industriesNavLink } from "@/lib/industries";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+
+export const metadata: Metadata = {
+  // Suffixed with "| Salty Air" by the template in app/layout.tsx.
+  title: "AI Automation for Law Firms",
+  description:
+    "Salty Air builds custom AI workflows for boutique and mid-size law firms — automating intake, document drafting, follow-ups, and billing ops. Reclaim 15–25 non-billable hours per attorney per week.",
+  alternates: { canonical: "https://saltyair.co/industries/law" },
+  keywords: [
+    "AI automation for law firms",
+    "law firm AI workflows",
+    "legal intake automation",
+    "law firm document drafting AI",
+    "legal workflow automation",
+    "AI for lawyers",
+    "law practice management automation",
+    "boutique law firm technology",
+    "legal AI software",
+    "law firm billing automation",
+  ],
+  openGraph: {
+    title: "AI Automation for Law Firms | Salty Air",
+    description:
+      "Custom AI workflows for boutique and mid-size law firms. Automate intake, drafting, follow-ups, and billing ops. Reclaim 15–25 hours per attorney per week.",
+    type: "website",
+    url: "https://saltyair.co/industries/law",
+    siteName: "Salty Air",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Automation for Law Firms | Salty Air",
+    description:
+      "Custom AI workflows for boutique and mid-size law firms. Automate intake, drafting, follow-ups, and billing ops. Reclaim 15–25 hours per attorney per week.",
+  },
+};
+
+/**
+ * The law copy is unchanged; only the nav and footer gain the Industries entry
+ * so visitors can get back to the general-business site.
+ */
+const content = {
+  ...lawContent,
+  nav: {
+    ...lawContent.nav,
+    links: [
+      lawContent.nav.links[0],
+      industriesNavLink,
+      ...lawContent.nav.links.slice(1),
+    ],
+  },
+  footer: {
+    ...lawContent.footer,
+    columns: [
+      lawContent.footer.columns[0],
+      {
+        title: "Industries",
+        links: [
+          { label: "All businesses", href: "/" },
+          { label: "Law Practices", href: "/industries/law" },
+        ],
+      },
+      ...lawContent.footer.columns.slice(1),
+    ],
+  },
+};
+
+/**
+ * Law-specific structured data. The root layout describes Salty Air as a
+ * general-business agency, so this page carries the legal-vertical signals that
+ * used to live in the layout.
+ */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "AI Automation for Law Firms",
+      description:
+        "Custom AI workflows for boutique and mid-size law firms: client intake and triage, document drafting and routing, follow-up and nurture, and matter and billing operations.",
+      url: "https://saltyair.co/industries/law",
+      serviceType: "AI Workflow Automation",
+      provider: { "@id": "https://saltyair.co/#organization" },
+      areaServed: { "@type": "Country", name: "United States" },
+      audience: { "@type": "Audience", audienceType: "Law Firms" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://saltyair.co" },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Industries",
+          item: "https://saltyair.co/industries/law",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Law Practices",
+          item: "https://saltyair.co/industries/law",
+        },
+      ],
+    },
+  ],
+};
+
+export default function LawIndustryPage() {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <FaqJsonLd items={content.faq.items} />
+      <SitePage content={content} />
+    </>
+  );
+}

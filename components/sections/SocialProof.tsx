@@ -1,8 +1,9 @@
 import { Star } from "lucide-react";
-import { social } from "@/lib/content";
+import { social as lawSocial } from "@/lib/content";
+import type { SocialContent } from "@/lib/content-types";
 import { SectionFade } from "@/components/ui/SectionFade";
 
-export function SocialProof() {
+export function SocialProof({ content: social = lawSocial }: { content?: SocialContent }) {
   return (
     <section className="w-full py-32 md:py-40 px-6 md:px-16 max-w-7xl mx-auto">
       <SectionFade>

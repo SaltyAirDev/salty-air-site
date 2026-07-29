@@ -1,7 +1,13 @@
-import { solutions } from "@/lib/content";
+import { solutions as lawSolutions } from "@/lib/content";
+import type { SolutionsContent } from "@/lib/content-types";
 import { SectionFade } from "@/components/ui/SectionFade";
+import { RichHeadline } from "@/components/ui/RichHeadline";
 
-export function SolutionsGrid() {
+export function SolutionsGrid({
+  content: solutions = lawSolutions,
+}: {
+  content?: SolutionsContent;
+}) {
   return (
     <section
       id="solutions"
@@ -13,7 +19,10 @@ export function SolutionsGrid() {
             {solutions.eyebrow}
           </span>
           <h2 className="text-4xl md:text-6xl font-heading font-bold text-dark tracking-tight mt-4 leading-[1.1]">
-            Built with <span className="text-accent-warm">practices</span> in mind.
+            <RichHeadline
+              lines={solutions.headlineRich}
+              accentClass="text-accent-warm"
+            />
           </h2>
           <p className="mt-6 text-body font-sans text-lg leading-relaxed">
             {solutions.sub}
@@ -55,7 +64,7 @@ export function SolutionsGrid() {
             className="inline-block px-8 py-4 rounded-full bg-primary text-background font-sans font-bold text-base hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] overflow-hidden relative group shadow-md"
           >
             <span className="relative z-10 block transition-colors group-hover:text-white">
-              Get Started Today
+              {solutions.ctaLabel}
             </span>
             <span className="absolute inset-0 rounded-full bg-accent-warm translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" />
           </a>

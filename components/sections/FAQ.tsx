@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { faq } from "@/lib/content";
+import { faq as lawFaq } from "@/lib/content";
+import type { FaqContent } from "@/lib/content-types";
 import { SectionFade } from "@/components/ui/SectionFade";
 
-export function FAQ() {
+export function FAQ({ content: faq = lawFaq }: { content?: FaqContent }) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (

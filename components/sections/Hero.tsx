@@ -2,11 +2,18 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { hero } from "@/lib/content";
+import { hero as lawHero, tools as lawTools } from "@/lib/content";
+import type { HeroContent } from "@/lib/content-types";
 import { LogoMarquee } from "@/components/ui/LogoMarquee";
 import { AuroraGradient } from "@/components/animations/AuroraGradient";
 
-export function Hero() {
+export function Hero({
+  content: hero = lawHero,
+  tools = lawTools,
+}: {
+  content?: HeroContent;
+  tools?: string[];
+}) {
   const container = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -69,7 +76,7 @@ export function Hero() {
       </div>
 
       <div className="absolute bottom-0 inset-x-0 z-10 border-t border-white/10 bg-dark/40 backdrop-blur-sm">
-        <LogoMarquee />
+        <LogoMarquee tools={tools} />
       </div>
     </section>
   );

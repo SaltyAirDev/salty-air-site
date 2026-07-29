@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { footer } from "@/lib/content";
+import { footer as lawFooter } from "@/lib/content";
+import type { FooterContent } from "@/lib/content-types";
 
-export function Footer() {
+export function Footer({ content: footer = lawFooter }: { content?: FooterContent }) {
   return (
     <footer className="w-full bg-dark rounded-t-[3rem] pt-24 pb-10 px-8 md:px-16 text-background relative z-30 -mt-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -18,7 +19,9 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="hidden md:block" />
+        {/* Spacer keeps the link columns right-aligned in the 4-col grid; drop it
+            once there are enough columns to fill the row on their own. */}
+        {footer.columns.length < 3 && <div className="hidden md:block" />}
 
         {footer.columns.map((col) => (
           <div key={col.title}>
@@ -45,7 +48,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto border-t border-background/15 pt-8 flex flex-col md:flex-row items-center justify-between text-xs font-data text-background/55">
         <p>{footer.bottom}</p>
         <p className="mt-4 md:mt-0 uppercase tracking-widest">
-          Built for law practices
+          {footer.badge}
         </p>
       </div>
     </footer>
