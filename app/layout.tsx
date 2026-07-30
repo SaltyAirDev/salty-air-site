@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "proposal automation AI",
     "back office automation",
     "AI automation agency",
-    "n8n automation consultant",
+    "custom AI automation development",
     "business process automation",
     "AI for business owners",
   ],

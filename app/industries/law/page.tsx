@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SitePage } from "@/components/SitePage";
 import { lawContent } from "@/lib/content";
-import { industriesNavLink } from "@/lib/industries";
+import { withIndustryChrome } from "@/lib/industries";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SITE_URL } from "@/lib/site";
 
@@ -42,35 +42,7 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * The law copy is unchanged; only the nav and footer gain the Industries entry
- * so visitors can get back to the general-business site.
- */
-const content = {
-  ...lawContent,
-  nav: {
-    ...lawContent.nav,
-    links: [
-      lawContent.nav.links[0],
-      industriesNavLink,
-      ...lawContent.nav.links.slice(1),
-    ],
-  },
-  footer: {
-    ...lawContent.footer,
-    columns: [
-      lawContent.footer.columns[0],
-      {
-        title: "Industries",
-        links: [
-          { label: "All businesses", href: "/" },
-          { label: "Law Practices", href: "/industries/law" },
-        ],
-      },
-      ...lawContent.footer.columns.slice(1),
-    ],
-  },
-};
+const content = withIndustryChrome(lawContent);
 
 /**
  * Law-specific structured data. The root layout describes Salty Air as a

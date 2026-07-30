@@ -16,7 +16,7 @@ import type {
   TrustContent,
 } from "./content-types";
 import type { SiteContent } from "./content";
-import { industriesNavLink } from "./industries";
+import { industriesNavLink, industryLinks } from "./industries";
 
 export const nav: NavContent = {
   brand: "Salty Air",
@@ -47,8 +47,7 @@ export const tools: string[] = [
   "Airtable",
   "Notion",
   "DocuSign",
-  "Zapier",
-  "n8n",
+  "Claude Code",
   "OpenAI",
   "Slack",
   "Gmail",
@@ -261,11 +260,15 @@ export const faq: FaqContent = {
     },
     {
       q: "Do you specialize in any particular industry?",
-      a: "We work across industries, and we've built deep playbooks for a few. Law practices have their own page with workflows specific to intake, conflict checks, and matter management. If your industry isn't listed yet, the core approach is the same — we start with an audit of how your business actually runs.",
+      a: "We work across industries, and we've built deep playbooks for a few. Law practices and construction each have their own page — intake, conflict checks, and matter management on one side; bid coverage, RFIs, change orders, and closeout on the other. If your industry isn't listed yet, the core approach is the same — we start with an audit of how your business actually runs.",
+    },
+    {
+      q: "What do you build the automations in?",
+      a: "Claude Code. We build custom automations as real code rather than assembling them in a drag-and-drop tool, which means they handle logic and edge cases a no-code builder can't, they version properly, and you own the source. If your team already runs n8n, Zapier, or Make and wants everything to live there, we'll build it there instead — we just don't default to it.",
     },
     {
       q: "What happens if we want to stop?",
-      a: "Everything we build is documented and handed off to you. There's no lock-in. The workflows live in your own n8n instance or Zapier account, and we provide full documentation so your team (or another vendor) can maintain them without us.",
+      a: "Everything we build is documented and handed off to you. There's no lock-in. We build your automations as code using Claude Code, so what you get is a working system plus the source, the documentation, and a walkthrough — your team or another vendor can run and extend it without us. If you already run a platform like n8n or Zapier and want the work built there instead, we'll do that.",
     },
   ],
 };
@@ -326,9 +329,7 @@ export const footer: FooterContent = {
     },
     {
       title: "Industries",
-      links: [
-        { label: "Law Practices", href: "/industries/law" },
-      ],
+      links: industryLinks,
     },
     {
       title: "Stay close",
