@@ -85,7 +85,7 @@ export function Navbar({ content: nav = lawNav }: { content?: NavContent }) {
 
         <div
           className={cn(
-            "absolute left-1/2 -translate-x-1/2 top-full pt-4 w-72 transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]",
+            "absolute left-1/2 -translate-x-1/2 top-full pt-4 w-56 transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]",
             isOpen
               ? "opacity-100 translate-y-0 pointer-events-auto"
               : "opacity-0 -translate-y-1 pointer-events-none",
@@ -97,16 +97,9 @@ export function Navbar({ content: nav = lawNav }: { content?: NavContent }) {
                 key={child.href}
                 href={child.href}
                 onClick={() => setOpenMenu(null)}
-                className="block rounded-[1rem] px-4 py-3 hover:bg-primary/5 transition-colors"
+                className="block rounded-[1rem] px-4 py-2.5 font-sans font-semibold text-sm text-dark hover:bg-primary/5 transition-colors"
               >
-                <span className="block font-sans font-semibold text-sm text-dark">
-                  {child.label}
-                </span>
-                {child.desc && (
-                  <span className="block font-data text-[11px] text-body/60 mt-1 leading-snug">
-                    {child.desc}
-                  </span>
-                )}
+                {child.label}
               </Link>
             ))}
           </div>

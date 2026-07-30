@@ -15,7 +15,7 @@ export type Link = { label: string; href: string };
 
 export type NavLink = Link & {
   /** Present on dropdown parents (e.g. Industries). */
-  children?: Array<Link & { desc?: string }>;
+  children?: Link[];
 };
 
 export type NavContent = {
