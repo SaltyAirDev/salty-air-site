@@ -5,7 +5,8 @@ import {
   IBM_Plex_Mono,
 } from "next/font/google";
 import "./globals.css";
-import { SITE_URL } from "@/lib/site";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { GA_MEASUREMENT_ID, SITE_URL } from "@/lib/site";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -160,6 +161,11 @@ export default function RootLayout({
       <body className="bg-background text-dark font-sans selection:bg-accent/40 selection:text-dark">
         {children}
       </body>
+      {/* Production only — keeps local dev and Vercel preview builds out of the
+          GA4 reports. Loads after hydration, so it does not block rendering. */}
+      {process.env.NODE_ENV === "production" && (
+        <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+      )}
     </html>
   );
 }

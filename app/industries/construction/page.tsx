@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   description:
     "Salty Air builds custom AI workflows for general contractors — automating bid and preconstruction, RFIs and submittals, change orders, and closeout. Reclaim 15–25 hours per project manager per week.",
   alternates: { canonical: PAGE_URL },
+  // Unlisted for now: not in the nav, footer, or sitemap. Keep it out of the
+  // index until it is ready to go public again.
+  robots: { index: false, follow: false },
   keywords: [
     "AI automation for construction",
     "general contractor workflow automation",

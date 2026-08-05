@@ -11,14 +11,18 @@ export type Industry = {
   label: string;
 };
 
+/**
+ * Only listed industries appear in the nav dropdown, footer column, and sitemap.
+ *
+ * Construction is built but intentionally unlisted — its page, copy, and OG card
+ * live on at `app/industries/construction/` and `lib/content-construction.ts`.
+ * To bring it back, re-add the entry below and drop the `robots` override in
+ * `app/industries/construction/page.tsx`.
+ */
 export const industries: Industry[] = [
   {
     slug: "law",
     label: "Law Practices",
-  },
-  {
-    slug: "construction",
-    label: "Construction",
   },
 ];
 

@@ -260,7 +260,7 @@ export const faq: FaqContent = {
     },
     {
       q: "Do you specialize in any particular industry?",
-      a: "We work across industries, and we've built deep playbooks for a few. Law practices and construction each have their own page — intake, conflict checks, and matter management on one side; bid coverage, RFIs, change orders, and closeout on the other. If your industry isn't listed yet, the core approach is the same — we start with an audit of how your business actually runs.",
+      a: "We work across industries, and we've built deep playbooks for a few. Law practices have their own page with workflows specific to intake, conflict checks, and matter management. If your industry isn't listed yet, the core approach is the same — we start with an audit of how your business actually runs.",
     },
     {
       q: "What do you build the automations in?",
