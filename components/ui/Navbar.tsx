@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { nav as lawNav } from "@/lib/content";
@@ -10,7 +11,13 @@ import type { NavContent, NavLink } from "@/lib/content-types";
 export function Navbar({ content: nav = lawNav }: { content?: NavContent }) {
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pathname = usePathname();
+
+  // The bar goes solid on scroll, and also while the mobile panel is open so the
+  // two read as one surface over the dark hero.
+  const solid = scrolled || mobileOpen;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 100);
@@ -21,6 +28,39 @@ export function Navbar({ content: nav = lawNav }: { content?: NavContent }) {
   useEffect(() => () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
   }, []);
+
+  // Close on route change (including browser back/forward). React's documented
+  // "adjust state during render" pattern — cheaper than an effect, which would
+  // paint the open menu once before closing it.
+  const [lastPath, setLastPath] = useState(pathname);
+  if (lastPath !== pathname) {
+    setLastPath(pathname);
+    setMobileOpen(false);
+    setOpenMenu(null);
+  }
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    // Leaving the panel open across the md breakpoint would strand the scroll lock.
+    const onResize = () => {
+      if (window.innerWidth >= 768) setMobileOpen(false);
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [mobileOpen]);
 
   // Small grace period so the pointer can cross the gap into the dropdown.
   const open = (label: string) => {
@@ -108,46 +148,144 @@ export function Navbar({ content: nav = lawNav }: { content?: NavContent }) {
     );
   };
 
+  const closeMobile = () => setMobileOpen(false);
+
   return (
     <nav className="fixed top-6 inset-x-0 z-50 max-w-7xl mx-auto px-2 md:px-10">
+      {/* Scrim: dims the page and gives the expected tap-outside-to-close.
+          First child, so it paints behind the bar and panel. */}
+      <div
+        onClick={closeMobile}
+        aria-hidden
+        className={cn(
+          "md:hidden fixed inset-0 bg-dark/40 transition-opacity duration-300",
+          mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none",
+        )}
+      />
+
       <div
         className={cn(
-          "transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] flex items-center justify-between px-6 py-3.5 rounded-full",
-          scrolled
-            ? "bg-background/85 backdrop-blur-xl border border-primary/10 text-primary shadow-sm"
-            : "bg-transparent text-white border border-transparent",
+          "relative transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] flex items-center justify-between px-5 md:px-6 py-3.5 rounded-full",
+          // Opaque while the panel is open, otherwise the scrim behind the bar
+          // shows through the translucent fill and greys it against the panel.
+          mobileOpen
+            ? "bg-background border border-primary/10 text-primary shadow-sm"
+            : scrolled
+              ? "bg-background/85 backdrop-blur-xl border border-primary/10 text-primary shadow-sm"
+              : "bg-transparent text-white border border-transparent",
         )}
       >
-        <a href="/" className="flex items-center" aria-label={nav.brand}>
+        <Link
+          href="/"
+          className="flex items-center shrink-0"
+          aria-label={nav.brand}
+          onClick={closeMobile}
+        >
           <Image
-            src={scrolled ? "/logo-green.png" : "/logo-white.png"}
+            src={solid ? "/logo-green.png" : "/logo-white.png"}
             alt={nav.brand}
             width={140}
             height={36}
             priority
-            className="h-9 w-auto object-contain"
+            className="h-8 md:h-9 w-auto object-contain"
           />
-        </a>
+        </Link>
+
         <div className="hidden md:flex items-center gap-8 font-sans font-medium text-sm">
           {nav.links.map(renderLink)}
         </div>
-        <a
-          href={nav.cta.href}
-          className={cn(
-            "px-5 py-2.5 rounded-full font-sans font-semibold text-sm transition-transform hover:scale-[1.03] active:scale-95 overflow-hidden relative group",
-            scrolled ? "bg-accent-warm text-white" : "bg-white text-dark",
-          )}
-        >
-          <span className="relative z-10 transition-colors group-hover:text-white">
-            {nav.cta.label}
-          </span>
-          <span
+
+        <div className="flex items-center gap-2">
+          <a
+            href={nav.cta.href}
+            onClick={closeMobile}
             className={cn(
-              "absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]",
-              scrolled ? "bg-primary" : "bg-accent",
+              "px-4 md:px-5 py-2.5 rounded-full font-sans font-semibold text-[13px] md:text-sm whitespace-nowrap transition-transform hover:scale-[1.03] active:scale-95 overflow-hidden relative group",
+              solid ? "bg-accent-warm text-white" : "bg-white text-dark",
             )}
-          />
-        </a>
+          >
+            <span className="relative z-10 transition-colors group-hover:text-white">
+              {nav.cta.label}
+            </span>
+            <span
+              className={cn(
+                "absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]",
+                solid ? "bg-primary" : "bg-accent",
+              )}
+            />
+          </a>
+
+          <button
+            type="button"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            className={cn(
+              "md:hidden flex items-center justify-center w-10 h-10 -mr-1.5 rounded-full transition-colors",
+              solid ? "text-primary hover:bg-primary/5" : "text-white hover:bg-white/10",
+            )}
+          >
+            {/* Two bars that cross into an X when open. */}
+            <span className="relative block w-5 h-4" aria-hidden>
+              <span
+                className={cn(
+                  "absolute left-0 block w-5 h-0.5 bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]",
+                  mobileOpen ? "top-[7px] rotate-45" : "top-0.5",
+                )}
+              />
+              <span
+                className={cn(
+                  "absolute left-0 block w-5 h-0.5 bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]",
+                  mobileOpen ? "top-[7px] -rotate-45" : "top-[13px]",
+                )}
+              />
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        className={cn(
+          "md:hidden relative mt-3 origin-top transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]",
+          mobileOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none invisible",
+        )}
+      >
+        <div className="rounded-[1.75rem] border border-primary/10 bg-background shadow-xl p-3 max-h-[calc(100dvh-8rem)] overflow-y-auto">
+          {nav.links.map((link) =>
+            link.children?.length ? (
+              <div key={link.label} className="px-2 pt-3 pb-1">
+                <span className="block font-data text-[11px] uppercase tracking-[0.2em] text-body/50">
+                  {link.label}
+                </span>
+                <div className="mt-1.5 flex flex-col border-l border-primary/10 pl-3">
+                  {link.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      onClick={closeMobile}
+                      className="py-2.5 font-sans font-semibold text-base text-dark hover:text-accent-warm transition-colors"
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={closeMobile}
+                className="block rounded-[1.25rem] px-4 py-3 font-sans font-semibold text-base text-dark hover:bg-primary/5 transition-colors"
+              >
+                {link.label}
+              </a>
+            ),
+          )}
+        </div>
       </div>
     </nav>
   );
