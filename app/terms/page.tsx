@@ -4,7 +4,7 @@ import { AUDIT_PRICE, EMAIL, SITE_URL } from "@/lib/site";
 
 const TITLE = "Terms of Service";
 const DESCRIPTION =
-  "The terms that apply to using www.saltyair.co and to engaging Salty Air for a business audit or an AI back office retainer.";
+  "The terms that apply to using www.saltyair.co and to engaging Salty Air for a business audit or a fractional CTO and operations retainer.";
 
 export const metadata: Metadata = {
   title: TITLE,

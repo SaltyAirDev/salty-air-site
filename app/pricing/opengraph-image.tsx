@@ -7,7 +7,7 @@ export const contentType = OG_CONTENT_TYPE;
 export default function OpengraphImage() {
   return ogCard({
     eyebrow: "Pricing",
-    line1: "An audit, or a",
+    line1: "One audit. One",
     line2: "retainer. That's it.",
   });
 }

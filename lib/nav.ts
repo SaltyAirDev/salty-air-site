@@ -16,7 +16,7 @@ export type NavLink = {
 };
 
 export const navLinks: NavLink[] = [
-  { label: "AI Back Office", href: "/ai-back-office" },
+  { label: "Fractional CTO", href: "/fractional-cto" },
   { label: "Pricing", href: "/pricing" },
   { label: "Trades", href: tradeLinks[0].href, children: tradeLinks },
   { label: "Case Study", href: "/case-studies/salty-home-services" },
@@ -30,8 +30,8 @@ export const footerColumns: Array<{ title: string; links: Array<{ label: string;
   {
     title: "What we do",
     links: [
-      { label: "AI Back Office", href: "/ai-back-office" },
-      { label: "Data Add-Ons", href: "/data-addons" },
+      { label: "Fractional CTO", href: "/fractional-cto" },
+      { label: "Data Services", href: "/data-addons" },
       { label: "Pricing", href: "/pricing" },
       { label: "Case Study", href: "/case-studies/salty-home-services" },
     ],

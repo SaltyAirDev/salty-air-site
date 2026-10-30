@@ -8,8 +8,8 @@ import { TealBand } from "@/components/site/TealBand";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Button } from "@/components/ui/Button";
 import { getTrade, trades, tradeHref } from "@/lib/trades";
-import { retainerInclusions } from "@/lib/offers";
-import { AUDIT_PRICE, CALENDAR_URL, SITE_URL, SLOGAN } from "@/lib/site";
+import { backOfficeSystems } from "@/lib/offers";
+import { AUDIT_PRICE, CALENDAR_URL, SERVICE_TYPE, SITE_URL, SLOGAN } from "@/lib/site";
 
 type Params = { params: Promise<{ trade: string }> };
 
@@ -52,7 +52,7 @@ export default async function TradePage({ params }: Params) {
         "@type": "Service",
         name: trade.title,
         description: trade.description,
-        serviceType: "AI back office",
+        serviceType: SERVICE_TYPE,
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed: { "@type": "Country", name: "United States" },
         url: `${SITE_URL}${tradeHref(trade.slug)}`,
@@ -92,8 +92,45 @@ export default async function TradePage({ params }: Params) {
           priority
         />
 
-        {/* Where the work leaks out */}
+        {/* The partner angle first — the systems are what it produces */}
         <Section>
+          <div className="max-w-3xl">
+            <Eyebrow>Partner first</Eyebrow>
+            <Heading>
+              A fractional CTO for {trade.label.toLowerCase()}, not another app
+              to log into.
+            </Heading>
+            <div className="mt-6 flex flex-col gap-5 font-sans text-lg leading-relaxed text-body">
+              <p>
+                We take on the technology and operations role your shop has
+                grown into, on a monthly retainer. Our team embeds with you
+                first — on the phones, in the dispatch board, in the estimate
+                folder — then builds what is actually losing you work, and runs
+                it afterwards.
+              </p>
+              <p>
+                That order matters. Software handed to a busy shop with a login
+                and a tutorial does not get used. Systems built around how you
+                already dispatch, by people who watched you do it, do.
+              </p>
+            </div>
+            <div className="mt-9 flex flex-col sm:flex-row gap-3">
+              <Button href="/fractional-cto" variant="teal">
+                How the engagement works
+              </Button>
+              <Button
+                href="/pricing"
+                variant="teal"
+                className="bg-transparent text-primary border border-primary/25 hover:bg-primary/5 hover:text-primary"
+              >
+                See pricing
+              </Button>
+            </div>
+          </div>
+        </Section>
+
+        {/* Where the work leaks out */}
+        <Section tone="sand">
           <div className="max-w-3xl">
             <Eyebrow>Where the work leaks out</Eyebrow>
             <Heading>Sound familiar?</Heading>
@@ -121,6 +158,9 @@ export default async function TradePage({ params }: Params) {
               The AI back office, set up for{" "}
               <span className="text-accent">{trade.label.toLowerCase()}.</span>
             </h2>
+            <p className="mt-6 font-sans text-lg leading-relaxed text-white/80">
+              What the retainer produces for a shop like yours.
+            </p>
           </div>
 
           <div className="mt-14 grid md:grid-cols-2 gap-8">
@@ -139,18 +179,18 @@ export default async function TradePage({ params }: Params) {
           <div className="mt-14 border-t border-white/15 pt-10">
             <p className="font-sans text-[15px] text-white/70">
               Every retainer also covers{" "}
-              {retainerInclusions.map((i) => i.title).join(" · ")}.
+              {backOfficeSystems.map((i) => i.title).join(" · ")}.
             </p>
             <div className="mt-7">
-              <Button href="/ai-back-office" variant="peach">
-                See the whole back office
+              <Button href="/fractional-cto" variant="peach">
+                See the first 30, 60, and 90 days
               </Button>
             </div>
           </div>
         </TealBand>
 
         {/* Other trades */}
-        <Section tone="sand">
+        <Section>
           <Eyebrow>Other trades</Eyebrow>
           <Heading>We build this for the rest of them too.</Heading>
           <div className="mt-10 flex flex-wrap gap-3">

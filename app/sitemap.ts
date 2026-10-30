@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes: MetadataRoute.Sitemap = [
     { url: BASE, changeFrequency: "weekly", priority: 1 },
-    { url: `${BASE}/ai-back-office`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/fractional-cto`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/pricing`, changeFrequency: "monthly", priority: 0.9 },
     ...trades.map((trade) => ({
       url: `${BASE}${tradeHref(trade.slug)}`,

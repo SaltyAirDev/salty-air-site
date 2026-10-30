@@ -2,16 +2,20 @@ import { Button } from "@/components/ui/Button";
 import { auditOffer, retainerOffer } from "@/lib/offers";
 
 /**
- * The two published offers, side by side. Audit carries its price; the
- * retainer says "Inquire only" where a price would go, and deliberately
- * doesn't hint at a number anywhere else on the card.
+ * The first two rungs of the offer ladder, side by side: the audit you can book
+ * today and the retainer that is the actual engagement. The audit carries its
+ * price; the retainer says "Inquire Only" where a price would go, and
+ * deliberately doesn't hint at a number anywhere else on the card.
  */
 export function OfferCards() {
   return (
     <div className="grid md:grid-cols-2 gap-6">
       {/* Audit — light card */}
       <div className="rounded-3xl border border-primary/15 bg-white p-8 md:p-10 flex flex-col">
-        <h3 className="font-heading font-bold text-2xl text-ink">{auditOffer.name}</h3>
+        <span className="label-caps font-sans text-primary/60">{auditOffer.badge}</span>
+        <h3 className="mt-3 font-heading font-bold text-2xl text-ink">
+          {auditOffer.name}
+        </h3>
         <p className="mt-4 font-heading font-bold text-5xl text-primary">
           {auditOffer.price}
         </p>
@@ -48,8 +52,9 @@ export function OfferCards() {
 
       {/* Retainer — teal card, no price */}
       <div className="rounded-3xl bg-primary text-white p-8 md:p-10 flex flex-col">
-        <h3 className="font-heading font-bold text-2xl">{retainerOffer.name}</h3>
-        <p className="mt-4 font-heading font-bold text-4xl md:text-5xl text-accent">
+        <span className="label-caps font-sans text-accent">{retainerOffer.badge}</span>
+        <h3 className="mt-3 font-heading font-bold text-2xl">{retainerOffer.name}</h3>
+        <p className="mt-4 font-heading font-bold text-4xl md:text-[2.75rem] text-accent">
           {retainerOffer.price}
         </p>
         <p className="mt-2 label-caps font-sans text-white/60">{retainerOffer.period}</p>

@@ -5,17 +5,41 @@ import { PageHero } from "@/components/site/PageHero";
 import { Section, Eyebrow, Heading } from "@/components/site/Section";
 import { TealBand } from "@/components/site/TealBand";
 import { OfferCards } from "@/components/site/OfferCards";
+import { AddOns } from "@/components/site/AddOns";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Faq } from "@/components/site/Faq";
 import { FaqJsonLd, type FaqItem } from "@/components/seo/FaqJsonLd";
 import { Button } from "@/components/ui/Button";
-import { retainerInclusions } from "@/lib/offers";
 import { trades, tradeHref } from "@/lib/trades";
-import { AUDIT_PRICE, CALENDAR_URL, SHS_URL } from "@/lib/site";
+import { AUDIT_PRICE, CALENDAR_URL, POSITIONING, SHS_URL } from "@/lib/site";
 
 // Page metadata for `/` lives in app/layout.tsx, since it is the site-wide default.
 
+/** Embed, build, run — the short version of /fractional-cto. */
+const howWeWork = [
+  {
+    title: "We embed",
+    desc: "Our team spends time in your business first — on the phones, in the dispatch board, in the estimate folder. No proposal before we have seen the work.",
+  },
+  {
+    title: "We build",
+    desc: "Then we build what the shop is actually losing money on, in accounts you own. Small pieces that go live and get used.",
+  },
+  {
+    title: "We run it",
+    desc: "And we stay on the hook for it. Seasons turn, crews change, things break — owning that is the retainer.",
+  },
+];
+
 const faqItems: FaqItem[] = [
+  {
+    q: "What is a fractional CTO for a trade business?",
+    a: "It is the technology and operations role your shop has grown into, filled part time. We make the decisions with you about the phone, the dispatch software, the site, and the subscriptions nobody can account for — then we build what is needed and keep it running. You get the function without carrying a salary for it.",
+  },
+  {
+    q: "What does “embedded” actually mean?",
+    a: "That the people who build your systems are the people who sat in your shop and watched the work. We spend the first stretch of an engagement learning how calls, leads, and estimates really move before anything gets built. The industry calls it forward-deployed engineering; in practice it just means we come to you.",
+  },
   {
     q: "What actually happens when I miss a call?",
     a: "The caller gets a text back within seconds — not a voicemail beep. It comes from your number, says you're on a job, and gives them a way to book or describe what they need. If you'd rather a real conversation happen, the AI answering line picks up instead and takes the details.",
@@ -33,12 +57,8 @@ const faqItems: FaqItem[] = [
     a: "Because it would be a made-up number. Scope depends on your call volume, crew size, and what you already run. Book a call, describe the shop, and you'll get a real number instead of a range you'd have to negotiate down from.",
   },
   {
-    q: "Is this an AI agency?",
-    a: "No. Romas runs Grazys Construction and Salty Home Services and launched Salty Electric. The back office on this site is the one he built for his own shops first. You're buying something that already answers his phone.",
-  },
-  {
     q: "Do you work with businesses outside the trades?",
-    a: "Occasionally, and only inbound — a little law practice work and some embedded engineering. That's on the Other Work page. The trades are what this is built for.",
+    a: "Occasionally, and only inbound — a little law practice work and some embedded engineering for enterprise teams. That's on the Other Work page. The trades are what this is built for.",
   },
 ];
 
@@ -48,10 +68,10 @@ export default function Home() {
       <FaqJsonLd items={faqItems} />
       <Shell>
         <PageHero
-          eyebrow="AI back office for trade shops"
+          eyebrow="Fractional CTO & ops partner for the trades"
           headline="Work Less. Live More."
           headlineAccent="Automate."
-          sub="Stop losing jobs to the voicemail. Missed-call text-back, estimate follow-up, review requests, and a site that books work — built by someone who runs the trucks."
+          sub={POSITIONING}
           primaryCta={{ label: `Book a ${AUDIT_PRICE} audit`, href: "/pricing" }}
           secondaryCta={{ label: "Ask about the retainer", href: "/contact" }}
           image="/brand/hero-palms.jpg"
@@ -68,9 +88,10 @@ export default function Home() {
               Shops where the owner is still the one answering the phone.
             </Heading>
             <p className="mt-6 font-sans text-lg leading-relaxed text-body">
-              Electricians, plumbers, HVAC, handymen, GCs, roofers, landscapers.
-              If the work gets done on a ladder and the admin gets done at
-              nine at night, this is built for you.
+              Electricians, plumbers, HVAC, handymen, GCs, roofers,
+              landscapers. Stop losing jobs to the voicemail — and stop being
+              the one who does the admin at nine at night. If the work gets
+              done on a ladder, this is built for you.
             </p>
           </div>
 
@@ -95,41 +116,42 @@ export default function Home() {
           </div>
         </Section>
 
-        {/* AI back office snapshot */}
+        {/* How we work — embed, build, run */}
         <TealBand innerClassName="py-20 md:py-28">
           <div className="max-w-3xl">
             <span className="label-caps block font-sans text-accent">
-              The AI back office
+              How we work
             </span>
             <h2 className="mt-4 font-heading font-bold tracking-tight text-3xl md:text-[2.75rem] md:leading-[1.1]">
-              Everything that should happen after the phone rings{" "}
-              <span className="text-accent">— happening.</span>
+              We embed in the business, then build and{" "}
+              <span className="text-accent">run the systems.</span>
             </h2>
             <p className="mt-6 font-sans text-lg leading-relaxed text-white/80">
-              One system that answers, captures, follows up, and asks for the
-              review. You keep running the jobs.
+              Not an agency you brief and wait on. A partner inside the shop,
+              on a monthly retainer, responsible for the technology and the
+              back office so you can run the work.
             </p>
           </div>
 
-          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {retainerInclusions.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-2xl border border-white/15 bg-white/5 p-7"
-              >
-                <h3 className="font-heading font-semibold text-lg text-accent">
-                  {item.title}
+          <ol className="mt-14 grid md:grid-cols-3 gap-8">
+            {howWeWork.map((step, i) => (
+              <li key={step.title}>
+                <span className="label-caps font-sans text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 font-heading font-semibold text-xl">
+                  {step.title}
                 </h3>
                 <p className="mt-3 font-sans text-[15px] leading-relaxed text-white/80">
-                  {item.desc}
+                  {step.desc}
                 </p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
 
           <div className="mt-12">
-            <Button href="/ai-back-office" variant="peach">
-              See the whole back office
+            <Button href="/fractional-cto" variant="peach">
+              See the first 30, 60, and 90 days
             </Button>
           </div>
         </TealBand>
@@ -139,13 +161,13 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <Eyebrow>Case study</Eyebrow>
-              <Heading>We ran it on our own shop first.</Heading>
+              <Heading>A back office we built and still run.</Heading>
               <p className="mt-6 font-sans text-lg leading-relaxed text-body">
-                Salty Home Services is Romas&rsquo;s own home service company.
-                Its missed-call text-back, AI answering, lead intake into
-                Housecall Pro, estimate follow-up, review requests, scheduling,
-                and SEO site were all built in-house — the same stack described
-                on this page.
+                Salty Home Services is a Utah home services company. We built
+                and run its missed-call text-back and AI answering on Quo, the
+                Housecall Pro lead form, the estimate follow-up, the review
+                requests, the scheduling, and the SEO site — the same work
+                described on this page.
               </p>
               <div className="mt-9 flex flex-col sm:flex-row gap-3">
                 <Button href="/case-studies/salty-home-services" variant="teal">
@@ -173,20 +195,25 @@ export default function Home() {
           </div>
         </Section>
 
-        {/* Pricing teaser */}
+        {/* The offer ladder */}
         <Section>
           <div className="max-w-3xl">
-            <Eyebrow>Pricing</Eyebrow>
-            <Heading>Two ways in. That&rsquo;s the whole menu.</Heading>
+            <Eyebrow>How to work with us</Eyebrow>
+            <Heading>An audit to start, a retainer to run.</Heading>
             <p className="mt-6 font-sans text-lg leading-relaxed text-body">
-              A {AUDIT_PRICE} audit you can take and run yourself, or a retainer
-              where we build and run it for you. No packages, no tiers, no
-              numbers invented to fill a table.
+              A {AUDIT_PRICE} audit you can take and run yourself, or the
+              fractional CTO and ops retainer where we embed, build, and run
+              it. The add-ons sit on top of the retainer. No packages, no
+              tiers, no numbers invented to fill a table.
             </p>
           </div>
 
           <div className="mt-12">
             <OfferCards />
+          </div>
+
+          <div className="mt-6">
+            <AddOns />
           </div>
         </Section>
 

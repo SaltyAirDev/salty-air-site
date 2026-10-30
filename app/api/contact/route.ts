@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
     `In the meantime, if you'd like to book a call directly:`,
     CALENDAR_URL,
     ``,
-    `— Romas at Salty Air`,
+    `— Salty Air`,
     EMAIL,
   ].join("\n");
 

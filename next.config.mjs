@@ -19,6 +19,10 @@ const nextConfig = {
       { source: "/guide", destination: "/other-work", permanent: true },
       { source: "/industries/law", destination: "/other-work", permanent: true },
       { source: "/industries/construction", destination: "/", permanent: true },
+
+      // The offer is a fractional CTO engagement now; the back office systems
+      // are what it produces. The old route is the one with inbound links.
+      { source: "/ai-back-office", destination: "/fractional-cto", permanent: true },
     ];
   },
 };

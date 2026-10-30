@@ -11,7 +11,7 @@ import { AUDIT_PRICE, CALENDAR_URL, SHS_URL, SITE_URL, SLOGAN } from "@/lib/site
 const PATH = "/case-studies/salty-home-services";
 const TITLE = "Case Study: Salty Home Services";
 const DESCRIPTION =
-  "The AI back office we built for Salty Home Services — missed-call text-back and AI answering via Quo, lead intake into Housecall Pro, estimate follow-up, review requests, scheduling, and an SEO site.";
+  "A back office we built and run for a Utah home services company — missed-call text-back and AI answering via Quo, lead intake into Housecall Pro, estimate follow-up, review requests, scheduling, and an SEO site.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -62,9 +62,9 @@ export default function CaseStudyPage() {
     <Shell>
       <PageHero
         eyebrow={SLOGAN}
-        headline="We built it for our own shop"
-        headlineAccent="first."
-        sub="Salty Home Services runs on the same AI back office described across this site. Romas built it himself, for his own trucks, before offering it to anyone else."
+        headline="A back office we built, and still"
+        headlineAccent="run."
+        sub="Salty Home Services is a Utah home services company. Its phone, intake, follow-up, reviews, scheduling, and site are all work we did — and work we keep running."
         primaryCta={{ label: "Visit saltyhomeservices.co", href: SHS_URL }}
         secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
         image="/brand/surfboards.jpg"
@@ -76,21 +76,20 @@ export default function CaseStudyPage() {
       <Section>
         <div className="max-w-3xl">
           <Eyebrow>The context</Eyebrow>
-          <Heading>An owner with three businesses and one phone.</Heading>
+          <Heading>A home services shop with one phone and no office.</Heading>
           <div className="mt-6 flex flex-col gap-5 font-sans text-lg leading-relaxed text-body">
             <p>
-              Romas runs Grazys Construction and Salty Home Services, and has
-              since launched Salty Electric. The admin load that comes with
-              that — the calls during jobs, the estimates waiting on a
-              follow-up, the reviews nobody got around to asking for — is the
-              reason any of this exists.
+              Salty Home Services is a home services company in Utah. The admin
+              load was the usual one: calls arriving while the crew was on a
+              job, estimates waiting on a follow-up nobody owned, reviews never
+              asked for, and a schedule living across text threads.
             </p>
             <p>
-              Rather than hire an agency, he built the back office himself and
-              ran it on his own shop. What&rsquo;s listed below is what was
-              built and is running. There are no performance figures on this
-              page, because publishing numbers we haven&rsquo;t measured would
-              make the rest of it worth less.
+              We embedded, built the back office around how the shop actually
+              dispatches, and now run it. What&rsquo;s listed below is what was
+              built and is live. There are no performance figures on this page,
+              because publishing numbers we haven&rsquo;t measured would make
+              the rest of it worth less.
             </p>
           </div>
         </div>
@@ -127,20 +126,20 @@ export default function CaseStudyPage() {
             <Eyebrow>Why it matters to you</Eyebrow>
             <Heading>You&rsquo;re not the pilot customer.</Heading>
             <p className="mt-6 font-sans text-lg leading-relaxed text-body">
-              The system answering your phone is the one already answering his.
-              When something in it breaks, it breaks on his shop too — which is
-              a different kind of incentive than a retainer alone provides.
+              This is the same stack, built by the same team, in a shop that
+              dispatches every day. We didn&rsquo;t hand it over and leave — we
+              still run it, which is what the retainer is.
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-3">
-              <Button href="/ai-back-office" variant="teal">
-                See what&rsquo;s in it
+              <Button href="/fractional-cto" variant="teal">
+                How we build and run it
               </Button>
               <Button
                 href="/about"
                 variant="teal"
                 className="bg-transparent text-primary border border-primary/25 hover:bg-primary/5 hover:text-primary"
               >
-                About Romas
+                How we work
               </Button>
             </div>
           </div>

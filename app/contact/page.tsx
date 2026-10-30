@@ -15,7 +15,7 @@ import {
 
 const TITLE = "Contact";
 const DESCRIPTION =
-  "Tell us how your shop runs, or book a call. Salty Air builds the AI back office for trade and home service businesses.";
+  "Tell us how your shop runs, or book a call. Salty Air is a fractional CTO and operations partner for trade and home service businesses.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -37,7 +37,7 @@ export default function ContactPage() {
         eyebrow={SLOGAN}
         headline="Tell us how the shop runs"
         headlineAccent="today."
-        sub="The more you tell us about the calls you're missing and what you dispatch from, the more useful the first conversation is."
+        sub="Audit, retainer, or just a question — the more you tell us about how the shop runs and what you dispatch from, the more useful the first conversation is."
         primaryCta={{ label: "Book a call instead", href: CALENDAR_URL }}
       />
 

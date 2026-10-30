@@ -7,7 +7,7 @@ import { EMAIL, SITE_URL, SLOGAN } from "@/lib/site";
 
 const TITLE = "Other Work";
 const DESCRIPTION =
-  "Salty Air is built for the trades. A small amount of inbound work outside that — law practices and embedded engineering — is handled case by case.";
+  "Salty Air is a fractional CTO and operations partner for the trades. A small amount of inbound work outside that — law practices and embedded engineering for enterprise teams — is handled case by case.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -29,7 +29,7 @@ export default function OtherWorkPage() {
         eyebrow={SLOGAN}
         headline="Not a trade shop? Read this"
         headlineAccent="first."
-        sub="The trades are what Salty Air is built for. A little work outside that still comes in, and it's taken on case by case."
+        sub="Trade and home service businesses are what Salty Air is built for. A little work outside that still comes in, and our team takes it on case by case."
         primaryCta={{ label: "Get in touch", href: "/contact" }}
       />
 
@@ -51,7 +51,7 @@ export default function OtherWorkPage() {
             </h2>
             <p className="mt-4 font-sans text-[15px] leading-relaxed text-body">
               Intake, conflict checks, matter management, and document drafting
-              — the same back-office logic as a trade shop, with the paperwork
+              — the same operations work as a trade shop, with the paperwork
               swapped out. We built this before the trade focus and still take
               it on when a practice asks.
             </p>
@@ -62,9 +62,10 @@ export default function OtherWorkPage() {
               Embedded engineering
             </h2>
             <p className="mt-4 font-sans text-[15px] leading-relaxed text-body">
-              Enterprise teams occasionally bring Romas in to build alongside
-              their own engineers on a defined piece of work. Scoped per
-              engagement, and only when there&rsquo;s capacity.
+              Enterprise teams occasionally bring our team in to build
+              alongside their own engineers on a defined piece of work — the
+              same forward-deployed approach, in a much bigger building.
+              Scoped per engagement, and only when there&rsquo;s capacity.
             </p>
           </div>
         </div>

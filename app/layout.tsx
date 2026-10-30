@@ -8,10 +8,11 @@ import {
   GA_MEASUREMENT_ID,
   IS_PRODUCTION,
   LINKEDIN_URL,
+  SERVICE_TYPE,
   SITE_URL,
   SLOGAN,
 } from "@/lib/site";
-import { retainerInclusions } from "@/lib/offers";
+import { backOfficeSystems, dataServices, retainerOffer } from "@/lib/offers";
 
 // Montserrat is variable, so it needs no explicit weights. Poppins is not —
 // every weight we use has to be listed or it won't be bundled.
@@ -26,9 +27,9 @@ const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const TITLE = "AI Back Office for Trade & Home Service Shops | Salty Air";
+const TITLE = "Fractional CTO & Ops Partner for the Trades | Salty Air";
 const DESCRIPTION =
-  "Work Less. Live More. Automate. Missed-call text-back, AI answering, lead intake into Housecall Pro or Jobber, estimate follow-up, review requests, and an SEO site — built for electricians, plumbers, HVAC, and the rest of the trades.";
+  "Work Less. Live More. Automate. Salty Air is a fractional CTO and operations partner for trade and home service businesses — we embed in your shop, then build and run the AI back office: missed-call text-back, AI answering, lead routing into Housecall Pro or Jobber, estimate follow-up, review requests, and an SEO site.";
 
 export const metadata: Metadata = {
   // `%s` is filled by each page's own title; `/` uses the default.
@@ -44,6 +45,9 @@ export const metadata: Metadata = {
   publisher: "Salty Air",
   category: "technology",
   keywords: [
+    "fractional CTO for trades",
+    "fractional CTO for contractors",
+    "forward deployed engineering",
     "AI back office for trades",
     "missed call text back for contractors",
     "AI answering service for plumbers",
@@ -51,9 +55,7 @@ export const metadata: Metadata = {
     "Jobber lead automation",
     "estimate follow up software",
     "review requests for contractors",
-    "HVAC marketing automation",
-    "electrician lead intake",
-    "home service business automation",
+    "home service business operations partner",
   ],
   // Preview and local builds must never compete with www in the index.
   robots: IS_PRODUCTION
@@ -90,20 +92,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   // Exactly two offers are published anywhere on the site, so exactly two
-  // appear here — see lib/offers.ts. The retainer carries no price on purpose.
+  // appear here — see lib/offers.ts. The retainer, which is the headline
+  // offer, carries no price on purpose, and neither do the add-ons.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${SITE_URL}/#organization`,
     name: "Salty Air",
     description:
-      "AI back office for trade and home service businesses — missed-call text-back, AI answering, lead intake, estimate follow-up, review requests, CRM and scheduling, and SEO websites.",
+      "Fractional CTO and operations partner for trade and home service businesses. We embed in the business, then build and run the AI back office — missed-call text-back, AI answering, lead routing, estimate follow-up, review requests, CRM and scheduling, and SEO websites.",
     url: SITE_URL,
     logo: `${SITE_URL}/brand/logo-saltyair-teal-lg.png`,
     image: `${SITE_URL}/brand/logo-saltyair-teal-lg.png`,
     email: EMAIL,
     slogan: SLOGAN,
-    serviceType: "AI back office for trade and home service businesses",
+    serviceType: SERVICE_TYPE,
     areaServed: { "@type": "Country", name: "United States" },
     sameAs: [LINKEDIN_URL],
     audience: {
@@ -111,7 +114,12 @@ export default function RootLayout({
       audienceType:
         "Trade and home service businesses — electricians, plumbers, HVAC, handymen, general contractors, roofers, landscapers",
     },
-    knowsAbout: retainerInclusions.map((i) => i.title),
+    knowsAbout: [
+      "Fractional CTO",
+      "Forward-deployed engineering",
+      ...backOfficeSystems.map((i) => i.title),
+      ...dataServices.map((i) => i.title),
+    ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Salty Air offers",
@@ -128,9 +136,9 @@ export default function RootLayout({
           availability: "https://schema.org/InStock",
           itemOffered: {
             "@type": "Service",
-            name: "AI Back Office Retainer",
+            name: retainerOffer.name,
             description:
-              "Missed-call text-back and AI answering, lead intake into Housecall Pro or Jobber, estimate follow-up, review requests, CRM and scheduling, SEO website, and optional Apify public-data add-ons.",
+              "A fractional CTO and operations partner on a monthly retainer. We embed in the business, build the systems it needs, and run them. Add-ons: the AI back office systems, and the Local Leads and Reddit lead finder data services.",
           },
         },
       ],

@@ -5,11 +5,12 @@ import { PageHero } from "@/components/site/PageHero";
 import { Section, Eyebrow, Heading } from "@/components/site/Section";
 import { TealBand } from "@/components/site/TealBand";
 import { CtaBand } from "@/components/site/CtaBand";
-import { SITE_URL, SLOGAN } from "@/lib/site";
+import { Button } from "@/components/ui/Button";
+import { AUDIT_PRICE, SITE_URL, SLOGAN } from "@/lib/site";
 
-const TITLE = "About";
+const TITLE = "About Salty Air & How We Work";
 const DESCRIPTION =
-  "Salty Air is Romas — BA Graphic Design (University of Utah), MS Business, Design & Technology (USC). He runs Grazys Construction and Salty Home Services, launched Salty Electric, and built the whole back office himself.";
+  "Salty Air is a fractional CTO and operations partner for trade and home service businesses. Who we serve, what we build, and how an engagement actually runs.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -19,20 +20,56 @@ export const metadata: Metadata = {
     title: `${TITLE} | Salty Air`,
     description: DESCRIPTION,
     url: `${SITE_URL}/about`,
-    type: "profile",
+    type: "website",
     siteName: "Salty Air",
   },
 };
+
+/** How we work, stated as commitments rather than adjectives. */
+const principles = [
+  {
+    title: "We come to you",
+    desc: "Engagements start with our team in your business — on the phones, in the dispatch board, in the estimate folder. You should never have to explain your shop twice.",
+  },
+  {
+    title: "You own everything",
+    desc: "Systems get built in accounts in your name, documented as we go. If we part ways, the back office keeps running and you keep the keys.",
+  },
+  {
+    title: "We stay on the hook",
+    desc: "Building it is the easy half. The retainer exists because somebody has to own the thing once the season turns and the crew changes.",
+  },
+  {
+    title: "No numbers we haven't measured",
+    desc: "There are no case-study metrics, testimonials, or client logos on this site, because none of them have been earned yet. When they are, they go up with the engagement named.",
+  },
+];
+
+const engagement = [
+  {
+    t: "Start with the audit",
+    d: `The ${AUDIT_PRICE} business audit is the normal first step. Forty-five minutes on how the shop runs today, then a written report on what is leaking and what to fix first. Yours either way.`,
+  },
+  {
+    t: "Move to the retainer",
+    d: "If it makes sense, we take on the fractional CTO and operations role monthly. We embed, agree what gets built first, build it, and then run it. Scope comes out of a conversation, not a package.",
+  },
+  {
+    t: "Widen when ready",
+    d: "Add-ons — the back office systems and the data services — get layered on as the shop can absorb them. One partner across the lot, rather than four vendors and a spreadsheet.",
+  },
+];
 
 export default function AboutPage() {
   return (
     <Shell>
       <PageHero
         eyebrow={SLOGAN}
-        headline="A contractor who got tired of losing jobs to"
-        headlineAccent="voicemail."
-        sub="Salty Air is Romas. He runs the trucks, built the back office for his own shops, and now sets it up for other trade businesses."
+        headline="The technology team your shop never"
+        headlineAccent="hired."
+        sub="Salty Air is a fractional CTO and operations partner for trade and home service businesses. We embed in the business, build the systems it needs, and run them. This is how that works."
         primaryCta={{ label: "Get in touch", href: "/contact" }}
+        secondaryCta={{ label: "See the engagement", href: "/fractional-cto" }}
         image="/brand/interior-plants.jpg"
         imageAlt="Warm, sunlit interior with plants"
         priority
@@ -40,51 +77,103 @@ export default function AboutPage() {
 
       <Section>
         <div className="max-w-3xl">
-          <Eyebrow>Why Romas</Eyebrow>
-          <Heading>Design school, then a work truck.</Heading>
+          <Eyebrow>Who we serve</Eyebrow>
+          <Heading>Trade and home service companies, run by the owner.</Heading>
           <div className="mt-6 flex flex-col gap-5 font-sans text-lg leading-relaxed text-body">
             <p>
-              BA in Graphic Design from the University of Utah, then an MS in
-              Business, Design &amp; Technology from USC. That combination is
-              why the sites look the way they do and why the systems behind
-              them hold together.
+              Electricians, plumbers, HVAC contractors, handymen, general
+              contractors, roofers, and landscapers — from an owner-operator
+              with one truck to a shop running several crews. The common thread
+              is that the phone, the estimates, and the software all still land
+              on the owner.
             </p>
             <p>
-              Today he runs Grazys Construction and Salty Home Services, and
-              recently launched Salty Electric. The admin problem described all
-              over this site is his own: calls landing while both hands are
-              busy, estimates going cold, reviews never asked for.
-            </p>
-            <p>
-              He built the whole back office himself — the missed-call
-              text-back, the AI answering, the intake into Housecall Pro, the
-              follow-ups, the review requests, the sites. Salty Air exists
-              because other owners kept asking how it worked.
+              We are based in Salt Lake and work with shops across the United
+              States. Trade and home services are the whole focus; a small
+              amount of inbound work outside that is handled case by case on
+              the Other Work page.
             </p>
           </div>
         </div>
       </Section>
 
       <TealBand innerClassName="py-20 md:py-28">
+        <div className="max-w-3xl">
+          <span className="label-caps block font-sans text-accent">
+            How we work
+          </span>
+          <h2 className="mt-4 font-heading font-bold tracking-tight text-3xl md:text-[2.75rem] md:leading-[1.1]">
+            Four things you can hold us{" "}
+            <span className="text-accent">to.</span>
+          </h2>
+        </div>
+
+        <div className="mt-14 grid md:grid-cols-2 gap-8">
+          {principles.map((item) => (
+            <div key={item.title}>
+              <h3 className="font-heading font-semibold text-xl text-accent">
+                {item.title}
+              </h3>
+              <p className="mt-3 font-sans text-[15px] leading-relaxed text-white/80">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </TealBand>
+
+      <Section tone="sand">
+        <div className="max-w-3xl">
+          <Eyebrow>How engagements work</Eyebrow>
+          <Heading>Audit, retainer, add-ons.</Heading>
+        </div>
+
+        <ol className="mt-12 grid md:grid-cols-3 gap-8">
+          {engagement.map((step, i) => (
+            <li key={step.t}>
+              <span className="label-caps font-sans text-primary/60">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-3 font-heading font-bold text-xl text-ink">
+                {step.t}
+              </h3>
+              <p className="mt-3 font-sans text-[15px] leading-relaxed text-body">
+                {step.d}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section>
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           <div>
-            <span className="label-caps block font-sans text-accent">
-              What that means for you
-            </span>
-            <h2 className="mt-4 font-heading font-bold tracking-tight text-3xl md:text-[2.5rem] md:leading-[1.12]">
-              No agency translation <span className="text-accent">layer.</span>
-            </h2>
-            <div className="mt-7 flex flex-col gap-5 font-sans text-[17px] leading-relaxed text-white/80">
+            <Eyebrow>Why it reads this way</Eyebrow>
+            <Heading>No agency translation layer.</Heading>
+            <div className="mt-6 flex flex-col gap-5 font-sans text-lg leading-relaxed text-body">
               <p>
                 You won&rsquo;t spend the first call explaining what a service
                 area is, why a panel upgrade quote is worth chasing, or how
-                dispatch actually works on a busy Tuesday.
+                dispatch actually works on a busy Tuesday. Our team works in
+                trade shops, not around them.
               </p>
               <p>
-                And you won&rsquo;t get a deck full of numbers from somebody
-                else&rsquo;s industry. If a figure isn&rsquo;t measured on this
-                site, it isn&rsquo;t published on this site.
+                And you won&rsquo;t get a deck full of numbers borrowed from
+                somebody else&rsquo;s industry. If a figure isn&rsquo;t
+                measured, it isn&rsquo;t published here.
               </p>
+            </div>
+            <div className="mt-9 flex flex-col sm:flex-row gap-3">
+              <Button href="/fractional-cto" variant="teal">
+                What we build and run
+              </Button>
+              <Button
+                href="/case-studies/salty-home-services"
+                variant="teal"
+                className="bg-transparent text-primary border border-primary/25 hover:bg-primary/5 hover:text-primary"
+              >
+                See the case study
+              </Button>
             </div>
           </div>
 
@@ -97,39 +186,6 @@ export default function AboutPage() {
               className="object-cover"
             />
           </div>
-        </div>
-      </TealBand>
-
-      <Section tone="sand">
-        <div className="max-w-3xl">
-          <Eyebrow>The businesses</Eyebrow>
-          <Heading>Three shops, one back office.</Heading>
-        </div>
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
-          {[
-            {
-              t: "Grazys Construction",
-              d: "General contracting. The original business, and where most of the back-office problems first turned up.",
-            },
-            {
-              t: "Salty Home Services",
-              d: "Home services. The shop the AI back office was built on and the subject of the case study.",
-            },
-            {
-              t: "Salty Electric",
-              d: "Electrical. Launched most recently, set up on the same systems from day one.",
-            },
-          ].map((item) => (
-            <div
-              key={item.t}
-              className="rounded-2xl border border-primary/15 bg-white p-7"
-            >
-              <h3 className="font-heading font-bold text-xl text-ink">{item.t}</h3>
-              <p className="mt-3 font-sans text-[15px] leading-relaxed text-body">
-                {item.d}
-              </p>
-            </div>
-          ))}
         </div>
       </Section>
 

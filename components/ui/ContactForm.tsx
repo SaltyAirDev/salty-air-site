@@ -8,11 +8,12 @@ type Status = "idle" | "sending" | "success" | "error";
 /** Interests a trade owner would actually pick. */
 export const CONTACT_INTERESTS = [
   "Business Audit ($499)",
-  "Retainer — AI back office",
+  "Fractional CTO & ops retainer",
+  "AI back office systems",
   "Missed-call text-back / AI answering",
-  "Lead intake into Housecall Pro or Jobber",
+  "Lead routing into Housecall Pro or Jobber",
   "SEO website",
-  "Data add-ons",
+  "Data services — Local Leads / Reddit lead finder",
   "Something else",
 ];
 

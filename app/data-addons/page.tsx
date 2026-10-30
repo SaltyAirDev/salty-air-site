@@ -4,11 +4,12 @@ import { PageHero } from "@/components/site/PageHero";
 import { Section, Eyebrow, Heading } from "@/components/site/Section";
 import { TealBand } from "@/components/site/TealBand";
 import { CtaBand } from "@/components/site/CtaBand";
+import { Button } from "@/components/ui/Button";
 import { CALENDAR_URL, SITE_URL, SLOGAN } from "@/lib/site";
 
-const TITLE = "Data Add-Ons";
+const TITLE = "Data Services";
 const DESCRIPTION =
-  "Optional public-data add-ons built on Apify: lead lists, permit feeds, competitor monitoring, supplier pricing, and hiring signals. Public sources only, scoped on the retainer.";
+  "Two public-data services for trade shops: Local Leads, and a Reddit lead finder. Apify-backed, public sources only, and scoped inside the fractional CTO retainer.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -23,38 +24,43 @@ export const metadata: Metadata = {
   },
 };
 
-const addons = [
+/**
+ * Two named services, both built on Apify and both from public sources. No
+ * prices: these are scoped in the retainer conversation like everything else
+ * that isn't the audit.
+ */
+const services = [
   {
-    title: "Lead lists",
-    desc: "Businesses and properties in your service area, pulled from public listings and directories, filtered to the work you actually want.",
+    name: "Local Leads",
+    desc: "Businesses and properties in your service area, pulled from public listings and directories, then filtered down to the work you actually want.",
+    detail: [
+      "Built around your trade, your radius, and the job types you want more of",
+      "Public listings and directory records only — nothing behind a login",
+      "Delivered somewhere you will actually use it: your CRM, or a sheet your office works from",
+      "Refreshed on a cadence we agree, rather than scraped once and left to rot",
+    ],
   },
   {
-    title: "Permit feeds",
-    desc: "Public building and electrical permit records for your area, so you see the jobs that are about to need a sub.",
-  },
-  {
-    title: "Competitor monitoring",
-    desc: "What the other shops in your market publish — services, service areas, public review activity — tracked over time instead of checked once.",
-  },
-  {
-    title: "Supplier pricing",
-    desc: "Published supplier and distributor prices on the materials you buy most, watched for changes.",
-  },
-  {
-    title: "Hiring signals",
-    desc: "Public job postings in your trade and market, which is as good a read on who's growing as you'll get.",
+    name: "Reddit lead finder",
+    desc: "Public Reddit threads where people in your market are asking for the work you do — surfaced while the thread is still live and worth replying to.",
+    detail: [
+      "Watches the local and home-improvement subreddits that matter for your area",
+      "Matched on the work you want, not every mention of your trade",
+      "Public posts only — we read what anyone can read, and we don't impersonate anyone",
+      "You decide how to reply; we can draft the approach with you, but the account stays yours",
+    ],
   },
 ];
 
-export default function DataAddonsPage() {
+export default function DataServicesPage() {
   return (
     <Shell>
       <PageHero
         eyebrow={SLOGAN}
         headline="Public data, pointed at your"
         headlineAccent="market."
-        sub="Optional add-ons on top of the retainer. Built on Apify, from public sources only — permits, listings, published prices, job posts."
-        primaryCta={{ label: "Ask about add-ons", href: "/contact" }}
+        sub="Two data services that sit on top of the retainer: Local Leads and a Reddit lead finder. Apify-backed, built from public sources, for when the shop is ready to go find work instead of waiting for it."
+        primaryCta={{ label: "Inquire about data services", href: "/contact" }}
         secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
         image="/brand/beach-aerial.jpg"
         imageAlt="Aerial view of a shoreline"
@@ -64,26 +70,41 @@ export default function DataAddonsPage() {
       <Section>
         <div className="max-w-3xl">
           <Eyebrow>What&rsquo;s available</Eyebrow>
-          <Heading>Five feeds worth having.</Heading>
+          <Heading>Two services, both worth having.</Heading>
           <p className="mt-6 font-sans text-lg leading-relaxed text-body">
-            None of these are required. They&rsquo;re useful when you already
-            have the back office running and want to point it at new work
-            instead of just handling what comes in.
+            Neither is required. They&rsquo;re useful once the back office is
+            running and handling what comes in — at which point the question
+            stops being &ldquo;did we miss a call&rdquo; and starts being
+            &ldquo;where is the next job.&rdquo;
           </p>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-5">
-          {addons.map((addon) => (
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+          {services.map((service) => (
             <div
-              key={addon.title}
-              className="rounded-2xl border border-primary/15 bg-white p-7"
+              key={service.name}
+              className="rounded-3xl border border-primary/15 bg-white p-8 md:p-10"
             >
-              <h2 className="font-heading font-bold text-xl text-ink">
-                {addon.title}
+              <span className="label-caps font-sans text-primary/60">
+                Data service
+              </span>
+              <h2 className="mt-3 font-heading font-bold text-2xl text-ink">
+                {service.name}
               </h2>
-              <p className="mt-3 font-sans text-[15px] leading-relaxed text-body">
-                {addon.desc}
+              <p className="mt-4 font-sans text-[15px] leading-relaxed text-body">
+                {service.desc}
               </p>
+              <ul className="mt-6 flex flex-col gap-3 font-sans text-[15px] leading-relaxed text-body">
+                {service.detail.map((line) => (
+                  <li key={line} className="flex gap-3">
+                    <span
+                      aria-hidden
+                      className="mt-2 shrink-0 h-1.5 w-1.5 rounded-full bg-primary/50"
+                    />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
@@ -100,8 +121,9 @@ export default function DataAddonsPage() {
           </h2>
           <div className="mt-7 flex flex-col gap-5 font-sans text-[17px] leading-relaxed text-white/80">
             <p>
-              Everything above comes from information that is already published
-              — permit records, public listings, posted prices, open job ads.
+              Both services are built on Apify and read information that is
+              already published — public listings, directory records, open
+              forum posts.
             </p>
             <p>
               We don&rsquo;t scrape private data, we don&rsquo;t buy or build
@@ -117,18 +139,30 @@ export default function DataAddonsPage() {
       <Section tone="sand">
         <div className="max-w-3xl">
           <Eyebrow>What it costs</Eyebrow>
-          <Heading>Scoped on the retainer.</Heading>
+          <Heading>Scoped with the retainer. Inquire.</Heading>
           <p className="mt-6 font-sans text-lg leading-relaxed text-body">
-            Add-ons are priced as part of the retainer conversation, because
-            what they cost depends on which feeds you want, how big your market
-            is, and how often you want them refreshed. There&rsquo;s no monthly
-            figure published here for the same reason there isn&rsquo;t one on
-            the pricing page — ask, and you&rsquo;ll get a real number.
+            Data services are priced as part of the retainer conversation,
+            because what they cost depends on which you want, how big your
+            market is, and how often you want them refreshed. There&rsquo;s no
+            monthly figure published here for the same reason there isn&rsquo;t
+            one on the pricing page — ask, and you&rsquo;ll get a real number.
           </p>
+          <div className="mt-9 flex flex-col sm:flex-row gap-3">
+            <Button href="/contact" variant="teal">
+              Inquire about data services
+            </Button>
+            <Button
+              href="/fractional-cto"
+              variant="teal"
+              className="bg-transparent text-primary border border-primary/25 hover:bg-primary/5 hover:text-primary"
+            >
+              See the retainer
+            </Button>
+          </div>
         </div>
       </Section>
 
-      <CtaBand sub="Tell us your trade and your market, and we'll tell you which feeds are actually worth running." />
+      <CtaBand sub="Tell us your trade and your market, and we'll tell you which of the two is actually worth running." />
     </Shell>
   );
 }

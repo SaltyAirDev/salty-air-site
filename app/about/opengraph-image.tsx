@@ -1,13 +1,13 @@
 import { ogCard, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og";
 
-export const alt = "Salty Air — about Romas";
+export const alt = "Salty Air — about the company and how we work";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
 export default function OpengraphImage() {
   return ogCard({
-    eyebrow: "About",
-    line1: "Built by someone",
-    line2: "who runs the trucks.",
+    eyebrow: "About · How we work",
+    line1: "The technology team",
+    line2: "you never hired.",
   });
 }

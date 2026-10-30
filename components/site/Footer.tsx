@@ -19,8 +19,8 @@ export function Footer() {
               Work Less. Live More. <span className="text-accent">Automate.</span>
             </p>
             <p className="mt-4 font-sans text-sm leading-relaxed text-white/70">
-              The AI back office for trade and home service shops. Built by
-              someone who runs the trucks.
+              Fractional CTO and operations partner for trade and home service
+              businesses. We embed, build, and run your systems.
             </p>
             <a
               href={`mailto:${EMAIL}`}

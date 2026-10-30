@@ -1,19 +1,21 @@
 # Site structure
 
-Salty Air sells one thing: the **AI back office for trade and home service
-businesses**. Everything in the main navigation serves that. Law practices and
-embedded engineering are inbound-only and live on `/other-work`, linked from the
-footer but never the main nav.
+Salty Air sells one thing: a **fractional CTO and operations partner** for trade
+and home service businesses. We embed in the business, then build and run its
+systems — the AI back office is what the engagement produces, not the product.
+Everything in the main navigation serves that. Law practices and embedded
+engineering are inbound-only and live on `/other-work`, linked from the footer
+but never the main nav.
 
 | Route | Content |
 |---|---|
-| `/` | Home — slogan hero, trade subhead, back-office snapshot, offer teaser |
-| `/ai-back-office` | The full retainer offer |
-| `/pricing` | The two offers |
+| `/` | Home — slogan hero, positioning subhead, embed/build/run, offer ladder |
+| `/fractional-cto` | The engagement: what embedded (FDE) means, first 30/60/90 days |
+| `/pricing` | The offer ladder — audit, retainer, add-ons |
 | `/trades/[trade]` | One page per trade, from `lib/trades.ts` |
 | `/case-studies/salty-home-services` | Real proof only — no metrics |
-| `/data-addons` | Apify public-data add-ons |
-| `/about` | Why Romas |
+| `/data-addons` | Data services: Local Leads + Reddit lead finder |
+| `/about` | About Salty Air / how we work — company page, no founder bio |
 | `/contact` | Inquiry form + booking |
 | `/other-work` | Law + embedded engineering (footer only) |
 | `/privacy`, `/terms` | Plain-language templates |
@@ -21,20 +23,29 @@ footer but never the main nav.
 ### Redirects (`next.config.mjs`)
 
 `/business` → `/` · `/guide` → `/other-work` · `/industries/law` →
-`/other-work` · `/industries/construction` → `/`
+`/other-work` · `/industries/construction` → `/` · `/ai-back-office` →
+`/fractional-cto`
 
-## The two hard content rules
+## The three hard content rules
 
-**1. Only two offers carry a price, and only one of them has a number.**
-The Business Audit is $499 (`AUDIT_CHECKOUT_URL` in `lib/site.ts`). The retainer
-is *inquire only* — no monthly figure, no setup fee, no "starting at", anywhere
-on the site or in the JSON-LD. Both live in `lib/offers.ts`; the layout's
-`hasOfferCatalog` mirrors them and must be updated with them.
+**1. One published price, and it is the audit.**
+The Business Audit is $499 (`AUDIT_CHECKOUT_URL` in `lib/site.ts`). The
+Fractional CTO & Ops Retainer — the headline offer — is *Inquire Only*, and the
+add-ons (back office systems, data services) carry no figure at all: no monthly
+band, no setup fee, no "starting at", no package prices, anywhere on the site or
+in the JSON-LD. All of it lives in `lib/offers.ts`; the layout's
+`hasOfferCatalog` mirrors the audit and the retainer and must be updated with
+them.
 
 **2. No invented numbers.** There is no ROI dashboard, no response-time figure,
 no close rate, and no testimonial. The case study lists what was built and
 nothing about how it performed, because none of it has been measured. If a
 number is not measured, it does not go on the site.
+
+**3. Company voice, always "we".** No founder bio, no named operator, no
+degrees, no "built it himself", no personal shops as proof. `/about` is a
+company page about how engagements work. The one exception is code comments and
+`public/brand/IMAGE-SOURCES.md`, which credit the source deck.
 
 ## Brand system
 
@@ -85,7 +96,13 @@ footer link, sitemap entry, and OG card all follow automatically —
   trade-specific link if you want separate reporting.
 - **No measured results yet.** When real numbers exist for a trade engagement,
   the case study is where they go — with the engagement named.
+- **`/data-addons` keeps its slug.** The page is "Data Services" now; the route
+  was left alone because the old one carries the inbound links. Rename it with a
+  redirect if that ever stops being true.
 - **Trade hero photography.** Roofers and landscapers currently share
   `stock/van-job.jpg`; swap in trade-specific shots when they exist.
 - **Old law URLs.** `/industries/law` and `/guide` now 308 to `/other-work`. If
   Search Console shows ranked law queries, that equity consolidates there.
+- **Old back-office URL.** `/ai-back-office` 308s to `/fractional-cto`. The
+  "AI back office" phrasing still earns search traffic, so it stays in trade
+  page titles and body copy — it is just no longer the top-line positioning.
