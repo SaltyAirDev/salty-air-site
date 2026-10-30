@@ -10,9 +10,9 @@ import { FaqJsonLd, type FaqItem } from "@/components/seo/FaqJsonLd";
 import { SystemChips } from "@/components/site/Systems";
 import { Button } from "@/components/ui/Button";
 import {
-  AUDIT_CHECKOUT_URL,
-  AUDIT_PRICE,
-  CALENDAR_URL,
+  AUDIT_CTA,
+  AUDIT_OFFER,
+  CALL_CTA,
   QUOTED_AFTER_AUDIT,
   SERVICE_TYPE,
   SITE_URL,
@@ -22,7 +22,7 @@ import {
 const PATH = "/embedded";
 const TITLE = "Embedded Engineering — We Show Up and Own the Stack";
 const DESCRIPTION =
-  "A forward-deployed engineering team embedded in your business: we show up, own the software and the integrations, and ship continuously. Monthly, quoted after the $499 audit.";
+  "An engineering team embedded in your business: we own the software and the integrations and keep shipping. Monthly, quoted after the $499 audit.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
 };
 
 /**
- * What embedding means, in owner language. "Forward-deployed engineering" is
- * the industry term and it buys nothing with somebody running four trucks or
- * three job sites, so it appears once and then gets explained.
+ * What embedding means, in owner language. No industry vocabulary for it
+ * anywhere on the page — it buys nothing with somebody running four trucks or
+ * three job sites, and it is what every consultancy says about itself.
  */
 const commitments = [
   {
@@ -93,7 +93,7 @@ const days = [
 const faqItems: FaqItem[] = [
   {
     q: "What does “embedded” actually mean?",
-    a: "That the people who build your systems are the people who sat in your business and watched the work — and who are still on the hook once it is live. We spend the first stretch of an engagement learning how work really moves before anything gets built. The industry calls it forward-deployed engineering; in practice it means we come to you.",
+    a: "That the people who build your systems are the people who sat in your business and watched the work — and who are still on the hook once it is live. We spend the first stretch of an engagement learning how work really moves before anything gets built. In practice it means we come to you.",
   },
   {
     q: "How is this different from hiring an agency?",
@@ -101,7 +101,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "Do I need to start with the audit?",
-    a: `Almost always, yes. The ${AUDIT_PRICE} audit is what makes a real scope possible — without it we would be quoting a guess. You keep the report either way, and if you go on to the embedded engagement we start from it rather than charging you to discover the same things twice.`,
+    a: `Almost always, yes. The ${AUDIT_OFFER} is what makes a real scope possible — without it we would be quoting a guess. You keep the report either way, and if you go on to the embedded engagement we start from it rather than charging you to discover the same things twice.`,
   },
   {
     q: "Why is there no price on this page?",
@@ -123,7 +123,7 @@ export default function EmbeddedPage() {
     "@graph": [
       {
         "@type": "Service",
-        name: "Embedded forward-deployed engineering",
+        name: "Embedded engineering",
         description: DESCRIPTION,
         serviceType: SERVICE_TYPE,
         provider: { "@id": `${SITE_URL}/#organization` },
@@ -158,8 +158,8 @@ export default function EmbeddedPage() {
           headline="An engineering team that shows up at your"
           headlineAccent="shop."
           sub="We embed with your business, take the whole stack off your plate, and keep shipping. One team on the hook for the software, the integrations, and the vendors you already pay."
-          primaryCta={{ label: "Book a call", href: CALENDAR_URL }}
-          secondaryCta={{ label: `Start with the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
+          primaryCta={AUDIT_CTA}
+          secondaryCta={CALL_CTA}
           image="/brand/palm-portrait.jpg"
           imageAlt="Palm fronds against a warm sky"
           priority
@@ -193,7 +193,7 @@ export default function EmbeddedPage() {
           </div>
         </Section>
 
-        {/* The FDE explainer */}
+        {/* What embedding actually means, without the industry word for it */}
         <TealBand innerClassName="py-20 md:py-28">
           <div className="max-w-3xl">
             <span className="label-caps block font-sans text-accent">
@@ -204,10 +204,9 @@ export default function EmbeddedPage() {
               <span className="text-accent">Keep shipping.</span>
             </h2>
             <p className="mt-6 font-sans text-lg leading-relaxed text-white/80">
-              The industry term for this is forward-deployed engineering.
-              Stripped of the jargon, it means the people who build your systems
-              are the same people who sat in your business and watched the work
-              — and who are still on the hook once it is live.
+              Stripped of the industry vocabulary, it means the people who build
+              your systems are the same people who sat in your business and
+              watched the work — and who are still on the hook once it is live.
             </p>
           </div>
 
@@ -280,14 +279,14 @@ export default function EmbeddedPage() {
             <Eyebrow>What it costs</Eyebrow>
             <Heading>{QUOTED_AFTER_AUDIT}.</Heading>
             <p className="mt-6 font-sans text-lg leading-relaxed text-body">
-              The {AUDIT_PRICE} audit is the only published price on this site.
-              The embedded engagement is monthly and quoted off what the audit
-              finds — no bands, no tiers, no figure invented to fill a table.
-              Start there and the scope writes itself.
+              The {AUDIT_OFFER} is the only published price on this site. The
+              embedded engagement is monthly and quoted off what the audit finds
+              — no bands, no tiers, no figure invented to fill a table. Start
+              there and the scope writes itself.
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-3">
-              <Button href={AUDIT_CHECKOUT_URL} variant="teal">
-                Book the {AUDIT_PRICE} audit
+              <Button href={AUDIT_CTA.href} variant="teal">
+                {AUDIT_CTA.label}
               </Button>
               <Button
                 href="/pricing"
@@ -342,7 +341,7 @@ export default function EmbeddedPage() {
         <Faq items={faqItems} eyebrow="Common questions" heading="Before you embed us." />
 
         <CtaBand
-          sub={`Start with the ${AUDIT_PRICE} audit to see what's actually in your stack, or book a call and we'll scope the engagement around it.`}
+          sub={`Start with the ${AUDIT_OFFER} to see what's actually in your stack, or book a call and we'll scope the engagement around it.`}
         />
       </Shell>
     </>

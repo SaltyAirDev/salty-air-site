@@ -58,11 +58,11 @@ const sections: LegalSection[] = [
     ),
   },
   {
-    heading: "The business audit",
+    heading: "The Integration Audit",
     body: (
       <>
         <p>
-          The business audit is a fixed-fee piece of work at {AUDIT_PRICE}, paid
+          The Integration Audit is a fixed-fee piece of work at {AUDIT_PRICE}, paid
           up front through Stripe. It covers a walkthrough of how work moves
           through your business, a written report, and a review call.
         </p>

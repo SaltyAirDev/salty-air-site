@@ -19,9 +19,9 @@ export function Footer() {
               Work Less. Live More. <span className="text-accent">Automate.</span>
             </p>
             <p className="mt-4 font-sans text-sm leading-relaxed text-white/70">
-              A forward-deployed engineering and integrations shop for trades,
-              home services, and construction. We connect the systems you
-              already pay for, set up what is missing, and build the rest.
+              An integrations shop for trades, home services, and construction.
+              We connect the systems you already pay for, set up what was bought
+              and never turned on, and build the rest.
             </p>
             <a
               href={`mailto:${EMAIL}`}

@@ -1,15 +1,17 @@
 import Link from "next/link";
-import { pillars } from "@/lib/offers";
+import { offerCards } from "@/lib/offers";
 
 /**
  * The two main offers side by side: integrations, and the embedded engagement
- * that integrations turn into. Replaced the old add-on cards — data work is no
- * longer an offer, so it is no longer presented as one.
+ * that integrations turn into.
+ *
+ * Was called `Pillars`, which collided with the three value pillars this
+ * company actually leads with — those live in ValuePillars.tsx.
  */
-export function Pillars() {
+export function OfferSplit() {
   return (
     <div className="grid md:grid-cols-2 gap-6">
-      {pillars.map((pillar) => (
+      {offerCards.map((pillar) => (
         <div
           key={pillar.title}
           className="rounded-3xl border border-primary/15 bg-white p-8 md:p-10 flex flex-col"

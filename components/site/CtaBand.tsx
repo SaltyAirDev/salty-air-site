@@ -1,15 +1,17 @@
 import { Grain } from "@/components/brand/Grain";
 import { Button } from "@/components/ui/Button";
-import { AUDIT_CHECKOUT_URL, AUDIT_PRICE, CALENDAR_URL } from "@/lib/site";
+import { AUDIT_CTA, AUDIT_OFFER, CALL_CTA } from "@/lib/site";
 
 /**
  * Closing band on every page. Pushes the brand line one more time, with
- * `Automate.` in peach the way the deck sets accent words.
+ * `Automate.` in peach the way the deck sets accent words — this is one of the
+ * two places the slogan belongs (the other is the footer), and it is
+ * deliberately not any page's hero.
  */
 export function CtaBand({
-  sub = `Book the ${AUDIT_PRICE} audit, or book a call and we'll talk through what is actually in your stack.`,
-  primaryCta = { label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL },
-  secondaryCta = { label: "Book a call", href: CALENDAR_URL },
+  sub = `Start with the ${AUDIT_OFFER}, or book a call and we'll talk through what is actually in your stack.`,
+  primaryCta = AUDIT_CTA,
+  secondaryCta = CALL_CTA,
 }: {
   sub?: string;
   primaryCta?: { label: string; href: string };

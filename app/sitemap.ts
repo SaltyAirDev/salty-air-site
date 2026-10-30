@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/site";
-import { CONSTRUCTION_PATH, tradeHref, trades } from "@/lib/trades";
+import { AUDIT_PATH, SITE_URL } from "@/lib/site";
+import { GC_PATH, tradeHref, trades } from "@/lib/trades";
 
 const BASE = SITE_URL;
 
@@ -9,14 +9,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes: MetadataRoute.Sitemap = [
     { url: BASE, changeFrequency: "weekly", priority: 1 },
+    // The audit is the site's conversion target, so it ranks with the home
+    // page rather than with the supporting offer pages.
+    { url: `${BASE}${AUDIT_PATH}`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/integrations`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/embedded`, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${BASE}/pricing`, changeFrequency: "monthly", priority: 0.9 },
-    {
-      url: `${BASE}${CONSTRUCTION_PATH}`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
+    { url: `${BASE}/pricing`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}${GC_PATH}`, changeFrequency: "monthly", priority: 0.8 },
     ...trades.map((trade) => ({
       url: `${BASE}${tradeHref(trade.slug)}`,
       changeFrequency: "monthly" as const,

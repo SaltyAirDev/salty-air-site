@@ -7,7 +7,7 @@ import { EMAIL, SITE_URL, SLOGAN } from "@/lib/site";
 
 const TITLE = "Other Work";
 const DESCRIPTION =
-  "Salty Air is a forward-deployed engineering and integrations shop for trades, home services, and construction. A small amount of inbound work outside that — law practices and enterprise engineering teams — is handled case by case.";
+  "Law practices and enterprise engineering teams, inbound only and handled case by case. Our main work is integrations for trades and construction.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -64,7 +64,7 @@ export default function OtherWorkPage() {
             <p className="mt-4 font-sans text-[15px] leading-relaxed text-body">
               Enterprise teams occasionally bring our team in to build
               alongside their own engineers on a defined piece of work — the
-              same forward-deployed approach, in a much bigger building.
+              same embedded approach, in a much bigger building.
               Scoped per engagement, and only when there&rsquo;s capacity.
             </p>
           </div>

@@ -5,8 +5,8 @@ import { Section } from "@/components/site/Section";
 import { ContactForm } from "@/components/ui/ContactForm";
 import { Button } from "@/components/ui/Button";
 import {
-  AUDIT_CHECKOUT_URL,
-  AUDIT_PRICE,
+  AUDIT_CTA,
+  AUDIT_OFFER,
   CALENDAR_URL,
   EMAIL,
   SITE_URL,
@@ -15,7 +15,7 @@ import {
 
 const TITLE = "Contact";
 const DESCRIPTION =
-  "Tell us what systems you run, or book a call. Salty Air is a forward-deployed engineering and integrations shop for trades, home services, and construction.";
+  "Tell us what systems you run, or book a call. Salty Air connects the systems trades, home services, and construction businesses already pay for.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -68,12 +68,12 @@ export default function ContactPage() {
                 Ready for the audit?
               </h2>
               <p className="mt-3 font-sans text-[15px] leading-relaxed text-white/85">
-                The {AUDIT_PRICE} audit maps every system in the business and
-                hands you a written plan. Book it directly.
+                The {AUDIT_OFFER} maps every system in the business, finds where
+                your team retypes data, and ranks what to connect first.
               </p>
               <div className="mt-6">
-                <Button href={AUDIT_CHECKOUT_URL} variant="peach">
-                  Book the {AUDIT_PRICE} audit
+                <Button href={AUDIT_CTA.href} variant="peach">
+                  {AUDIT_CTA.label}
                 </Button>
               </div>
             </div>

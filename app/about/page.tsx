@@ -6,11 +6,11 @@ import { Section, Eyebrow, Heading } from "@/components/site/Section";
 import { TealBand } from "@/components/site/TealBand";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Button } from "@/components/ui/Button";
-import { AUDIT_PRICE, SITE_URL, SLOGAN } from "@/lib/site";
+import { AUDIT_OFFER, AUDIT_TURNAROUND, SITE_URL, SLOGAN } from "@/lib/site";
 
 const TITLE = "About Salty Air & How We Work";
 const DESCRIPTION =
-  "Salty Air is a forward-deployed engineering and integrations shop for trades, home services, and construction. Who we serve, what we connect and build, and how an engagement actually runs.";
+  "Salty Air is an integrations shop for trades, home services, and construction. Who we serve, what we connect and build, and how an engagement actually runs.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -48,7 +48,7 @@ const principles = [
 const engagement = [
   {
     t: "Start with the audit",
-    d: `The ${AUDIT_PRICE} Business & Integration Audit is the normal first step. Forty-five minutes on every system in the business and how work moves between them, then a written plan. Yours either way.`,
+    d: `The ${AUDIT_OFFER} is the normal first step. One working session on every system in the business and how work moves between them, then written findings within ${AUDIT_TURNAROUND}. Yours either way.`,
   },
   {
     t: "Connect and build",
@@ -67,7 +67,7 @@ export default function AboutPage() {
         eyebrow={SLOGAN}
         headline="The engineering team your business never"
         headlineAccent="hired."
-        sub="Salty Air is a forward-deployed engineering and integrations shop. We embed with a business, connect the systems it already pays for, set up what is missing, and build custom where nothing fits. This is how that works."
+        sub="Salty Air is an integrations shop. We get into a business, connect the systems it already pays for, set up what was bought and never turned on, and build custom where nothing fits. This is how that works."
         primaryCta={{ label: "Get in touch", href: "/contact" }}
         secondaryCta={{ label: "See what we connect", href: "/integrations" }}
         image="/brand/interior-plants.jpg"

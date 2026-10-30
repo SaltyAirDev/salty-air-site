@@ -11,25 +11,26 @@ import { FaqJsonLd, type FaqItem } from "@/components/seo/FaqJsonLd";
 import { SystemChips } from "@/components/site/Systems";
 import { Button } from "@/components/ui/Button";
 import { systemGroups } from "@/lib/systems";
-import { trades, tradeHref, CONSTRUCTION_PATH } from "@/lib/trades";
+import { trades, tradeHref, GC_PATH } from "@/lib/trades";
 import {
-  AUDIT_CHECKOUT_URL,
-  AUDIT_PRICE,
-  CALENDAR_URL,
+  AUDIT_CTA,
+  AUDIT_OFFER,
+  CALL_CTA,
   SERVICE_TYPE,
   SITE_URL,
   SLOGAN,
 } from "@/lib/site";
 
-const TITLE = "Systems Integration for General Contractors & Specialty Subs";
+const TITLE = "Software Integration for General Contractors";
 const DESCRIPTION =
-  "We connect the systems a construction business already runs — Procore, Buildertrend, Autodesk Build, Bluebeam, Sage, QuickBooks, the plan room, and the field — set up what is missing, and build custom where nothing fits. Starts with a $499 audit.";
+  "Procore, Buildertrend, estimating and QuickBooks that finally agree. We connect the systems your construction business already pays for. $499 audit.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: `${SITE_URL}${CONSTRUCTION_PATH}` },
+  alternates: { canonical: `${SITE_URL}${GC_PATH}` },
   keywords: [
+    "software integration for general contractors",
     "construction software integration",
     "Procore integration",
     "Buildertrend integration",
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${TITLE} | Salty Air`,
     description: DESCRIPTION,
-    url: `${SITE_URL}${CONSTRUCTION_PATH}`,
+    url: `${SITE_URL}${GC_PATH}`,
     type: "website",
     siteName: "Salty Air",
   },
@@ -138,7 +139,7 @@ export default function ConstructionPage() {
           "@type": "Audience",
           audienceType: "General contractors and specialty subcontractors",
         },
-        url: `${SITE_URL}${CONSTRUCTION_PATH}`,
+        url: `${SITE_URL}${GC_PATH}`,
       },
       {
         "@type": "BreadcrumbList",
@@ -147,8 +148,8 @@ export default function ConstructionPage() {
           {
             "@type": "ListItem",
             position: 2,
-            name: "Construction",
-            item: `${SITE_URL}${CONSTRUCTION_PATH}`,
+            name: "General Contractors",
+            item: `${SITE_URL}${GC_PATH}`,
           },
         ],
       },
@@ -168,8 +169,8 @@ export default function ConstructionPage() {
           headline="The plan room, the estimate, and the ledger have never"
           headlineAccent="met."
           sub="General contractors and specialty subs run more systems than anyone, and fewer of them are connected. We wire the stack you already pay for together, set up what is missing, and build the rest."
-          primaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
-          secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
+          primaryCta={AUDIT_CTA}
+          secondaryCta={CALL_CTA}
           image="/brand/stock/van-job.jpg"
           imageAlt="Contractor van parked at a job site"
           priority
@@ -260,19 +261,20 @@ export default function ConstructionPage() {
               <Heading>Map the stack first. Quote the work after.</Heading>
               <div className="mt-6 flex flex-col gap-5 font-sans text-lg leading-relaxed text-body">
                 <p>
-                  The {AUDIT_PRICE} audit is the only published price on this
-                  site. Forty-five minutes on how a job moves from bid to
-                  closeout through every system it touches, then a written plan:
-                  what to connect, what to set up, what to build, in what order.
+                  The {AUDIT_OFFER} is the only published price on this site. A
+                  working session on how a job moves from bid to closeout
+                  through every system it touches, then written findings: your
+                  systems inventory, where the same information gets retyped,
+                  and the connections worth making first.
                 </p>
                 <p>
-                  The build and the embedded engagement are quoted off that
-                  plan. You keep the report whether or not we do the work.
+                  The build and the embedded engagement are quoted off those
+                  findings. You keep the document whether or not we do the work.
                 </p>
               </div>
               <div className="mt-9 flex flex-col sm:flex-row gap-3">
-                <Button href={AUDIT_CHECKOUT_URL} variant="teal">
-                  Book the {AUDIT_PRICE} audit
+                <Button href={AUDIT_CTA.href} variant="teal">
+                  {AUDIT_CTA.label}
                 </Button>
                 <Button
                   href="/embedded"
@@ -325,9 +327,7 @@ export default function ConstructionPage() {
         />
 
         <CtaBand
-          sub={`Tell us how a job moves from bid to closeout today. Start with the ${AUDIT_PRICE} audit, or book a call.`}
-          primaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
-          secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
+          sub={`Tell us how a job moves from bid to closeout today. Start with the ${AUDIT_OFFER}, or book a call.`}
         />
       </Shell>
     </>

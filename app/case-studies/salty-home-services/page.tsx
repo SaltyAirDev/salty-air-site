@@ -6,12 +6,12 @@ import { Section, Eyebrow, Heading } from "@/components/site/Section";
 import { TealBand } from "@/components/site/TealBand";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Button } from "@/components/ui/Button";
-import { AUDIT_PRICE, CALENDAR_URL, SHS_URL, SITE_URL, SLOGAN } from "@/lib/site";
+import { AUDIT_OFFER, CALL_CTA, SHS_URL, SITE_URL, SLOGAN } from "@/lib/site";
 
 const PATH = "/case-studies/salty-home-services";
 const TITLE = "Case Study: Salty Home Services";
 const DESCRIPTION =
-  "The stack we built and run for our own home services company — missed-call text-back and AI answering via Quo, lead intake into Housecall Pro, estimate follow-up, review requests, scheduling, and an SEO site.";
+  "We built and run the back office and systems for Salty Home Services, a Utah home services company. What we built, and how the same work applies to your shop.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -66,7 +66,7 @@ export default function CaseStudyPage() {
         headlineAccent="run."
         sub="Salty Home Services is our own home services company, in Utah. Its phone, intake, follow-up, reviews, scheduling, and site are all work we did — and work we keep running."
         primaryCta={{ label: "Visit saltyhomeservices.co", href: SHS_URL }}
-        secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
+        secondaryCta={CALL_CTA}
         image="/brand/surfboards.jpg"
         imageAlt="Surfboards lined up against a wall"
         priority
@@ -158,7 +158,7 @@ export default function CaseStudyPage() {
       </Section>
 
       <CtaBand
-        sub={`Want the same thing running on your shop? Start with the ${AUDIT_PRICE} audit, or book a call.`}
+        sub={`Want the same thing running on your shop? Start with the ${AUDIT_OFFER}, or book a call.`}
       />
     </Shell>
   );

@@ -5,18 +5,20 @@ import { PageHero } from "@/components/site/PageHero";
 import { Section, Eyebrow, Heading } from "@/components/site/Section";
 import { TealBand } from "@/components/site/TealBand";
 import { OfferCards } from "@/components/site/OfferCards";
-import { Pillars } from "@/components/site/Pillars";
+import { OfferSplit } from "@/components/site/OfferSplit";
+import { ValuePillars } from "@/components/site/ValuePillars";
 import { SystemChips } from "@/components/site/Systems";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Faq } from "@/components/site/Faq";
 import { FaqJsonLd, type FaqItem } from "@/components/seo/FaqJsonLd";
 import { Button } from "@/components/ui/Button";
-import { trades, tradeHref, CONSTRUCTION_PATH } from "@/lib/trades";
+import { trades, tradeHref, GC_LABEL, GC_PATH } from "@/lib/trades";
 import { integrationModes } from "@/lib/systems";
 import {
-  AUDIT_CHECKOUT_URL,
-  AUDIT_PRICE,
-  CALENDAR_URL,
+  AUDIT_CTA,
+  AUDIT_OFFER,
+  AUDIT_PATH,
+  AUDIT_TURNAROUND,
   HERO_HEADLINE,
   HERO_HEADLINE_ACCENT,
   POSITIONING,
@@ -28,7 +30,7 @@ import {
 const faqItems: FaqItem[] = [
   {
     q: "What does Salty Air actually do?",
-    a: "We are a forward-deployed engineering and integrations shop. We embed with a business, connect the systems it already pays for so work stops falling between them, set up whatever is missing, and build custom where nothing off the shelf fits.",
+    a: "We are an integrations shop. We get into a business, connect the systems it already pays for so work stops falling between them, set up whatever was bought and never turned on, and build custom where nothing off the shelf fits.",
   },
   {
     q: "Do I have to switch off Housecall Pro, Jobber, ServiceTitan, or Procore?",
@@ -36,15 +38,15 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "What does “embedded” actually mean?",
-    a: "That the people who build your systems are the people who sat in your business and watched the work — and who are still on the hook once it is live. The industry calls it forward-deployed engineering; in practice it means we come to you.",
+    a: "That the people who build your systems are the people who sat in your business and watched the work — and who are still on the hook once it is live. In practice it means we come to you: the ride-alongs, the intake process, how the office really books a job.",
   },
   {
     q: "Do you work with contractors as well as trade shops?",
     a: "Both, from day one. A trade shop's problem is mostly the phone and the dispatch board; a general contractor's is a plan room, an estimating system, a project system, and a ledger that barely talk. Different stacks, same shop doing the work.",
   },
   {
-    q: `What does the ${AUDIT_PRICE} audit get me?`,
-    a: "Forty-five minutes mapping every system in the business and how work moves between them, then a written plan: what to connect, what to set up, what to build, and in what order. You keep the report whether or not you hire us afterwards.",
+    q: `What does the ${AUDIT_OFFER} get me?`,
+    a: `An inventory of the software you pay for, a map of every place your team retypes data, and a ranked list of the connections worth making first — in writing, within ${AUDIT_TURNAROUND} of one working session. You keep it whether or not you hire us afterwards.`,
   },
   {
     q: "Why is the audit the only price on the site?",
@@ -62,20 +64,34 @@ export default function Home() {
       <FaqJsonLd items={faqItems} />
       <Shell>
         <PageHero
-          eyebrow="Forward-deployed engineering & integrations"
+          eyebrow="Integrations & embedded engineering"
           headline={HERO_HEADLINE}
           headlineAccent={HERO_HEADLINE_ACCENT}
           sub={POSITIONING}
-          primaryCta={{ label: "See what we connect", href: "/integrations" }}
-          secondaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
+          primaryCta={AUDIT_CTA}
+          secondaryCta={{ label: "See what we connect", href: "/integrations" }}
           image="/brand/hero-palms.jpg"
           imageAlt="Sun through a stand of palms"
           priority
           footnote="Salt Lake, UT"
         />
 
-        {/* The two offers */}
+        {/* The three value pillars — shared with /integrations */}
         <Section>
+          <div className="max-w-3xl">
+            <Eyebrow>What we do</Eyebrow>
+            <Heading>
+              Three things, and we do them in this order.
+            </Heading>
+          </div>
+
+          <div className="mt-12">
+            <ValuePillars />
+          </div>
+        </Section>
+
+        {/* The two offers */}
+        <Section tone="sand">
           <div className="max-w-3xl">
             <Eyebrow>Two ways we work</Eyebrow>
             <Heading>Connect the stack, or let us run it.</Heading>
@@ -88,7 +104,7 @@ export default function Home() {
           </div>
 
           <div className="mt-12">
-            <Pillars />
+            <OfferSplit />
           </div>
         </Section>
 
@@ -189,8 +205,8 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 lg:justify-end">
-              <Button href={CONSTRUCTION_PATH} variant="teal">
-                Construction stacks
+              <Button href={GC_PATH} variant="teal">
+                {GC_LABEL}
               </Button>
             </div>
           </div>
@@ -241,11 +257,16 @@ export default function Home() {
             <Eyebrow>How to work with us</Eyebrow>
             <Heading>An audit to start. Everything else quoted off it.</Heading>
             <p className="mt-6 font-sans text-lg leading-relaxed text-body">
-              The {AUDIT_PRICE} audit is the only published price on this site.
-              It maps your stack and hands you a plan you could run yourself.
-              The build and the embedded engagement are quoted from that plan —
-              no packages, no tiers, no numbers invented to fill a table.
+              The {AUDIT_OFFER} is the only published price on this site. It
+              maps your stack and hands you a plan you could run yourself. The
+              build and the embedded engagement are quoted from that plan — no
+              packages, no tiers, no numbers invented to fill a table.
             </p>
+            <div className="mt-9">
+              <Button href={AUDIT_PATH} variant="teal">
+                What is in the {AUDIT_OFFER}
+              </Button>
+            </div>
           </div>
 
           <div className="mt-12">
@@ -256,9 +277,7 @@ export default function Home() {
         <Faq items={faqItems} />
 
         <CtaBand
-          sub={`Book the ${AUDIT_PRICE} audit and you'll have the map of your own stack, or book a call and describe it to us first.`}
-          primaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
-          secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
+          sub={`Start with the ${AUDIT_OFFER} and you'll have the map of your own stack, or book a call and describe it to us first.`}
         />
       </Shell>
     </>

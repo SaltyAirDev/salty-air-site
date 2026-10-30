@@ -4,6 +4,7 @@ import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import {
   AUDIT_NAME,
+  AUDIT_PATH,
   AUDIT_PRICE,
   EMAIL,
   GA_MEASUREMENT_ID,
@@ -24,9 +25,9 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
-const TITLE = "Forward-Deployed Engineering & Integrations | Salty Air";
+const TITLE = "Systems Integration for Contractors & Trades | Salty Air";
 const DESCRIPTION =
-  "We connect the systems you already pay for. Salty Air is a forward-deployed engineering and integrations shop for trades, home services, and construction — we embed with your business, wire your field service, CRM, accounting, phones, and data into one working stack, set up what is missing, and build custom where nothing fits.";
+  "We connect the systems you already pay for — Housecall Pro, Jobber, ServiceTitan, Procore, QuickBooks. Integrations for Utah trades and GCs. $499 audit.";
 
 export const metadata: Metadata = {
   // `%s` is filled by each page's own title; `/` uses the default.
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
   category: "technology",
   keywords: [
     "systems integration for contractors",
-    "forward deployed engineering",
+    "contractor software integration",
     "embedded engineering team",
     "Housecall Pro integration",
     "Jobber integration",
@@ -98,7 +99,7 @@ export default function RootLayout({
     "@id": `${SITE_URL}/#organization`,
     name: "Salty Air",
     description:
-      "Forward-deployed engineering and integrations shop. We embed with a business, connect the systems it already pays for — field service, CRM, accounting, phones, email, and data — set up what is missing, and build custom where nothing fits.",
+      "An integrations shop for trades, home services, and construction. We get into a business, connect the systems it already pays for — field service, CRM, accounting, phones, email, and data — set up what was bought and never turned on, and build custom where nothing fits.",
     url: SITE_URL,
     logo: `${SITE_URL}/brand/logo-saltyair-teal-lg.png`,
     image: `${SITE_URL}/brand/logo-saltyair-teal-lg.png`,
@@ -114,7 +115,7 @@ export default function RootLayout({
     },
     knowsAbout: [
       "Systems integration",
-      "Forward-deployed engineering",
+      "Embedded engineering",
       "Custom software development",
       ...allSystems,
     ],
@@ -126,6 +127,8 @@ export default function RootLayout({
           "@type": "Offer",
           priceCurrency: "USD",
           price: AUDIT_PRICE.replace("$", ""),
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}${AUDIT_PATH}`,
           itemOffered: { "@type": "Service", name: AUDIT_NAME },
         },
         {
@@ -147,7 +150,7 @@ export default function RootLayout({
             "@type": "Service",
             name: embeddedOffer.name,
             description:
-              "A forward-deployed engineering team embedded in the business, owning the stack and shipping continuously on a monthly engagement.",
+              "An engineering team embedded in the business, owning the stack and shipping continuously on a monthly engagement.",
           },
         },
       ],

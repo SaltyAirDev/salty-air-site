@@ -66,8 +66,8 @@ const sections: LegalSection[] = [
         </p>
         <p>
           <strong>Booking and payment.</strong> If you book a call we use Google
-          Calendar&rsquo;s appointment scheduling, and if you buy the business
-          audit the payment is handled by Stripe. Those services collect
+          Calendar&rsquo;s appointment scheduling, and if you buy the Integration
+          Audit the payment is handled by Stripe. Those services collect
           information directly under their own privacy policies — we never see
           or store your card details.
         </p>

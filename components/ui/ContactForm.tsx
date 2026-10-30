@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { EMAIL } from "@/lib/site";
+import { AUDIT_NAME, AUDIT_PRICE, EMAIL } from "@/lib/site";
 
 type Status = "idle" | "sending" | "success" | "error";
 
 /** Interests an owner would actually pick. The audit is the only priced one. */
 export const CONTACT_INTERESTS = [
-  "Business & Integration Audit ($499)",
+  `${AUDIT_NAME} (${AUDIT_PRICE})`,
   "Connecting the systems we already run",
   "Setting up something we're missing",
   "A custom build",

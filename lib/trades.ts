@@ -1,12 +1,17 @@
 /**
- * The trade verticals. Drives /trades/[trade], the Industries dropdown, the
- * footer column, the sitemap, and each page's OG card — add an entry and the
- * route exists everywhere with no other edits.
+ * The trade verticals. Drives the top-level trade routes, the Industries
+ * dropdown, the footer column, the sitemap, and each page's OG card.
  *
- * Construction is the other audience we serve from day one, but a GC's stack
- * is different enough that it gets its own hand-written page at /construction
- * rather than an entry in this list. It still joins these in the dropdown and
- * the footer via `industryLinks` below.
+ * Each trade lives at the root — `/electricians`, `/plumbers`, `/hvac` and so
+ * on — because that is how these shops search and self-describe, and because
+ * burying a conversion page one segment deeper buys nothing. The old
+ * `/trades/<slug>` URLs 308 to the new ones (see next.config.mjs), and adding
+ * a trade here means adding `app/<slug>/` alongside it.
+ *
+ * General contractors are the other audience we serve from day one, but a GC's
+ * stack is different enough that it gets its own hand-written page at
+ * /general-contractors rather than an entry in this list. It still joins these
+ * in the dropdown and the footer via `industryLinks` below.
  *
  * Copy rule: the trade line is a *supporting* subhead. The brand line
  * ("Work Less. Live More. Automate.") stays the eyebrow on every one of these
@@ -39,9 +44,9 @@ export const trades: Trade[] = [
   {
     slug: "electricians",
     label: "Electricians",
-    title: "Systems Integration & AI Back Office for Electricians",
+    title: "Software Integration for Electrical Contractors",
     description:
-      "We connect the systems an electrical shop already pays for — Housecall Pro or Jobber, the phones, the CRM, QuickBooks — then set up what is missing: missed-call text-back, AI answering, estimate follow-up, and review requests.",
+      "Housecall Pro, Jobber, ServiceTitan and QuickBooks, connected. Integrations for Utah electrical contractors. Start with a $499 Integration Audit.",
     headline: "The panel upgrade call you missed is already someone else's",
     headlineAccent: "job.",
     sub: "You're in a crawlspace with your hands full. The phone rings, goes to voicemail, and the homeowner calls the next electrician on the list. That's the whole problem, and it's fixable.",
@@ -75,9 +80,9 @@ export const trades: Trade[] = [
   {
     slug: "plumbers",
     label: "Plumbers",
-    title: "Systems Integration & AI Back Office for Plumbers",
+    title: "Software Integration for Plumbing Companies",
     description:
-      "We connect the systems a plumbing shop already pays for — Housecall Pro or Jobber, the phones, the CRM, QuickBooks — then set up what is missing: missed-call text-back, AI answering, estimate follow-up, and review requests.",
+      "Connect your scheduling, phones and QuickBooks so a plumbing job gets entered once. Integrations for Utah plumbing companies. $499 Integration Audit.",
     headline: "Emergency calls don't wait for you to get back to the",
     headlineAccent: "truck.",
     sub: "A burst line is the one call a homeowner will absolutely make twice — to you, and to whoever answers first. Make sure that's you, even when both your hands are on a wrench.",
@@ -111,9 +116,9 @@ export const trades: Trade[] = [
   {
     slug: "hvac",
     label: "HVAC",
-    title: "Systems Integration & AI Back Office for HVAC",
+    title: "Software Integration for HVAC Companies",
     description:
-      "We connect the systems an HVAC shop already pays for — Housecall Pro, Jobber, or ServiceTitan, the phones, the CRM, QuickBooks — then set up what is missing: missed-call text-back, AI answering, quote follow-up, and maintenance outreach.",
+      "Maintenance plans, scheduling and QuickBooks that stay in sync. Systems integration for Utah HVAC companies. Start with a $499 Integration Audit.",
     headline: "The first heat wave books out whoever answers the phone",
     headlineAccent: "first.",
     sub: "Your season is decided in a handful of weeks. When every call matters most is exactly when your crews are too busy to pick up.",
@@ -147,9 +152,9 @@ export const trades: Trade[] = [
   {
     slug: "handyman",
     label: "Handyman",
-    title: "Systems Integration & AI Back Office for Handymen",
+    title: "Software Integration for Handyman Businesses",
     description:
-      "We connect the systems a handyman business already pays for — Housecall Pro or Jobber, the phones, the calendar, QuickBooks — then set up what is missing: missed-call text-back, AI answering, quote follow-up, and review requests.",
+      "Calls, quotes and scheduling in one place instead of six text threads. Systems integration for Utah handyman businesses. $499 Integration Audit.",
     headline: "You are the crew, the dispatcher, and the office",
     headlineAccent: "manager.",
     sub: "Small jobs, lots of them, and every one needs a call, a quote, and a follow-up. The admin is the bottleneck, and it's all landing on you.",
@@ -183,9 +188,9 @@ export const trades: Trade[] = [
   {
     slug: "roofers",
     label: "Roofers",
-    title: "Systems Integration & AI Back Office for Roofers",
+    title: "Software Integration for Roofing Companies",
     description:
-      "We connect the systems a roofing company already pays for — Housecall Pro or Jobber, the phones, the CRM, QuickBooks — then set up what is missing: missed-call text-back, AI answering, bid follow-up, and review requests.",
+      "Storm-season calls, bids and QuickBooks that keep up with the crews. Systems integration for Utah roofing companies. $499 Integration Audit.",
     headline: "After a storm, the only roofer who matters is the one who picks",
     headlineAccent: "up.",
     sub: "Storm work arrives in a flood and leaves just as fast. If the calls stack up in voicemail, the season moves to the next company on the list.",
@@ -219,9 +224,9 @@ export const trades: Trade[] = [
   {
     slug: "landscapers",
     label: "Landscapers",
-    title: "Systems Integration & AI Back Office for Landscapers",
+    title: "Software Integration for Landscaping Companies",
     description:
-      "We connect the systems a landscaping company already pays for — Housecall Pro or Jobber, the phones, the CRM, QuickBooks — then set up what is missing: missed-call text-back, AI answering, bid follow-up, and renewal outreach.",
+      "Spring signups, renewals and bids that follow themselves up. Systems integration for Utah landscaping companies. $499 Integration Audit to start.",
     headline: "Spring signups decide the whole year, and they all come in at",
     headlineAccent: "once.",
     sub: "Maintenance contracts, cleanups, and install bids all land in the same few weeks — while your crews are already out and the phone is ringing in an empty office.",
@@ -254,9 +259,21 @@ export const trades: Trade[] = [
   },
 ];
 
-export const tradeHref = (slug: string) => `/trades/${slug}`;
+/** Trade pages sit at the root; `/trades/<slug>` 308s here. */
+export const tradeHref = (slug: string) => `/${slug}`;
 
 export const getTrade = (slug: string) => trades.find((t) => t.slug === slug);
+
+/**
+ * Same lookup, for the top-level route files that are written against a known
+ * slug. Throws during the build rather than rendering a page without content,
+ * so a renamed slug fails loudly instead of quietly 404ing in production.
+ */
+export const requireTrade = (slug: string): Trade => {
+  const trade = getTrade(slug);
+  if (!trade) throw new Error(`Unknown trade slug: ${slug}`);
+  return trade;
+};
 
 /** Nav dropdown / footer column entries — trade name only, no "AI for…" prefix. */
 export const tradeLinks = trades.map((t) => ({
@@ -264,14 +281,20 @@ export const tradeLinks = trades.map((t) => ({
   href: tradeHref(t.slug),
 }));
 
-/** The GC / specialty-sub page. Hand-written, so it is a route not a registry entry. */
-export const CONSTRUCTION_PATH = "/construction";
+/**
+ * The GC / specialty-sub page. Hand-written, so it is a route not a registry
+ * entry.
+ *
+ * `/general-contractors` rather than `/construction`: the category word invites
+ * every visitor in the industry, including the trades that have their own pages
+ * already, and it reads like a topic instead of a buyer. `/construction` and
+ * `/industries/construction` both 308 here.
+ */
+export const GC_PATH = "/general-contractors";
+export const GC_LABEL = "General Contractors";
 
 /**
  * Everything in the Industries dropdown and the footer's Industries column:
- * the six trades, then construction. Both audiences from day one.
+ * the six trades, then general contractors. Both audiences from day one.
  */
-export const industryLinks = [
-  ...tradeLinks,
-  { label: "Construction", href: CONSTRUCTION_PATH },
-];
+export const industryLinks = [...tradeLinks, { label: GC_LABEL, href: GC_PATH }];

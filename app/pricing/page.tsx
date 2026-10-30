@@ -3,14 +3,16 @@ import { Shell } from "@/components/site/Shell";
 import { PageHero } from "@/components/site/PageHero";
 import { Section, Eyebrow, Heading } from "@/components/site/Section";
 import { OfferCards } from "@/components/site/OfferCards";
-import { Pillars } from "@/components/site/Pillars";
+import { OfferSplit } from "@/components/site/OfferSplit";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Faq } from "@/components/site/Faq";
 import { FaqJsonLd, type FaqItem } from "@/components/seo/FaqJsonLd";
 import {
-  AUDIT_CHECKOUT_URL,
+  AUDIT_CTA,
+  AUDIT_OFFER,
   AUDIT_PRICE,
-  CALENDAR_URL,
+  AUDIT_TURNAROUND,
+  CALL_CTA,
   QUOTED_AFTER_AUDIT,
   SITE_URL,
   SLOGAN,
@@ -18,7 +20,7 @@ import {
 
 const TITLE = "Pricing";
 const DESCRIPTION =
-  "One published price: the $499 Business & Integration Audit. The build and the embedded engagement are quoted after the audit — no packages, no tiers, no monthly bands.";
+  "One published price: the $499 Integration Audit. The build and the embedded engagement are quoted after the audit — no packages, no tiers, no monthly bands.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -40,11 +42,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "What am I actually buying with the audit?",
-    a: "A map of your own stack. Forty-five minutes on every system in the business and how work moves between them, then a written report: what to connect, what to set up, what to build, in what order and why. You keep it either way.",
+    a: `A map of your own stack. One working session on every system in the business and how work moves between them, then written findings within ${AUDIT_TURNAROUND}: your inventory, every place data gets retyped, and the connections worth making first. You keep it either way.`,
   },
   {
-    q: "Is the audit fee credited if I hire you?",
-    a: "The audit is standalone work, paid up front, and the report is yours regardless. If you go on to a build or an embedded engagement, we start from that report rather than charging you to discover the same things twice.",
+    q: "What happens to the audit findings if I hire you?",
+    a: "The audit is standalone work, paid up front, and the findings are yours regardless. If you go on to a build or an embedded engagement, we start from that document rather than charging you to discover the same things twice.",
   },
   {
     q: "What is the difference between the build and the embedded engagement?",
@@ -69,9 +71,9 @@ export default function PricingPage() {
           eyebrow={SLOGAN}
           headline="One published price, and no invented"
           headlineAccent="tiers."
-          sub={`A ${AUDIT_PRICE} audit you can book right now. Everything after it — the integration build, the embedded engagement — is quoted off what the audit finds.`}
-          primaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
-          secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
+          sub={`A ${AUDIT_OFFER} you can book right now. Everything after it — the integration build, the embedded engagement — is quoted off what the audit finds.`}
+          primaryCta={AUDIT_CTA}
+          secondaryCta={CALL_CTA}
           image="/brand/beach-aerial.jpg"
           imageAlt="Aerial view of a shoreline"
           priority
@@ -97,7 +99,7 @@ export default function PricingPage() {
           </div>
 
           <div className="mt-12">
-            <Pillars />
+            <OfferSplit />
           </div>
         </Section>
 
@@ -111,15 +113,15 @@ export default function PricingPage() {
             {[
               {
                 t: "Book",
-                d: `Take the ${AUDIT_PRICE} audit, or book a call if you'd rather talk before paying anything.`,
+                d: `Take the ${AUDIT_OFFER}, or book a call if you'd rather talk before paying anything.`,
               },
               {
                 t: "Map the stack",
-                d: "Forty-five minutes on every system in the business and how work actually moves between them.",
+                d: "One working session on every system in the business and how work actually moves between them.",
               },
               {
-                t: "Get the plan",
-                d: "A written report on what to connect, set up, and build — yours to run with, or the thing the build gets quoted from.",
+                t: "Get the findings",
+                d: `Written findings within ${AUDIT_TURNAROUND} — yours to run with, or the thing the build gets quoted from.`,
               },
             ].map((step, i) => (
               <li key={step.t}>
@@ -140,9 +142,7 @@ export default function PricingPage() {
         <Faq items={faqItems} eyebrow="Pricing questions" heading="Before you book." />
 
         <CtaBand
-          sub={`Book the ${AUDIT_PRICE} audit now, or get on a call first and we'll talk through what is in your stack.`}
-          primaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
-          secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
+          sub={`Start with the ${AUDIT_OFFER}, or get on a call first and we'll talk through what is in your stack.`}
         />
       </Shell>
     </>

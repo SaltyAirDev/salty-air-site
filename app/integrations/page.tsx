@@ -8,21 +8,23 @@ import { CtaBand } from "@/components/site/CtaBand";
 import { Faq } from "@/components/site/Faq";
 import { FaqJsonLd, type FaqItem } from "@/components/seo/FaqJsonLd";
 import { SystemGroups } from "@/components/site/Systems";
+import { ValuePillars } from "@/components/site/ValuePillars";
 import { Button } from "@/components/ui/Button";
 import { commonSeams, integrationModes } from "@/lib/systems";
 import {
-  AUDIT_CHECKOUT_URL,
-  AUDIT_PRICE,
-  CALENDAR_URL,
+  AUDIT_CTA,
+  AUDIT_OFFER,
+  AUDIT_TURNAROUND,
+  CALL_CTA,
   SERVICE_TYPE,
   SITE_URL,
   SLOGAN,
 } from "@/lib/site";
 
 const PATH = "/integrations";
-const TITLE = "Systems Integration for Trades, Home Services & Construction";
+const TITLE = "Contractor Software Integration Services";
 const DESCRIPTION =
-  "We connect the systems you already pay for — Housecall Pro, Jobber, ServiceTitan, Procore, your CRM, QuickBooks, phones, email, and data — set up what is missing, and build custom where nothing fits. Starts with a $499 audit.";
+  "Connect Housecall Pro, Jobber, ServiceTitan, Procore, Buildertrend and QuickBooks. We integrate the systems your shop already pays for. Start with a $499 audit.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -93,8 +95,8 @@ const faqItems: FaqItem[] = [
     a: "You do. Everything is built in accounts in your name, with the source and the documentation handed over. If we part ways, the stack keeps running and you keep the keys.",
   },
   {
-    q: `What does the ${AUDIT_PRICE} audit have to do with this?`,
-    a: "It is how every integration project starts. Forty-five minutes mapping the systems and how work moves between them, then a written plan: what to connect, what to set up, what to build, in what order. The build is quoted off that plan, so the number describes real work instead of a package.",
+    q: `What does the ${AUDIT_OFFER} have to do with this?`,
+    a: `It is how every integration project starts. One working session on the systems and how work moves between them, then written findings within ${AUDIT_TURNAROUND}: your inventory, every place data gets retyped, and the connections worth making first. The build is quoted off those findings, so the number describes real work instead of a package.`,
   },
 ];
 
@@ -139,15 +141,27 @@ export default function IntegrationsPage() {
           headline="Your software already knows this. It just isn’t"
           headlineAccent="talking."
           sub="We connect the systems you already pay for, set up whatever is missing, and build custom where nothing fits. One stack, one record of a job, nobody retyping anything."
-          primaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
-          secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
+          primaryCta={AUDIT_CTA}
+          secondaryCta={CALL_CTA}
           image="/brand/hero-palms.jpg"
           imageAlt="Sun through a stand of palms"
           priority
         />
 
-        {/* The problem, in symptoms rather than vocabulary */}
+        {/* The three value pillars — shared with the homepage */}
         <Section>
+          <div className="max-w-3xl">
+            <Eyebrow>What we do</Eyebrow>
+            <Heading>Three things, and we do them in this order.</Heading>
+          </div>
+
+          <div className="mt-12">
+            <ValuePillars />
+          </div>
+        </Section>
+
+        {/* The problem, in symptoms rather than vocabulary */}
+        <Section tone="sand">
           <div className="max-w-3xl">
             <Eyebrow>Where the work falls through</Eyebrow>
             <Heading>
@@ -273,9 +287,9 @@ export default function IntegrationsPage() {
               <Heading>One price published: the audit.</Heading>
               <div className="mt-6 flex flex-col gap-5 font-sans text-lg leading-relaxed text-body">
                 <p>
-                  The {AUDIT_PRICE} audit is the only figure on this site. It
-                  buys the map: every system, every handoff, and a written plan
-                  for what to connect, set up, and build.
+                  The {AUDIT_OFFER} is the only figure on this site. It buys the
+                  map: every system, every handoff, and a ranked list of what to
+                  connect first.
                 </p>
                 <p>
                   The build is quoted after that, because a number before it
@@ -284,8 +298,8 @@ export default function IntegrationsPage() {
                 </p>
               </div>
               <div className="mt-9 flex flex-col sm:flex-row gap-3">
-                <Button href={AUDIT_CHECKOUT_URL} variant="teal">
-                  Book the {AUDIT_PRICE} audit
+                <Button href={AUDIT_CTA.href} variant="teal">
+                  {AUDIT_CTA.label}
                 </Button>
                 <Button
                   href="/pricing"
@@ -316,9 +330,7 @@ export default function IntegrationsPage() {
         />
 
         <CtaBand
-          sub={`Book the ${AUDIT_PRICE} audit and you'll have the map of your own stack, or book a call and describe it to us first.`}
-          primaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
-          secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
+          sub={`Start with the ${AUDIT_OFFER} and you'll have the map of your own stack, or book a call and describe it to us first.`}
         />
       </Shell>
     </>

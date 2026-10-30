@@ -1,7 +1,7 @@
 /**
  * The offer ladder. Three rungs, one published number.
  *
- * 1. Business & Integration Audit, $499, existing Stripe link — the entry point.
+ * 1. The $499 Integration Audit — the entry point, and the only price.
  * 2. Integration & build — quoted after the audit.
  * 3. The embedded partnership — quoted after the audit.
  *
@@ -11,10 +11,12 @@
  * number comes out of the scope.
  */
 import {
-  AUDIT_CHECKOUT_URL,
+  AUDIT_CTA,
   AUDIT_NAME,
   AUDIT_PRICE,
-  CALENDAR_URL,
+  AUDIT_SESSION,
+  AUDIT_TURNAROUND,
+  CALL_CTA,
   QUOTED_AFTER_AUDIT,
 } from "./site";
 
@@ -39,16 +41,16 @@ export const auditOffer: Offer = {
   price: AUDIT_PRICE,
   period: "One-time",
   badge: "Start here",
-  desc: "We map the systems you are already paying for, find where work falls between them, and hand you a written plan — what to connect, what to set up, and what to build.",
+  desc: "We map the systems you are already paying for, find every place your team retypes data, and hand you a ranked list of what to connect first.",
   features: [
-    "45-minute walkthrough of every system in the business and how work moves between them",
-    "An inventory of what you pay for, who uses it, and what it was supposed to fix",
-    "Written report: the seams costing you work, in the order worth closing them",
-    "30-minute review call to go through the findings",
+    "An inventory of what you pay for, and — separately — what your team actually uses",
+    "A map of how information moves, marking every point where somebody retypes it",
+    "The top three to five connections worth making, ranked, with what each involves",
+    `A working session of ${AUDIT_SESSION}, then written findings within ${AUDIT_TURNAROUND}`,
   ],
-  cta: { label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL },
-  secondaryCta: { label: "Talk it through first", href: "/contact" },
-  note: "Paid up front. You keep the report whether or not we work together after.",
+  cta: AUDIT_CTA,
+  secondaryCta: CALL_CTA,
+  note: "You keep the findings whether or not we work together after.",
   tone: "light",
 };
 
@@ -66,7 +68,7 @@ export const buildOffer: Offer = {
     "Your crew trained on the parts they touch, in the tools they already use",
   ],
   cta: { label: "See what we connect", href: "/integrations" },
-  secondaryCta: { label: "Book a call", href: CALENDAR_URL },
+  secondaryCta: CALL_CTA,
   note: "Quoted off the audit's findings, so the number describes real work rather than a package.",
   tone: "light",
 };
@@ -86,7 +88,7 @@ export const embeddedOffer: Offer = {
     "A standing weekly working session and a monthly review of what shipped",
   ],
   cta: { label: "How embedding works", href: "/embedded" },
-  secondaryCta: { label: "Book a call", href: CALENDAR_URL },
+  secondaryCta: CALL_CTA,
   note: "No figure listed on purpose. Start with the audit and the scope writes itself.",
   tone: "teal",
 };
@@ -94,11 +96,34 @@ export const embeddedOffer: Offer = {
 export const offers: Offer[] = [auditOffer, buildOffer, embeddedOffer];
 
 /**
- * The two main offers, as the homepage and the nav present them. Integrations
+ * The three value pillars — what we actually sell, in one line each. Rendered
+ * by components/site/ValuePillars.tsx on the homepage and /integrations, so
+ * both pages always say the same three things.
+ *
+ * Not to be confused with `offerCards` below, which is the two-offer split
+ * (integrations / embedded). These are the pitch; those are the packaging.
+ */
+export const valuePillars: Array<{ title: string; desc: string }> = [
+  {
+    title: "Connect what you already bought.",
+    desc: "You are not short on software. You are short on software that talks. We start from the stack you already pay for and make it work as one system — not by replacing it, and not by selling you another login.",
+  },
+  {
+    title: "Embed, don't advise.",
+    desc: "We get into the business: the ride-alongs, the actual intake process, how the office really books a job, where the spreadsheet lives. Then we build. You get engineers in your operation, not a deck of recommendations you have to go implement.",
+  },
+  {
+    title: "Build the missing piece.",
+    desc: "Sometimes there is no integration to buy, because nobody built one for how your shop actually works. That is the part we write ourselves. Connecting off-the-shelf tools is where we start; custom is where we finish the job.",
+  },
+];
+
+/**
+ * The two main offers, as the homepage and /pricing present them. Integrations
  * is the front door; embedded is what it becomes when a business wants us to
  * keep owning it.
  */
-export const pillars: Array<{
+export const offerCards: Array<{
   title: string;
   desc: string;
   items: string[];
@@ -119,7 +144,7 @@ export const pillars: Array<{
   },
   {
     title: "Embedded engineering",
-    desc: "We show up in your business, own the stack, and keep shipping — forward-deployed, on a monthly engagement.",
+    desc: "We show up in your business, own the stack, and keep shipping, on a monthly engagement.",
     items: [
       "Time in the business before anything gets built",
       "One team responsible for the software and the vendors",

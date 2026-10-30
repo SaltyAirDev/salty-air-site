@@ -42,16 +42,20 @@ export const HERO_HEADLINE_ACCENT = "already pay for.";
 
 /**
  * The positioning line, directly under the hero headline and echoed in the
- * root metadata. Salty Air is an engineering shop that embeds: the integrations
- * are the offer, and the systems a business ends up with are what the
- * engagement produces.
+ * root metadata. Salty Air is an integrations shop that embeds: the
+ * integrations are the offer, and the systems a business ends up with are what
+ * the engagement produces.
+ *
+ * Plain trade and construction language only — "forward-deployed engineer",
+ * "FDE", and "fractional CTO" buy nothing with somebody running four trucks or
+ * three job sites, so none of them appear in copy anywhere on the site.
  */
 export const POSITIONING =
-  "Salty Air is a forward-deployed engineering and integrations shop. We embed with your business, wire the software you already run into one working stack, set up what is missing, and build custom where nothing fits.";
+  "Integrations and embedded engineering for trades, home services, and construction. We get in the business, connect the software you already run into one working stack, set up what was bought and never turned on, and build custom where nothing fits.";
 
 /** Short form of the above, for titles, OG eyebrows, and JSON-LD. */
 export const SERVICE_TYPE =
-  "Forward-deployed engineering and systems integration for trades, home services, and construction";
+  "Systems integration and embedded engineering for trades, home services, and construction";
 
 export const EMAIL = "hello@saltyair.co";
 export const LINKEDIN_URL = "https://www.linkedin.com/company/salty-air/";
@@ -60,13 +64,45 @@ export const LINKEDIN_URL = "https://www.linkedin.com/company/salty-air/";
 export const CALENDAR_URL = "https://calendar.app.google/ipYDWHD4YrQpLedJ9";
 
 /**
- * The one published price on the site, and the only dollar figure anywhere in
- * it. Builds and the embedded partnership are quoted off the back of this
- * audit — see QUOTED_AFTER_AUDIT and lib/offers.ts.
+ * The entry offer. One name site-wide — "Integration Audit", because the name
+ * states the deliverable — and one published price, the only dollar figure
+ * anywhere on the site. Builds and the embedded partnership are quoted off the
+ * back of this audit; see QUOTED_AFTER_AUDIT and lib/offers.ts.
  */
-export const AUDIT_NAME = "Business & Integration Audit";
+export const AUDIT_NAME = "Integration Audit";
 export const AUDIT_PRICE = "$499";
+
+/** The offer as it is named in copy: "$499 Integration Audit". */
+export const AUDIT_OFFER = `${AUDIT_PRICE} ${AUDIT_NAME}`;
+
+/**
+ * The audit page is the site's main conversion target: every primary CTA
+ * points here rather than straight at checkout, so a visitor meets the scope,
+ * the turnaround, and the fit questions before paying.
+ */
+export const AUDIT_PATH = "/audit";
+
+/** Primary CTA, used verbatim across the site. */
+export const AUDIT_CTA = {
+  label: `Book the ${AUDIT_OFFER}`,
+  href: AUDIT_PATH,
+} as const;
+
+/** Book-a-call CTA. Stays available everywhere alongside the audit. */
+export const CALL_CTA = { label: "Book a call", href: CALENDAR_URL } as const;
+
+/**
+ * Stripe payment link for the audit. Deliberately reached from /audit only —
+ * the page states what the $499 buys and how long it takes, and checkout sits
+ * under that as the second path for anyone who does not want a call first.
+ */
 export const AUDIT_CHECKOUT_URL = "https://buy.stripe.com/4gM5kC9zj2RCcpCa9fd7q0b";
+
+/** Written findings land this long after the working session. */
+export const AUDIT_TURNAROUND = "five business days";
+
+/** Length of the live working session the audit is built around. */
+export const AUDIT_SESSION = "60–90 minutes";
 
 /**
  * What every offer that is not the audit prints where a price would go. No

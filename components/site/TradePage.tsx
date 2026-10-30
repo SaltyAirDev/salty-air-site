@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Shell } from "@/components/site/Shell";
 import { PageHero } from "@/components/site/PageHero";
@@ -7,29 +6,29 @@ import { Section, Eyebrow, Heading } from "@/components/site/Section";
 import { TealBand } from "@/components/site/TealBand";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Button } from "@/components/ui/Button";
-import { getTrade, trades, tradeHref, CONSTRUCTION_PATH } from "@/lib/trades";
 import { backOfficeSystems } from "@/lib/offers";
+import { trades, tradeHref, GC_LABEL, GC_PATH, type Trade } from "@/lib/trades";
 import {
-  AUDIT_CHECKOUT_URL,
-  AUDIT_PRICE,
-  CALENDAR_URL,
+  AUDIT_CTA,
+  AUDIT_OFFER,
+  CALL_CTA,
   SERVICE_TYPE,
   SITE_URL,
   SLOGAN,
 } from "@/lib/site";
 
-type Params = { params: Promise<{ trade: string }> };
+/**
+ * The trade page, shared by every top-level trade route.
+ *
+ * Each trade is its own static route (`app/electricians/`, `app/plumbers/`,
+ * …) rather than one dynamic `[trade]` segment, because the pages now sit at
+ * the root and a root-level dynamic segment would shadow every other URL on
+ * the site. The content still comes from `lib/trades.ts`, so adding a trade is
+ * an entry there plus a four-line route file.
+ */
 
-/** All six trades are known at build time, so every page prerenders. */
-export function generateStaticParams() {
-  return trades.map((t) => ({ trade: t.slug }));
-}
-
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const { trade: slug } = await params;
-  const trade = getTrade(slug);
-  if (!trade) return {};
-
+/** Title, description, canonical and OG for one trade. */
+export function tradeMetadata(trade: Trade): Metadata {
   const canonical = `${SITE_URL}${tradeHref(trade.slug)}`;
   return {
     title: trade.title,
@@ -45,11 +44,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-export default async function TradePage({ params }: Params) {
-  const { trade: slug } = await params;
-  const trade = getTrade(slug);
-  if (!trade) notFound();
-
+export function TradePageView({ trade }: { trade: Trade }) {
   const others = trades.filter((t) => t.slug !== trade.slug);
 
   const jsonLd = {
@@ -62,6 +57,7 @@ export default async function TradePage({ params }: Params) {
         serviceType: SERVICE_TYPE,
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed: { "@type": "Country", name: "United States" },
+        audience: { "@type": "BusinessAudience", audienceType: trade.label },
         url: `${SITE_URL}${tradeHref(trade.slug)}`,
       },
       {
@@ -92,8 +88,8 @@ export default async function TradePage({ params }: Params) {
           headline={trade.headline}
           headlineAccent={trade.headlineAccent}
           sub={trade.sub}
-          primaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
-          secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
+          primaryCta={AUDIT_CTA}
+          secondaryCta={CALL_CTA}
           image={trade.image}
           imageAlt={trade.imageAlt}
           priority
@@ -125,11 +121,11 @@ export default async function TradePage({ params }: Params) {
                 How we connect a stack
               </Button>
               <Button
-                href="/pricing"
+                href={AUDIT_CTA.href}
                 variant="teal"
                 className="bg-transparent text-primary border border-primary/25 hover:bg-primary/5 hover:text-primary"
               >
-                See pricing
+                What the {AUDIT_OFFER} covers
               </Button>
             </div>
           </div>
@@ -210,16 +206,16 @@ export default async function TradePage({ params }: Params) {
               </Link>
             ))}
             <Link
-              href={CONSTRUCTION_PATH}
+              href={GC_PATH}
               className="rounded-full border border-primary/25 bg-white px-5 py-2.5 font-sans font-medium text-[15px] text-primary transition-colors hover:bg-primary hover:text-white"
             >
-              Construction
+              {GC_LABEL}
             </Link>
           </div>
         </Section>
 
         <CtaBand
-          sub={`${trade.sub.split(". ")[0]}. Start with the ${AUDIT_PRICE} audit, or book a call and we'll talk through your stack.`}
+          sub={`${trade.sub.split(". ")[0]}. Start with the ${AUDIT_OFFER}, or book a call and we'll talk through your stack.`}
         />
       </Shell>
     </>

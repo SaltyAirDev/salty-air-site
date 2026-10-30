@@ -1,6 +1,6 @@
 import { ogCard, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og";
 
-export const alt = "Salty Air — embedded forward-deployed engineering";
+export const alt = "Salty Air — embedded engineering for trades and construction";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
