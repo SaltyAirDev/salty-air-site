@@ -7,7 +7,7 @@
  */
 export const SITE_URL = "https://www.saltyair.co";
 
-/** Absolute URL for a site-relative path, e.g. url("/guide"). */
+/** Absolute URL for a site-relative path, e.g. url("/pricing"). */
 export const url = (path = "/") => `${SITE_URL}${path === "/" ? "" : path}`;
 
 /**
@@ -17,3 +17,30 @@ export const url = (path = "/") => `${SITE_URL}${path === "/" ? "" : path}`;
  * the reports.
  */
 export const GA_MEASUREMENT_ID = "G-S68DGJ996G";
+
+/**
+ * Anything that is not the production deployment gets noindex/nofollow, so
+ * preview branches never compete with www in the index. `VERCEL_ENV` is
+ * `production` | `preview` | `development`, and is simply absent locally —
+ * absent therefore has to count as "not production".
+ */
+export const IS_PRODUCTION = process.env.VERCEL_ENV === "production";
+
+/** The brand line. Primary on the homepage hero, CTA bands, footer, and OG. */
+export const SLOGAN = "Work Less. Live More. Automate.";
+
+export const EMAIL = "hello@saltyair.co";
+export const LINKEDIN_URL = "https://www.linkedin.com/company/salty-air/";
+
+/** Booking link used by every "book a call" CTA. */
+export const CALENDAR_URL = "https://calendar.app.google/ipYDWHD4YrQpLedJ9";
+
+/**
+ * The one published price on the site. The retainer is deliberately
+ * inquire-only — see lib/offers.ts.
+ */
+export const AUDIT_PRICE = "$499";
+export const AUDIT_CHECKOUT_URL = "https://buy.stripe.com/4gM5kC9zj2RCcpCa9fd7q0b";
+
+/** Romas's own shop — the case study subject. */
+export const SHS_URL = "https://www.saltyhomeservices.co";

@@ -12,6 +12,13 @@ const nextConfig = {
     return [
       // /business was the preview URL for what is now the homepage.
       { source: "/business", destination: "/", permanent: true },
+
+      // The pre-reposition routes. Law and the unlinked law guide fold into
+      // Other Work; construction's audience is now served by the homepage and
+      // the trade pages.
+      { source: "/guide", destination: "/other-work", permanent: true },
+      { source: "/industries/law", destination: "/other-work", permanent: true },
+      { source: "/industries/construction", destination: "/", permanent: true },
     ];
   },
 };
