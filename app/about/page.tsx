@@ -10,7 +10,7 @@ import { AUDIT_PRICE, SITE_URL, SLOGAN } from "@/lib/site";
 
 const TITLE = "About Salty Air & How We Work";
 const DESCRIPTION =
-  "Salty Air is a fractional CTO and operations partner for trade and home service businesses. Who we serve, what we build, and how an engagement actually runs.";
+  "Salty Air is a forward-deployed engineering and integrations shop for trades, home services, and construction. Who we serve, what we connect and build, and how an engagement actually runs.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -29,15 +29,15 @@ export const metadata: Metadata = {
 const principles = [
   {
     title: "We come to you",
-    desc: "Engagements start with our team in your business — on the phones, in the dispatch board, in the estimate folder. You should never have to explain your shop twice.",
+    desc: "Engagements start with our team in your business — on the phones, in the dispatch board, in the plan room, in the estimate folder. You should never have to explain your business twice.",
+  },
+  {
+    title: "We use what you already pay for",
+    desc: "Connecting the systems you own is the cheapest fix available, so it comes first. We only set up something new when there is a real gap, and we only build custom when nothing fits.",
   },
   {
     title: "You own everything",
-    desc: "Systems get built in accounts in your name, documented as we go. If we part ways, the back office keeps running and you keep the keys.",
-  },
-  {
-    title: "We stay on the hook",
-    desc: "Building it is the easy half. The retainer exists because somebody has to own the thing once the season turns and the crew changes.",
+    desc: "Systems get built in accounts in your name, documented as we go, with the source yours. If we part ways, the stack keeps running and you keep the keys.",
   },
   {
     title: "No numbers we haven't measured",
@@ -48,15 +48,15 @@ const principles = [
 const engagement = [
   {
     t: "Start with the audit",
-    d: `The ${AUDIT_PRICE} business audit is the normal first step. Forty-five minutes on how the shop runs today, then a written report on what is leaking and what to fix first. Yours either way.`,
+    d: `The ${AUDIT_PRICE} Business & Integration Audit is the normal first step. Forty-five minutes on every system in the business and how work moves between them, then a written plan. Yours either way.`,
   },
   {
-    t: "Move to the retainer",
-    d: "If it makes sense, we take on the fractional CTO and operations role monthly. We embed, agree what gets built first, build it, and then run it. Scope comes out of a conversation, not a package.",
+    t: "Connect and build",
+    d: "Then the work the audit found: the integrations between what you already run, the missing pieces set up, and custom builds where nothing off the shelf fits. Quoted off the plan.",
   },
   {
-    t: "Widen when ready",
-    d: "Add-ons — the back office systems and the data services — get layered on as the shop can absorb them. One partner across the lot, rather than four vendors and a spreadsheet.",
+    t: "Or embed with us",
+    d: "If you would rather not own any of it, we stay in the business monthly — the stack, the integrations, and the vendors on us, shipping continuously. One team instead of four vendors and a spreadsheet.",
   },
 ];
 
@@ -65,11 +65,11 @@ export default function AboutPage() {
     <Shell>
       <PageHero
         eyebrow={SLOGAN}
-        headline="The technology team your shop never"
+        headline="The engineering team your business never"
         headlineAccent="hired."
-        sub="Salty Air is a fractional CTO and operations partner for trade and home service businesses. We embed in the business, build the systems it needs, and run them. This is how that works."
+        sub="Salty Air is a forward-deployed engineering and integrations shop. We embed with a business, connect the systems it already pays for, set up what is missing, and build custom where nothing fits. This is how that works."
         primaryCta={{ label: "Get in touch", href: "/contact" }}
-        secondaryCta={{ label: "See the engagement", href: "/fractional-cto" }}
+        secondaryCta={{ label: "See what we connect", href: "/integrations" }}
         image="/brand/interior-plants.jpg"
         imageAlt="Warm, sunlit interior with plants"
         priority
@@ -78,20 +78,21 @@ export default function AboutPage() {
       <Section>
         <div className="max-w-3xl">
           <Eyebrow>Who we serve</Eyebrow>
-          <Heading>Trade and home service companies, run by the owner.</Heading>
+          <Heading>Trades, home services, and construction.</Heading>
           <div className="mt-6 flex flex-col gap-5 font-sans text-lg leading-relaxed text-body">
             <p>
-              Electricians, plumbers, HVAC contractors, handymen, general
-              contractors, roofers, and landscapers — from an owner-operator
-              with one truck to a shop running several crews. The common thread
-              is that the phone, the estimates, and the software all still land
-              on the owner.
+              Electricians, plumbers, HVAC contractors, handymen, roofers, and
+              landscapers — from an owner-operator with one truck to a shop
+              running several crews. And construction general contractors and
+              specialty subs, where the stack is bigger and messier and a job
+              runs for months.
             </p>
             <p>
-              We are based in Salt Lake and work with shops across the United
-              States. Trade and home services are the whole focus; a small
-              amount of inbound work outside that is handled case by case on
-              the Other Work page.
+              The common thread is that the software has become somebody&rsquo;s
+              second job, usually the owner&rsquo;s. We are based in Salt Lake
+              and work with businesses across the United States. A small amount
+              of inbound work outside those two audiences is handled case by
+              case on the Other Work page.
             </p>
           </div>
         </div>
@@ -125,7 +126,7 @@ export default function AboutPage() {
       <Section tone="sand">
         <div className="max-w-3xl">
           <Eyebrow>How engagements work</Eyebrow>
-          <Heading>Audit, retainer, add-ons.</Heading>
+          <Heading>Audit, build, or embed.</Heading>
         </div>
 
         <ol className="mt-12 grid md:grid-cols-3 gap-8">
@@ -149,13 +150,13 @@ export default function AboutPage() {
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           <div>
             <Eyebrow>Why it reads this way</Eyebrow>
-            <Heading>No agency translation layer.</Heading>
+            <Heading>No translation layer.</Heading>
             <div className="mt-6 flex flex-col gap-5 font-sans text-lg leading-relaxed text-body">
               <p>
                 You won&rsquo;t spend the first call explaining what a service
-                area is, why a panel upgrade quote is worth chasing, or how
-                dispatch actually works on a busy Tuesday. Our team works in
-                trade shops, not around them.
+                area is, why a panel upgrade quote is worth chasing, or what
+                happens to a change order that nobody priced. Our team works in
+                these businesses, not around them.
               </p>
               <p>
                 And you won&rsquo;t get a deck full of numbers borrowed from
@@ -164,8 +165,8 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="mt-9 flex flex-col sm:flex-row gap-3">
-              <Button href="/fractional-cto" variant="teal">
-                What we build and run
+              <Button href="/embedded" variant="teal">
+                What embedding means
               </Button>
               <Button
                 href="/case-studies/salty-home-services"
@@ -189,7 +190,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <CtaBand sub="If the shop sounds like yours, there's a good chance the fix is the same one." />
+      <CtaBand sub="If the stack sounds like yours, there's a good chance the fix is the same one." />
     </Shell>
   );
 }

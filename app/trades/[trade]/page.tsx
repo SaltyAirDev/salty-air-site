@@ -7,9 +7,16 @@ import { Section, Eyebrow, Heading } from "@/components/site/Section";
 import { TealBand } from "@/components/site/TealBand";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Button } from "@/components/ui/Button";
-import { getTrade, trades, tradeHref } from "@/lib/trades";
+import { getTrade, trades, tradeHref, CONSTRUCTION_PATH } from "@/lib/trades";
 import { backOfficeSystems } from "@/lib/offers";
-import { AUDIT_PRICE, CALENDAR_URL, SERVICE_TYPE, SITE_URL, SLOGAN } from "@/lib/site";
+import {
+  AUDIT_CHECKOUT_URL,
+  AUDIT_PRICE,
+  CALENDAR_URL,
+  SERVICE_TYPE,
+  SITE_URL,
+  SLOGAN,
+} from "@/lib/site";
 
 type Params = { params: Promise<{ trade: string }> };
 
@@ -85,28 +92,27 @@ export default async function TradePage({ params }: Params) {
           headline={trade.headline}
           headlineAccent={trade.headlineAccent}
           sub={trade.sub}
-          primaryCta={{ label: `Book a ${AUDIT_PRICE} audit`, href: "/pricing" }}
+          primaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
           secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
           image={trade.image}
           imageAlt={trade.imageAlt}
           priority
         />
 
-        {/* The partner angle first — the systems are what it produces */}
+        {/* Connect first — the systems we set up are what comes out of it */}
         <Section>
           <div className="max-w-3xl">
-            <Eyebrow>Partner first</Eyebrow>
+            <Eyebrow>Connect first</Eyebrow>
             <Heading>
-              A fractional CTO for {trade.label.toLowerCase()}, not another app
-              to log into.
+              We start with the systems {trade.label.toLowerCase()} already pay
+              for, not another app to log into.
             </Heading>
             <div className="mt-6 flex flex-col gap-5 font-sans text-lg leading-relaxed text-body">
               <p>
-                We take on the technology and operations role your shop has
-                grown into, on a monthly retainer. Our team embeds with you
-                first — on the phones, in the dispatch board, in the estimate
-                folder — then builds what is actually losing you work, and runs
-                it afterwards.
+                Housecall Pro or Jobber, the phone line, the CRM, QuickBooks,
+                the website form — you already pay for all of it. We wire them
+                together so a lead becomes a job without anyone retyping it,
+                then set up whatever is genuinely missing.
               </p>
               <p>
                 That order matters. Software handed to a busy shop with a login
@@ -115,8 +121,8 @@ export default async function TradePage({ params }: Params) {
               </p>
             </div>
             <div className="mt-9 flex flex-col sm:flex-row gap-3">
-              <Button href="/fractional-cto" variant="teal">
-                How the engagement works
+              <Button href="/integrations" variant="teal">
+                How we connect a stack
               </Button>
               <Button
                 href="/pricing"
@@ -159,7 +165,7 @@ export default async function TradePage({ params }: Params) {
               <span className="text-accent">{trade.label.toLowerCase()}.</span>
             </h2>
             <p className="mt-6 font-sans text-lg leading-relaxed text-white/80">
-              What the retainer produces for a shop like yours.
+              What a connected stack ends up doing for a shop like yours.
             </p>
           </div>
 
@@ -178,21 +184,21 @@ export default async function TradePage({ params }: Params) {
 
           <div className="mt-14 border-t border-white/15 pt-10">
             <p className="font-sans text-[15px] text-white/70">
-              Every retainer also covers{" "}
+              The full back office we build and connect:{" "}
               {backOfficeSystems.map((i) => i.title).join(" · ")}.
             </p>
             <div className="mt-7">
-              <Button href="/fractional-cto" variant="peach">
+              <Button href="/embedded" variant="peach">
                 See the first 30, 60, and 90 days
               </Button>
             </div>
           </div>
         </TealBand>
 
-        {/* Other trades */}
+        {/* Other industries */}
         <Section>
-          <Eyebrow>Other trades</Eyebrow>
-          <Heading>We build this for the rest of them too.</Heading>
+          <Eyebrow>Other industries</Eyebrow>
+          <Heading>We do this for the rest of them too.</Heading>
           <div className="mt-10 flex flex-wrap gap-3">
             {others.map((other) => (
               <Link
@@ -203,11 +209,17 @@ export default async function TradePage({ params }: Params) {
                 {other.label}
               </Link>
             ))}
+            <Link
+              href={CONSTRUCTION_PATH}
+              className="rounded-full border border-primary/25 bg-white px-5 py-2.5 font-sans font-medium text-[15px] text-primary transition-colors hover:bg-primary hover:text-white"
+            >
+              Construction
+            </Link>
           </div>
         </Section>
 
         <CtaBand
-          sub={`${trade.sub.split(". ")[0]}. Start with the ${AUDIT_PRICE} audit, or book a call and we'll scope the retainer.`}
+          sub={`${trade.sub.split(". ")[0]}. Start with the ${AUDIT_PRICE} audit, or book a call and we'll talk through your stack.`}
         />
       </Shell>
     </>

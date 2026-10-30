@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* ---- Locked brand palette (see /workspace/salty-air/brand/romas-palette.png) ---- */
+  /* ---- Locked brand palette, from the brand deck ---- */
   --color-background: #faf8f6; /* off-white page ground */
   --color-sand: #eadcc8;       /* soft surfaces */
   --color-seafoam: #c0dad0;    /* calm accent */
@@ -22,9 +22,10 @@
   --color-ink: #1f3133;  /* headings on off-white */
   --color-body: #41595b; /* body copy on off-white — 7.1:1 on background */
 
-  /* Montserrat headings, Poppins body — loaded in app/layout.tsx. */
-  --font-heading: var(--font-heading), "Montserrat", system-ui, sans-serif;
-  --font-sans: var(--font-sans), "Poppins", system-ui, sans-serif;
+  /* Montserrat site-wide, headings and body both — loaded once in
+     app/layout.tsx as --font-montserrat. */
+  --font-heading: var(--font-montserrat), "Montserrat", system-ui, sans-serif;
+  --font-sans: var(--font-montserrat), "Montserrat", system-ui, sans-serif;
 
   --radius-organic: 1.5rem;
 }

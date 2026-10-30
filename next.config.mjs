@@ -14,15 +14,19 @@ const nextConfig = {
       { source: "/business", destination: "/", permanent: true },
 
       // The pre-reposition routes. Law and the unlinked law guide fold into
-      // Other Work; construction's audience is now served by the homepage and
-      // the trade pages.
+      // Other Work; the old construction URL now has a real page to land on.
       { source: "/guide", destination: "/other-work", permanent: true },
       { source: "/industries/law", destination: "/other-work", permanent: true },
-      { source: "/industries/construction", destination: "/", permanent: true },
+      { source: "/industries/construction", destination: "/construction", permanent: true },
 
-      // The offer is a fractional CTO engagement now; the back office systems
-      // are what it produces. The old route is the one with inbound links.
-      { source: "/ai-back-office", destination: "/fractional-cto", permanent: true },
+      // The engagement is "embedded" now, in plain language. Both of the old
+      // offer URLs carry inbound links, so both land on it.
+      { source: "/fractional-cto", destination: "/embedded", permanent: true },
+      { source: "/ai-back-office", destination: "/embedded", permanent: true },
+
+      // Data services are no longer an offer. The route's inbound links go to
+      // the integrations page, which is where that work now lives.
+      { source: "/data-addons", destination: "/integrations", permanent: true },
     ];
   },
 };

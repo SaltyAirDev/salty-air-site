@@ -4,7 +4,7 @@ import { AUDIT_PRICE, EMAIL, SITE_URL } from "@/lib/site";
 
 const TITLE = "Terms of Service";
 const DESCRIPTION =
-  "The terms that apply to using www.saltyair.co and to engaging Salty Air for a business audit or a fractional CTO and operations retainer.";
+  "The terms that apply to using www.saltyair.co and to engaging Salty Air for an audit, an integration build, or an embedded engagement.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -75,18 +75,20 @@ const sections: LegalSection[] = [
     ),
   },
   {
-    heading: "The retainer",
+    heading: "Builds and embedded engagements",
     body: (
       <>
         <p>
-          The retainer is a monthly engagement whose scope and fee are agreed in
-          writing before work starts. No price for it is published on this site
-          — what it costs depends on your business, and we&rsquo;d rather quote
-          honestly than publish a figure we&rsquo;d have to renegotiate.
+          An integration build is a scope of work, and an embedded engagement
+          is monthly. Either way the scope and the fee are agreed in writing
+          before work starts, and both are quoted after the audit. No price for
+          either is published on this site — what they cost depends on your
+          business, and we&rsquo;d rather quote honestly than publish a figure
+          we&rsquo;d have to renegotiate.
         </p>
         <p>
-          Either of us can end a retainer with reasonable notice as set out in
-          the engagement. Work already delivered is payable; work not yet done
+          Either of us can end an engagement with reasonable notice as set out
+          in it. Work already delivered is payable; work not yet done
           isn&rsquo;t.
         </p>
       </>
@@ -109,7 +111,8 @@ const sections: LegalSection[] = [
     body: (
       <p>
         What we build sits on top of services such as Quo, Housecall Pro,
-        Jobber, Google, Stripe, and Apify. Those services have their own terms,
+        Jobber, ServiceTitan, Procore, QuickBooks, Google, and Stripe. Those
+        services have their own terms,
         their own pricing, and their own uptime. We&rsquo;re not responsible for
         their availability or for changes they make, though we&rsquo;ll work
         with you when something on their side changes.
@@ -176,7 +179,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terms of Service"
-      intro="The terms that apply to this site and to engaging Salty Air for an audit or a retainer."
+      intro="The terms that apply to this site and to engaging Salty Air for an audit, a build, or an embedded engagement."
       updated="October 2026"
       sections={sections}
     />

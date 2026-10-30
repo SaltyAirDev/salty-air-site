@@ -5,60 +5,54 @@ import { PageHero } from "@/components/site/PageHero";
 import { Section, Eyebrow, Heading } from "@/components/site/Section";
 import { TealBand } from "@/components/site/TealBand";
 import { OfferCards } from "@/components/site/OfferCards";
-import { AddOns } from "@/components/site/AddOns";
+import { Pillars } from "@/components/site/Pillars";
+import { SystemChips } from "@/components/site/Systems";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Faq } from "@/components/site/Faq";
 import { FaqJsonLd, type FaqItem } from "@/components/seo/FaqJsonLd";
 import { Button } from "@/components/ui/Button";
-import { trades, tradeHref } from "@/lib/trades";
-import { AUDIT_PRICE, CALENDAR_URL, POSITIONING, SHS_URL } from "@/lib/site";
+import { trades, tradeHref, CONSTRUCTION_PATH } from "@/lib/trades";
+import { integrationModes } from "@/lib/systems";
+import {
+  AUDIT_CHECKOUT_URL,
+  AUDIT_PRICE,
+  CALENDAR_URL,
+  HERO_HEADLINE,
+  HERO_HEADLINE_ACCENT,
+  POSITIONING,
+  SHS_URL,
+} from "@/lib/site";
 
 // Page metadata for `/` lives in app/layout.tsx, since it is the site-wide default.
 
-/** Embed, build, run — the short version of /fractional-cto. */
-const howWeWork = [
-  {
-    title: "We embed",
-    desc: "Our team spends time in your business first — on the phones, in the dispatch board, in the estimate folder. No proposal before we have seen the work.",
-  },
-  {
-    title: "We build",
-    desc: "Then we build what the shop is actually losing money on, in accounts you own. Small pieces that go live and get used.",
-  },
-  {
-    title: "We run it",
-    desc: "And we stay on the hook for it. Seasons turn, crews change, things break — owning that is the retainer.",
-  },
-];
-
 const faqItems: FaqItem[] = [
   {
-    q: "What is a fractional CTO for a trade business?",
-    a: "It is the technology and operations role your shop has grown into, filled part time. We make the decisions with you about the phone, the dispatch software, the site, and the subscriptions nobody can account for — then we build what is needed and keep it running. You get the function without carrying a salary for it.",
+    q: "What does Salty Air actually do?",
+    a: "We are a forward-deployed engineering and integrations shop. We embed with a business, connect the systems it already pays for so work stops falling between them, set up whatever is missing, and build custom where nothing off the shelf fits.",
+  },
+  {
+    q: "Do I have to switch off Housecall Pro, Jobber, ServiceTitan, or Procore?",
+    a: "No. You already pay for them and your people already know them. We build around the system you work off rather than replacing it, and we connect it to the phones, the CRM, the ledger, and the reporting.",
   },
   {
     q: "What does “embedded” actually mean?",
-    a: "That the people who build your systems are the people who sat in your shop and watched the work. We spend the first stretch of an engagement learning how calls, leads, and estimates really move before anything gets built. The industry calls it forward-deployed engineering; in practice it just means we come to you.",
+    a: "That the people who build your systems are the people who sat in your business and watched the work — and who are still on the hook once it is live. The industry calls it forward-deployed engineering; in practice it means we come to you.",
   },
   {
-    q: "What actually happens when I miss a call?",
-    a: "The caller gets a text back within seconds — not a voicemail beep. It comes from your number, says you're on a job, and gives them a way to book or describe what they need. If you'd rather a real conversation happen, the AI answering line picks up instead and takes the details.",
+    q: "Do you work with contractors as well as trade shops?",
+    a: "Both, from day one. A trade shop's problem is mostly the phone and the dispatch board; a general contractor's is a plan room, an estimating system, a project system, and a ledger that barely talk. Different stacks, same shop doing the work.",
   },
   {
-    q: "Do I have to switch off Housecall Pro or Jobber?",
-    a: "No. The point is that leads land in the system you already dispatch from. We build around Housecall Pro or Jobber rather than replacing them. If you run something else, tell us what and we'll work with it.",
+    q: `What does the ${AUDIT_PRICE} audit get me?`,
+    a: "Forty-five minutes mapping every system in the business and how work moves between them, then a written plan: what to connect, what to set up, what to build, and in what order. You keep the report whether or not you hire us afterwards.",
   },
   {
-    q: "What does the $499 audit get me?",
-    a: "A walkthrough of how calls, leads, and estimates move through your shop today, and a written report on what's leaking and what to fix first. You keep the report whether or not you hire us afterwards.",
+    q: "Why is the audit the only price on the site?",
+    a: "Because any other number here would be made up. What a build or an embedded engagement costs depends on how many systems are in play and how much of the work is new. The audit produces the scope, and the scope produces the number.",
   },
   {
-    q: "Why isn't the retainer price on the site?",
-    a: "Because it would be a made-up number. Scope depends on your call volume, crew size, and what you already run. Book a call, describe the shop, and you'll get a real number instead of a range you'd have to negotiate down from.",
-  },
-  {
-    q: "Do you work with businesses outside the trades?",
-    a: "Occasionally, and only inbound — a little law practice work and some embedded engineering for enterprise teams. That's on the Other Work page. The trades are what this is built for.",
+    q: "Do you work with businesses outside the trades and construction?",
+    a: "Occasionally, and only inbound — a little law practice work and some engineering alongside enterprise teams. That is on the Other Work page.",
   },
 ];
 
@@ -68,30 +62,96 @@ export default function Home() {
       <FaqJsonLd items={faqItems} />
       <Shell>
         <PageHero
-          eyebrow="Fractional CTO & ops partner for the trades"
-          headline="Work Less. Live More."
-          headlineAccent="Automate."
+          eyebrow="Forward-deployed engineering & integrations"
+          headline={HERO_HEADLINE}
+          headlineAccent={HERO_HEADLINE_ACCENT}
           sub={POSITIONING}
-          primaryCta={{ label: `Book a ${AUDIT_PRICE} audit`, href: "/pricing" }}
-          secondaryCta={{ label: "Ask about the retainer", href: "/contact" }}
+          primaryCta={{ label: "See what we connect", href: "/integrations" }}
+          secondaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
           image="/brand/hero-palms.jpg"
           imageAlt="Sun through a stand of palms"
           priority
           footnote="Salt Lake, UT"
         />
 
-        {/* Who it's for */}
+        {/* The two offers */}
+        <Section>
+          <div className="max-w-3xl">
+            <Eyebrow>Two ways we work</Eyebrow>
+            <Heading>Connect the stack, or let us run it.</Heading>
+            <p className="mt-6 font-sans text-lg leading-relaxed text-body">
+              Most engagements start with the integrations: the systems you
+              already pay for, wired together, with the missing pieces set up on
+              the way. Some become something bigger — us embedded in the
+              business, owning the whole stack and shipping every week.
+            </p>
+          </div>
+
+          <div className="mt-12">
+            <Pillars />
+          </div>
+        </Section>
+
+        {/* The stack we connect */}
+        <TealBand innerClassName="py-20 md:py-28">
+          <div className="max-w-3xl">
+            <span className="label-caps block font-sans text-accent">
+              The stack
+            </span>
+            <h2 className="mt-4 font-heading font-bold tracking-tight text-3xl md:text-[2.75rem] md:leading-[1.1]">
+              Connect. Set up.{" "}
+              <span className="text-accent">Build what is left.</span>
+            </h2>
+            <p className="mt-6 font-sans text-lg leading-relaxed text-white/80">
+              In that order, on purpose. Connecting what you already own is the
+              cheapest fix available, and most businesses have never had anyone
+              do it properly.
+            </p>
+          </div>
+
+          <ol className="mt-14 grid md:grid-cols-3 gap-8">
+            {integrationModes.map((mode, i) => (
+              <li key={mode.title}>
+                <span className="label-caps font-sans text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 font-heading font-semibold text-xl">
+                  {mode.title}
+                </h3>
+                <p className="mt-3 font-sans text-[15px] leading-relaxed text-white/80">
+                  {mode.desc}
+                </p>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-14 border-t border-white/15 pt-10">
+            <span className="label-caps block font-sans text-accent">
+              Systems we work in
+            </span>
+            <div className="mt-5">
+              <SystemChips />
+            </div>
+            <div className="mt-9">
+              <Button href="/integrations" variant="peach">
+                See how we connect a stack
+              </Button>
+            </div>
+          </div>
+        </TealBand>
+
+        {/* Who it's for — trades and construction, both */}
         <Section>
           <div className="max-w-3xl">
             <Eyebrow>Who this is for</Eyebrow>
             <Heading>
-              Shops where the owner is still the one answering the phone.
+              Businesses where the software has quietly become somebody&rsquo;s
+              second job.
             </Heading>
             <p className="mt-6 font-sans text-lg leading-relaxed text-body">
-              Electricians, plumbers, HVAC, handymen, GCs, roofers,
-              landscapers. Stop losing jobs to the voicemail — and stop being
-              the one who does the admin at nine at night. If the work gets
-              done on a ladder, this is built for you.
+              Trade and home services shops, and construction general
+              contractors and specialty subs. Both from day one, because both
+              run six systems that were never introduced to each other.
             </p>
           </div>
 
@@ -114,60 +174,40 @@ export default function Home() {
               </Link>
             ))}
           </div>
+
+          {/* Construction gets its own card: a GC's stack is a different shape. */}
+          <div className="mt-6 rounded-3xl border border-primary/15 bg-seafoam/20 p-8 md:p-10 grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <Eyebrow>Construction</Eyebrow>
+              <h3 className="mt-3 font-heading font-bold text-2xl text-ink">
+                General contractors &amp; specialty subs
+              </h3>
+              <p className="mt-4 font-sans text-[15px] leading-relaxed text-body">
+                Plan rooms, estimating, RFIs and submittals, change orders, job
+                cost to the ledger, and sub compliance — more systems than
+                anyone else runs and fewer of them connected.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 lg:justify-end">
+              <Button href={CONSTRUCTION_PATH} variant="teal">
+                Construction stacks
+              </Button>
+            </div>
+          </div>
         </Section>
-
-        {/* How we work — embed, build, run */}
-        <TealBand innerClassName="py-20 md:py-28">
-          <div className="max-w-3xl">
-            <span className="label-caps block font-sans text-accent">
-              How we work
-            </span>
-            <h2 className="mt-4 font-heading font-bold tracking-tight text-3xl md:text-[2.75rem] md:leading-[1.1]">
-              We embed in the business, then build and{" "}
-              <span className="text-accent">run the systems.</span>
-            </h2>
-            <p className="mt-6 font-sans text-lg leading-relaxed text-white/80">
-              Not an agency you brief and wait on. A partner inside the shop,
-              on a monthly retainer, responsible for the technology and the
-              back office so you can run the work.
-            </p>
-          </div>
-
-          <ol className="mt-14 grid md:grid-cols-3 gap-8">
-            {howWeWork.map((step, i) => (
-              <li key={step.title}>
-                <span className="label-caps font-sans text-accent">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-3 font-heading font-semibold text-xl">
-                  {step.title}
-                </h3>
-                <p className="mt-3 font-sans text-[15px] leading-relaxed text-white/80">
-                  {step.desc}
-                </p>
-              </li>
-            ))}
-          </ol>
-
-          <div className="mt-12">
-            <Button href="/fractional-cto" variant="peach">
-              See the first 30, 60, and 90 days
-            </Button>
-          </div>
-        </TealBand>
 
         {/* Case study callout — facts only, no metrics */}
         <Section tone="sand">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <Eyebrow>Case study</Eyebrow>
-              <Heading>A back office we built and still run.</Heading>
+              <Heading>A stack we built and still run.</Heading>
               <p className="mt-6 font-sans text-lg leading-relaxed text-body">
-                Salty Home Services is a Utah home services company. We built
-                and run its missed-call text-back and AI answering on Quo, the
-                Housecall Pro lead form, the estimate follow-up, the review
-                requests, the scheduling, and the SEO site — the same work
-                described on this page.
+                Salty Home Services is our own home services company. We built
+                and run its stack — missed-call text-back and AI answering on
+                Quo, web leads into Housecall Pro, the estimate follow-up, the
+                review requests, the scheduling, and the SEO site. The same work
+                described on this page, on a business that dispatches every day.
               </p>
               <div className="mt-9 flex flex-col sm:flex-row gap-3">
                 <Button href="/case-studies/salty-home-services" variant="teal">
@@ -199,29 +239,25 @@ export default function Home() {
         <Section>
           <div className="max-w-3xl">
             <Eyebrow>How to work with us</Eyebrow>
-            <Heading>An audit to start, a retainer to run.</Heading>
+            <Heading>An audit to start. Everything else quoted off it.</Heading>
             <p className="mt-6 font-sans text-lg leading-relaxed text-body">
-              A {AUDIT_PRICE} audit you can take and run yourself, or the
-              fractional CTO and ops retainer where we embed, build, and run
-              it. The add-ons sit on top of the retainer. No packages, no
-              tiers, no numbers invented to fill a table.
+              The {AUDIT_PRICE} audit is the only published price on this site.
+              It maps your stack and hands you a plan you could run yourself.
+              The build and the embedded engagement are quoted from that plan —
+              no packages, no tiers, no numbers invented to fill a table.
             </p>
           </div>
 
           <div className="mt-12">
             <OfferCards />
           </div>
-
-          <div className="mt-6">
-            <AddOns />
-          </div>
         </Section>
 
         <Faq items={faqItems} />
 
         <CtaBand
-          sub={`Book the ${AUDIT_PRICE} audit, or book a call and we'll scope the retainer around how your shop actually runs.`}
-          primaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: "/pricing" }}
+          sub={`Book the ${AUDIT_PRICE} audit and you'll have the map of your own stack, or book a call and describe it to us first.`}
+          primaryCta={{ label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL }}
           secondaryCta={{ label: "Book a call", href: CALENDAR_URL }}
         />
       </Shell>

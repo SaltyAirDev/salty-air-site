@@ -1,14 +1,14 @@
 import { Grain } from "@/components/brand/Grain";
 import { Button } from "@/components/ui/Button";
-import { AUDIT_PRICE, CALENDAR_URL } from "@/lib/site";
+import { AUDIT_CHECKOUT_URL, AUDIT_PRICE, CALENDAR_URL } from "@/lib/site";
 
 /**
  * Closing band on every page. Pushes the brand line one more time, with
  * `Automate.` in peach the way the deck sets accent words.
  */
 export function CtaBand({
-  sub = "Book the $499 audit, or book a call and we'll talk through what the retainer would cover for your shop.",
-  primaryCta = { label: `Book the ${AUDIT_PRICE} audit`, href: "/pricing" },
+  sub = `Book the ${AUDIT_PRICE} audit, or book a call and we'll talk through what is actually in your stack.`,
+  primaryCta = { label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_CHECKOUT_URL },
   secondaryCta = { label: "Book a call", href: CALENDAR_URL },
 }: {
   sub?: string;

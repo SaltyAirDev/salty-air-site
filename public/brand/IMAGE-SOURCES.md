@@ -1,6 +1,6 @@
 # Image sources (preview redesign)
 
-## From Romas's Salty Air Canva deck (owned)
+## From the Salty Air brand deck (owned)
 - `/brand/hero-palms.jpg` — deck extract
 - `/brand/beach-aerial.jpg` — deck extract
 - `/brand/interior-plants.jpg` — deck extract

@@ -15,7 +15,7 @@ import {
 
 const TITLE = "Contact";
 const DESCRIPTION =
-  "Tell us how your shop runs, or book a call. Salty Air is a fractional CTO and operations partner for trade and home service businesses.";
+  "Tell us what systems you run, or book a call. Salty Air is a forward-deployed engineering and integrations shop for trades, home services, and construction.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -35,9 +35,9 @@ export default function ContactPage() {
     <Shell>
       <PageHero
         eyebrow={SLOGAN}
-        headline="Tell us how the shop runs"
+        headline="Tell us what you run"
         headlineAccent="today."
-        sub="Audit, retainer, or just a question — the more you tell us about how the shop runs and what you dispatch from, the more useful the first conversation is."
+        sub="Audit, a build, an embedded engagement, or just a question — the more you tell us about the systems you already run, the more useful the first conversation is."
         primaryCta={{ label: "Book a call instead", href: CALENDAR_URL }}
       />
 
@@ -53,8 +53,8 @@ export default function ContactPage() {
                 Rather just talk?
               </h2>
               <p className="mt-3 font-sans text-[15px] leading-relaxed text-body">
-                Grab a slot on the calendar. No prep needed — bring how many
-                calls you miss in a week and what you dispatch from.
+                Grab a slot on the calendar. No prep needed — bring the list of
+                what you pay for and where work keeps falling between it.
               </p>
               <div className="mt-6">
                 <Button href={CALENDAR_URL} variant="teal">
@@ -68,8 +68,8 @@ export default function ContactPage() {
                 Ready for the audit?
               </h2>
               <p className="mt-3 font-sans text-[15px] leading-relaxed text-white/85">
-                The {AUDIT_PRICE} business audit maps where your shop is losing
-                work and hands you a written plan. Book it directly.
+                The {AUDIT_PRICE} audit maps every system in the business and
+                hands you a written plan. Book it directly.
               </p>
               <div className="mt-6">
                 <Button href={AUDIT_CHECKOUT_URL} variant="peach">

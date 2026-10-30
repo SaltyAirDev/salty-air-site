@@ -7,7 +7,7 @@ import { EMAIL, SITE_URL, SLOGAN } from "@/lib/site";
 
 const TITLE = "Other Work";
 const DESCRIPTION =
-  "Salty Air is a fractional CTO and operations partner for the trades. A small amount of inbound work outside that — law practices and embedded engineering for enterprise teams — is handled case by case.";
+  "Salty Air is a forward-deployed engineering and integrations shop for trades, home services, and construction. A small amount of inbound work outside that — law practices and enterprise engineering teams — is handled case by case.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,9 +27,9 @@ export default function OtherWorkPage() {
     <Shell>
       <PageHero
         eyebrow={SLOGAN}
-        headline="Not a trade shop? Read this"
+        headline="Not a trade shop or a contractor? Read this"
         headlineAccent="first."
-        sub="Trade and home service businesses are what Salty Air is built for. A little work outside that still comes in, and our team takes it on case by case."
+        sub="Trades, home services, and construction are what Salty Air is built for. A little work outside that still comes in, and our team takes it on case by case."
         primaryCta={{ label: "Get in touch", href: "/contact" }}
       />
 
@@ -51,15 +51,15 @@ export default function OtherWorkPage() {
             </h2>
             <p className="mt-4 font-sans text-[15px] leading-relaxed text-body">
               Intake, conflict checks, matter management, and document drafting
-              — the same operations work as a trade shop, with the paperwork
-              swapped out. We built this before the trade focus and still take
-              it on when a practice asks.
+              — the same integration work, with the paperwork swapped out. We
+              built this before the current focus and still take it on when a
+              practice asks.
             </p>
           </div>
 
           <div className="rounded-3xl border border-primary/15 bg-white p-8">
             <h2 className="font-heading font-bold text-2xl text-ink">
-              Embedded engineering
+              Enterprise engineering
             </h2>
             <p className="mt-4 font-sans text-[15px] leading-relaxed text-body">
               Enterprise teams occasionally bring our team in to build
@@ -72,8 +72,8 @@ export default function OtherWorkPage() {
 
         <p className="mt-10 max-w-3xl font-sans text-[15px] leading-relaxed text-body/80">
           Everything else on this site — the pricing, the case study, the trade
-          pages — describes the trade and home service work. If you&rsquo;re
-          here for one of the two above, email{" "}
+          and construction pages — describes that work. If you&rsquo;re here for
+          one of the two above, email{" "}
           <a
             href={`mailto:${EMAIL}`}
             className="text-primary underline underline-offset-4 hover:text-burnt transition-colors"
@@ -85,7 +85,7 @@ export default function OtherWorkPage() {
       </Section>
 
       <CtaBand
-        sub="Trade shop after all? The audit and the retainer are both on the pricing page."
+        sub="Trade shop or contractor after all? The audit is on the pricing page."
       />
     </Shell>
   );

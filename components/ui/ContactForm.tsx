@@ -5,15 +5,14 @@ import { EMAIL } from "@/lib/site";
 
 type Status = "idle" | "sending" | "success" | "error";
 
-/** Interests a trade owner would actually pick. */
+/** Interests an owner would actually pick. The audit is the only priced one. */
 export const CONTACT_INTERESTS = [
-  "Business Audit ($499)",
-  "Fractional CTO & ops retainer",
-  "AI back office systems",
+  "Business & Integration Audit ($499)",
+  "Connecting the systems we already run",
+  "Setting up something we're missing",
+  "A custom build",
+  "Embedded engineering engagement",
   "Missed-call text-back / AI answering",
-  "Lead routing into Housecall Pro or Jobber",
-  "SEO website",
-  "Data services — Local Leads / Reddit lead finder",
   "Something else",
 ];
 
@@ -167,13 +166,13 @@ export function ContactForm() {
 
       <div className="md:col-span-2">
         <label htmlFor="cf-message" className={labelClass}>
-          How does the shop run today? *
+          What systems do you run today? *
         </label>
         <textarea
           id="cf-message"
           required
           rows={5}
-          placeholder="How many calls you miss in a week, what you dispatch from, who answers the phone, and what you'd most like off your plate…"
+          placeholder="What you dispatch or run projects from, what you do accounting in, who answers the phone, and where work keeps falling between them…"
           value={form.message}
           onChange={set("message")}
           className={`${inputClass} resize-none`}

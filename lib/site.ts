@@ -26,20 +26,32 @@ export const GA_MEASUREMENT_ID = "G-S68DGJ996G";
  */
 export const IS_PRODUCTION = process.env.VERCEL_ENV === "production";
 
-/** The brand line. Primary on the homepage hero, CTA bands, footer, and OG. */
+/**
+ * The brand line. It is deliberately **not** the homepage hero — the front
+ * door sells the capability, not the mood. It still carries the trade and
+ * construction pages, the CTA band, and the footer.
+ */
 export const SLOGAN = "Work Less. Live More. Automate.";
 
 /**
- * The positioning line, directly under the slogan on the homepage and echoed
- * in the root metadata. Salty Air is a partner, not a software vendor: the
- * systems are what the partnership produces, not the thing being sold.
+ * The homepage hero headline, split so the closing phrase renders in peach the
+ * way the deck sets accent words.
+ */
+export const HERO_HEADLINE = "We connect the systems you";
+export const HERO_HEADLINE_ACCENT = "already pay for.";
+
+/**
+ * The positioning line, directly under the hero headline and echoed in the
+ * root metadata. Salty Air is an engineering shop that embeds: the integrations
+ * are the offer, and the systems a business ends up with are what the
+ * engagement produces.
  */
 export const POSITIONING =
-  "Your fractional CTO & operations partner for the trades. We embed, build, and run the systems so you can run the work.";
+  "Salty Air is a forward-deployed engineering and integrations shop. We embed with your business, wire the software you already run into one working stack, set up what is missing, and build custom where nothing fits.";
 
 /** Short form of the above, for titles, OG eyebrows, and JSON-LD. */
 export const SERVICE_TYPE =
-  "Fractional CTO and operations partner for trade and home service businesses";
+  "Forward-deployed engineering and systems integration for trades, home services, and construction";
 
 export const EMAIL = "hello@saltyair.co";
 export const LINKEDIN_URL = "https://www.linkedin.com/company/salty-air/";
@@ -48,12 +60,20 @@ export const LINKEDIN_URL = "https://www.linkedin.com/company/salty-air/";
 export const CALENDAR_URL = "https://calendar.app.google/ipYDWHD4YrQpLedJ9";
 
 /**
- * The one published price on the site. The retainer — the headline offer — is
- * deliberately inquire-only, and the add-ons carry no figure at all. See
- * lib/offers.ts.
+ * The one published price on the site, and the only dollar figure anywhere in
+ * it. Builds and the embedded partnership are quoted off the back of this
+ * audit — see QUOTED_AFTER_AUDIT and lib/offers.ts.
  */
+export const AUDIT_NAME = "Business & Integration Audit";
 export const AUDIT_PRICE = "$499";
 export const AUDIT_CHECKOUT_URL = "https://buy.stripe.com/4gM5kC9zj2RCcpCa9fd7q0b";
 
-/** The Utah home services company whose back office we built and run. */
+/**
+ * What every offer that is not the audit prints where a price would go. No
+ * ranges, no "starting at", no monthly bands — a scope comes out of the audit,
+ * and the number comes out of the scope.
+ */
+export const QUOTED_AFTER_AUDIT = "Quoted after the audit";
+
+/** Our own home services company, whose stack we built and run. */
 export const SHS_URL = "https://www.saltyhomeservices.co";

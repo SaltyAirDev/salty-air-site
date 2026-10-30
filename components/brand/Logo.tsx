@@ -2,7 +2,7 @@ import Image from "next/image";
 import { cn } from "@/lib/cn";
 
 /**
- * Palm + tall condensed SALTYAIR, from Romas's Canva deck.
+ * Palm + tall condensed SALTYAIR, from the brand deck.
  *
  * Two colourways: `white` for teal bands, `teal` for off-white surfaces. The
  * `-lg` files are the same artwork at 2× for the footer and hero lockups.

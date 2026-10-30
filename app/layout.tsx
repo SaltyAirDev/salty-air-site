@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Montserrat, Poppins } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import {
+  AUDIT_NAME,
   AUDIT_PRICE,
   EMAIL,
   GA_MEASUREMENT_ID,
@@ -12,24 +13,20 @@ import {
   SITE_URL,
   SLOGAN,
 } from "@/lib/site";
-import { backOfficeSystems, dataServices, retainerOffer } from "@/lib/offers";
+import { buildOffer, embeddedOffer } from "@/lib/offers";
+import { allSystems } from "@/lib/systems";
 
-// Montserrat is variable, so it needs no explicit weights. Poppins is not —
-// every weight we use has to be listed or it won't be bundled.
+// Montserrat site-wide, headings and body both. It is a variable font, so no
+// explicit weight list is needed — globals.css points --font-heading and
+// --font-sans at this one variable.
 const montserrat = Montserrat({
-  variable: "--font-heading",
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
-const poppins = Poppins({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const TITLE = "Fractional CTO & Ops Partner for the Trades | Salty Air";
+const TITLE = "Forward-Deployed Engineering & Integrations | Salty Air";
 const DESCRIPTION =
-  "Work Less. Live More. Automate. Salty Air is a fractional CTO and operations partner for trade and home service businesses — we embed in your shop, then build and run the AI back office: missed-call text-back, AI answering, lead routing into Housecall Pro or Jobber, estimate follow-up, review requests, and an SEO site.";
+  "We connect the systems you already pay for. Salty Air is a forward-deployed engineering and integrations shop for trades, home services, and construction — we embed with your business, wire your field service, CRM, accounting, phones, and data into one working stack, set up what is missing, and build custom where nothing fits.";
 
 export const metadata: Metadata = {
   // `%s` is filled by each page's own title; `/` uses the default.
@@ -45,17 +42,17 @@ export const metadata: Metadata = {
   publisher: "Salty Air",
   category: "technology",
   keywords: [
-    "fractional CTO for trades",
-    "fractional CTO for contractors",
+    "systems integration for contractors",
     "forward deployed engineering",
+    "embedded engineering team",
+    "Housecall Pro integration",
+    "Jobber integration",
+    "ServiceTitan integration",
+    "QuickBooks integration for contractors",
+    "Procore integration",
+    "custom software for trades",
     "AI back office for trades",
-    "missed call text back for contractors",
-    "AI answering service for plumbers",
-    "Housecall Pro automation",
-    "Jobber lead automation",
-    "estimate follow up software",
-    "review requests for contractors",
-    "home service business operations partner",
+    "construction software integration",
   ],
   // Preview and local builds must never compete with www in the index.
   robots: IS_PRODUCTION
@@ -91,16 +88,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Exactly two offers are published anywhere on the site, so exactly two
-  // appear here — see lib/offers.ts. The retainer, which is the headline
-  // offer, carries no price on purpose, and neither do the add-ons.
+  // The audit is the only priced offer on the site, so it is the only Offer
+  // here carrying a `price`. The build and the embedded partnership are quoted
+  // after the audit — see lib/offers.ts — so they appear with a description and
+  // no figure of any kind.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${SITE_URL}/#organization`,
     name: "Salty Air",
     description:
-      "Fractional CTO and operations partner for trade and home service businesses. We embed in the business, then build and run the AI back office — missed-call text-back, AI answering, lead routing, estimate follow-up, review requests, CRM and scheduling, and SEO websites.",
+      "Forward-deployed engineering and integrations shop. We embed with a business, connect the systems it already pays for — field service, CRM, accounting, phones, email, and data — set up what is missing, and build custom where nothing fits.",
     url: SITE_URL,
     logo: `${SITE_URL}/brand/logo-saltyair-teal-lg.png`,
     image: `${SITE_URL}/brand/logo-saltyair-teal-lg.png`,
@@ -112,13 +110,13 @@ export default function RootLayout({
     audience: {
       "@type": "BusinessAudience",
       audienceType:
-        "Trade and home service businesses — electricians, plumbers, HVAC, handymen, general contractors, roofers, landscapers",
+        "Trade and home service businesses — electricians, plumbers, HVAC, handymen, roofers, landscapers — and construction general contractors and specialty subcontractors",
     },
     knowsAbout: [
-      "Fractional CTO",
+      "Systems integration",
       "Forward-deployed engineering",
-      ...backOfficeSystems.map((i) => i.title),
-      ...dataServices.map((i) => i.title),
+      "Custom software development",
+      ...allSystems,
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -128,17 +126,28 @@ export default function RootLayout({
           "@type": "Offer",
           priceCurrency: "USD",
           price: AUDIT_PRICE.replace("$", ""),
-          itemOffered: { "@type": "Service", name: "Business Audit" },
+          itemOffered: { "@type": "Service", name: AUDIT_NAME },
         },
         {
           "@type": "Offer",
-          // No price: the retainer is inquire-only.
+          // No price: quoted after the audit.
           availability: "https://schema.org/InStock",
           itemOffered: {
             "@type": "Service",
-            name: retainerOffer.name,
+            name: buildOffer.name,
             description:
-              "A fractional CTO and operations partner on a monthly retainer. We embed in the business, build the systems it needs, and run them. Add-ons: the AI back office systems, and the Local Leads and Reddit lead finder data services.",
+              "Integration and build work scoped from the audit: the systems you already pay for connected, whatever is missing set up, and custom builds where nothing off the shelf fits.",
+          },
+        },
+        {
+          "@type": "Offer",
+          // No price: quoted after the audit.
+          availability: "https://schema.org/InStock",
+          itemOffered: {
+            "@type": "Service",
+            name: embeddedOffer.name,
+            description:
+              "A forward-deployed engineering team embedded in the business, owning the stack and shipping continuously on a monthly engagement.",
           },
         },
       ],
@@ -146,10 +155,7 @@ export default function RootLayout({
   };
 
   return (
-    <html
-      lang="en"
-      className={`${montserrat.variable} ${poppins.variable} antialiased`}
-    >
+    <html lang="en" className={`${montserrat.variable} antialiased`}>
       <head>
         <script
           type="application/ld+json"

@@ -1,12 +1,18 @@
 /**
- * The trade verticals. Drives /trades/[trade], the nav dropdown, the footer
- * column, the sitemap, and each page's OG card — add an entry and the route
- * exists everywhere with no other edits.
+ * The trade verticals. Drives /trades/[trade], the Industries dropdown, the
+ * footer column, the sitemap, and each page's OG card — add an entry and the
+ * route exists everywhere with no other edits.
+ *
+ * Construction is the other audience we serve from day one, but a GC's stack
+ * is different enough that it gets its own hand-written page at /construction
+ * rather than an entry in this list. It still joins these in the dropdown and
+ * the footer via `industryLinks` below.
  *
  * Copy rule: the trade line is a *supporting* subhead. The brand line
  * ("Work Less. Live More. Automate.") stays the eyebrow on every one of these
  * pages, so a trade page never reads as a separate brand. The page itself
- * leads with the fractional CTO / partner angle; the systems come after it.
+ * leads with connecting the stack the shop already runs; the systems we set up
+ * come after it.
  */
 
 export type Trade = {
@@ -33,9 +39,9 @@ export const trades: Trade[] = [
   {
     slug: "electricians",
     label: "Electricians",
-    title: "Fractional CTO & AI Back Office for Electricians",
+    title: "Systems Integration & AI Back Office for Electricians",
     description:
-      "A fractional CTO and operations partner for electrical shops: we embed, then build and run the missed-call text-back, AI answering, lead routing into Housecall Pro or Jobber, estimate follow-up, and review requests.",
+      "We connect the systems an electrical shop already pays for — Housecall Pro or Jobber, the phones, the CRM, QuickBooks — then set up what is missing: missed-call text-back, AI answering, estimate follow-up, and review requests.",
     headline: "The panel upgrade call you missed is already someone else's",
     headlineAccent: "job.",
     sub: "You're in a crawlspace with your hands full. The phone rings, goes to voicemail, and the homeowner calls the next electrician on the list. That's the whole problem, and it's fixable.",
@@ -69,9 +75,9 @@ export const trades: Trade[] = [
   {
     slug: "plumbers",
     label: "Plumbers",
-    title: "Fractional CTO & AI Back Office for Plumbers",
+    title: "Systems Integration & AI Back Office for Plumbers",
     description:
-      "A fractional CTO and operations partner for plumbing shops: we embed, then build and run the missed-call text-back, AI answering, lead routing into Housecall Pro or Jobber, estimate follow-up, and review requests.",
+      "We connect the systems a plumbing shop already pays for — Housecall Pro or Jobber, the phones, the CRM, QuickBooks — then set up what is missing: missed-call text-back, AI answering, estimate follow-up, and review requests.",
     headline: "Emergency calls don't wait for you to get back to the",
     headlineAccent: "truck.",
     sub: "A burst line is the one call a homeowner will absolutely make twice — to you, and to whoever answers first. Make sure that's you, even when both your hands are on a wrench.",
@@ -105,9 +111,9 @@ export const trades: Trade[] = [
   {
     slug: "hvac",
     label: "HVAC",
-    title: "Fractional CTO & AI Back Office for HVAC",
+    title: "Systems Integration & AI Back Office for HVAC",
     description:
-      "A fractional CTO and operations partner for HVAC shops: we embed, then build and run the missed-call text-back, AI answering, lead routing into Housecall Pro or Jobber, estimate follow-up, and review requests.",
+      "We connect the systems an HVAC shop already pays for — Housecall Pro, Jobber, or ServiceTitan, the phones, the CRM, QuickBooks — then set up what is missing: missed-call text-back, AI answering, quote follow-up, and maintenance outreach.",
     headline: "The first heat wave books out whoever answers the phone",
     headlineAccent: "first.",
     sub: "Your season is decided in a handful of weeks. When every call matters most is exactly when your crews are too busy to pick up.",
@@ -141,9 +147,9 @@ export const trades: Trade[] = [
   {
     slug: "handyman",
     label: "Handyman",
-    title: "Fractional CTO & AI Back Office for Handymen",
+    title: "Systems Integration & AI Back Office for Handymen",
     description:
-      "A fractional CTO and operations partner for handyman businesses: we embed, then build and run the missed-call text-back, AI answering, lead routing into Housecall Pro or Jobber, estimate follow-up, and review requests.",
+      "We connect the systems a handyman business already pays for — Housecall Pro or Jobber, the phones, the calendar, QuickBooks — then set up what is missing: missed-call text-back, AI answering, quote follow-up, and review requests.",
     headline: "You are the crew, the dispatcher, and the office",
     headlineAccent: "manager.",
     sub: "Small jobs, lots of them, and every one needs a call, a quote, and a follow-up. The admin is the bottleneck, and it's all landing on you.",
@@ -177,9 +183,9 @@ export const trades: Trade[] = [
   {
     slug: "roofers",
     label: "Roofers",
-    title: "Fractional CTO & AI Back Office for Roofers",
+    title: "Systems Integration & AI Back Office for Roofers",
     description:
-      "A fractional CTO and operations partner for roofing companies: we embed, then build and run the missed-call text-back, AI answering, lead routing into Housecall Pro or Jobber, estimate follow-up, and review requests.",
+      "We connect the systems a roofing company already pays for — Housecall Pro or Jobber, the phones, the CRM, QuickBooks — then set up what is missing: missed-call text-back, AI answering, bid follow-up, and review requests.",
     headline: "After a storm, the only roofer who matters is the one who picks",
     headlineAccent: "up.",
     sub: "Storm work arrives in a flood and leaves just as fast. If the calls stack up in voicemail, the season moves to the next company on the list.",
@@ -213,9 +219,9 @@ export const trades: Trade[] = [
   {
     slug: "landscapers",
     label: "Landscapers",
-    title: "Fractional CTO & AI Back Office for Landscapers",
+    title: "Systems Integration & AI Back Office for Landscapers",
     description:
-      "A fractional CTO and operations partner for landscaping companies: we embed, then build and run the missed-call text-back, AI answering, lead routing into Housecall Pro or Jobber, estimate follow-up, and review requests.",
+      "We connect the systems a landscaping company already pays for — Housecall Pro or Jobber, the phones, the CRM, QuickBooks — then set up what is missing: missed-call text-back, AI answering, bid follow-up, and renewal outreach.",
     headline: "Spring signups decide the whole year, and they all come in at",
     headlineAccent: "once.",
     sub: "Maintenance contracts, cleanups, and install bids all land in the same few weeks — while your crews are already out and the phone is ringing in an empty office.",
@@ -257,3 +263,15 @@ export const tradeLinks = trades.map((t) => ({
   label: t.label,
   href: tradeHref(t.slug),
 }));
+
+/** The GC / specialty-sub page. Hand-written, so it is a route not a registry entry. */
+export const CONSTRUCTION_PATH = "/construction";
+
+/**
+ * Everything in the Industries dropdown and the footer's Industries column:
+ * the six trades, then construction. Both audiences from day one.
+ */
+export const industryLinks = [
+  ...tradeLinks,
+  { label: "Construction", href: CONSTRUCTION_PATH },
+];

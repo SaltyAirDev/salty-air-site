@@ -1,7 +1,7 @@
 import { ogCard, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og";
 import { getTrade, trades } from "@/lib/trades";
 
-export const alt = "Salty Air — fractional CTO & AI back office for the trades";
+export const alt = "Salty Air — systems integration & AI back office for the trades";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
@@ -19,8 +19,8 @@ export default async function OpengraphImage({
   const trade = getTrade(slug);
 
   return ogCard({
-    eyebrow: trade ? `Fractional CTO · ${trade.label}` : "Fractional CTO for the trades",
-    line1: "We embed, we build,",
-    line2: "we run it.",
+    eyebrow: trade ? `Integrations · ${trade.label}` : "Integrations for the trades",
+    line1: "We connect the systems",
+    line2: "you already pay for.",
   });
 }

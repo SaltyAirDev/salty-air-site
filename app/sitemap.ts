@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
-import { tradeHref, trades } from "@/lib/trades";
+import { CONSTRUCTION_PATH, tradeHref, trades } from "@/lib/trades";
 
 const BASE = SITE_URL;
 
@@ -9,8 +9,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes: MetadataRoute.Sitemap = [
     { url: BASE, changeFrequency: "weekly", priority: 1 },
-    { url: `${BASE}/fractional-cto`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/integrations`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/embedded`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/pricing`, changeFrequency: "monthly", priority: 0.9 },
+    {
+      url: `${BASE}${CONSTRUCTION_PATH}`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     ...trades.map((trade) => ({
       url: `${BASE}${tradeHref(trade.slug)}`,
       changeFrequency: "monthly" as const,
@@ -21,7 +27,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    { url: `${BASE}/data-addons`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/about`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/contact`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/other-work`, changeFrequency: "yearly", priority: 0.3 },

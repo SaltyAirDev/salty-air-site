@@ -35,8 +35,9 @@ const sections: LegalSection[] = [
       <>
         <p>
           Salty Air (&ldquo;Salty Air&rdquo;, &ldquo;we&rdquo;,
-          &ldquo;us&rdquo;) builds and operates AI back-office systems for trade
-          and home service businesses. This policy covers{" "}
+          &ldquo;us&rdquo;) connects, sets up, and builds the systems that
+          trade, home services, and construction businesses run on. This policy
+          covers{" "}
           <span className="whitespace-nowrap">www.saltyair.co</span> and the
           enquiries we receive through it.
         </p>
@@ -79,8 +80,9 @@ const sections: LegalSection[] = [
       <>
         <p>
           To reply to your enquiry, to deliver work you&rsquo;ve engaged us for,
-          and to keep a record of our correspondence. If you ask about the audit
-          or the retainer, we&rsquo;ll follow up about it.
+          and to keep a record of our correspondence. If you ask about the
+          audit, a build, or an embedded engagement, we&rsquo;ll follow up
+          about it.
         </p>
         <p>
           We do not sell your information, and we do not add you to a marketing
