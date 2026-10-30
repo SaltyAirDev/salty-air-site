@@ -86,6 +86,56 @@ const deliverables = [
   },
 ];
 
+/**
+ * The same five deliverables as above, cut to a line each for the hero card.
+ * The long-form section below is the source of truth; this is the glance
+ * version a visitor reads before scrolling, so the two must stay in step.
+ */
+const heroDeliverables = [
+  "Systems inventory",
+  "Double-entry and integration map",
+  "Top three to five priority connections",
+  `Written findings and a working session of ${AUDIT_SESSION}`,
+  `Delivered in ${AUDIT_TURNAROUND}`,
+];
+
+/**
+ * Fills the right half of the hero on desktop, where a photograph sits on the
+ * other pages. A translucent card on the teal band rather than a solid one —
+ * the grain reads through it, so it belongs to the band instead of covering
+ * it. Drops below the copy on mobile (see PageHero's `aside`).
+ */
+function HeroDeliverablesCard() {
+  return (
+    <div className="rounded-3xl border border-white/20 bg-white/[0.07] p-8 md:p-9 shadow-[0_30px_70px_-40px_rgba(0,0,0,0.75)]">
+      <span className="label-caps block font-sans text-accent">
+        What the {AUDIT_PRICE} buys
+      </span>
+      <p className="mt-3 font-heading font-bold text-xl leading-snug text-white">
+        Five deliverables, all of them in writing.
+      </p>
+
+      <ol className="mt-7 flex flex-col divide-y divide-white/15">
+        {heroDeliverables.map((item, i) => (
+          <li key={item} className="flex items-baseline gap-4 py-3.5 first:pt-0">
+            <span className="label-caps shrink-0 font-sans text-accent">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span className="font-sans text-[15px] leading-snug text-white/90">
+              {item}
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <p className="mt-6 border-t border-white/15 pt-5 font-sans text-[13px] leading-relaxed text-white/65">
+        Fixed scope, fixed price. The document is yours to keep and act on,
+        with us or without us.
+      </p>
+    </div>
+  );
+}
+
 /** How the engagement runs, start to finish. */
 const steps = [
   {
@@ -111,10 +161,11 @@ const steps = [
 ];
 
 /**
- * FAQ. Two questions from the draft spec are deliberately absent — whether the
- * $499 is credited toward later work, and the ownership terms language — because
- * both are still open decisions. An unanswered question is better off the page
- * than on it as a placeholder.
+ * FAQ. The credit question is answered here now that the terms are settled:
+ * the audit fee comes off a build or a retainer signed within 14 days of the
+ * findings. The ownership/IP language is the one question still deliberately
+ * absent — it lives on /terms, pending confirmation, and an unanswered
+ * question is better off the page than on it as a placeholder.
  */
 const faqItems: FaqItem[] = [
   {
@@ -128,6 +179,10 @@ const faqItems: FaqItem[] = [
   {
     q: "How long does it take?",
     a: `The working session is ${AUDIT_SESSION}. Written findings land within ${AUDIT_TURNAROUND} of it.`,
+  },
+  {
+    q: `Is the ${AUDIT_PRICE} credited toward the work after?`,
+    a: `Yes. If you sign for a build or a retainer within 14 days of the findings, we credit the ${AUDIT_PRICE} toward it. If you do not, the document is still yours to keep and act on.`,
   },
   {
     q: "What does the work after the audit cost?",
@@ -219,6 +274,7 @@ export default function AuditPage() {
           sub="We connect the systems you already pay for."
           primaryCta={CALL_CTA}
           secondaryCta={{ label: `Pay ${AUDIT_PRICE} now`, href: AUDIT_CHECKOUT_URL }}
+          aside={<HeroDeliverablesCard />}
         >
           <p className="mt-6 font-sans text-[15px] leading-relaxed text-white/70 max-w-xl">
             Twenty minutes on the call, and we will confirm it is a fit before
@@ -404,6 +460,11 @@ export default function AuditPage() {
                 We quote that <strong>after</strong> the audit, because quoting
                 it before would be guessing. The {AUDIT_PRICE} is the only price
                 we publish, and it stays that way on purpose.
+              </p>
+              <p>
+                If you sign for a build or a retainer within 14 days of the
+                findings, we credit the {AUDIT_PRICE} toward it — so the audit
+                costs you nothing if it leads to work.
               </p>
               <p>
                 And if the audit says the answer is to fix two settings and

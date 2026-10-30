@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Grain } from "@/components/brand/Grain";
 import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/cn";
 import type { ReactNode } from "react";
 
 type Cta = { label: string; href: string };
@@ -14,6 +15,10 @@ type Cta = { label: string; href: string };
  *
  * With `image`, the photograph takes the right half on desktop and sits under
  * the copy on mobile — the homepage layout from the mockup.
+ *
+ * `aside` fills that same right half with a card instead of a photograph, for
+ * pages that have something to show rather than something to illustrate. It
+ * drops below the copy on mobile. Pass one or the other, not both.
  */
 export function PageHero({
   eyebrow,
@@ -26,6 +31,7 @@ export function PageHero({
   imageAlt,
   priority = false,
   footnote,
+  aside,
   children,
 }: {
   eyebrow: string;
@@ -38,6 +44,7 @@ export function PageHero({
   imageAlt?: string;
   priority?: boolean;
   footnote?: string;
+  aside?: ReactNode;
   children?: ReactNode;
 }) {
   return (
@@ -45,7 +52,14 @@ export function PageHero({
       <Grain />
 
       <div className="relative grid lg:grid-cols-2 items-stretch">
-        <div className="px-6 md:px-10 lg:pl-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))] lg:pr-16 pt-36 pb-20 md:pt-44 md:pb-28 max-w-3xl">
+        <div
+          className={cn(
+            "px-6 md:px-10 lg:pl-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))] lg:pr-16 pt-36 md:pt-44 max-w-3xl",
+            // With an aside under it on mobile, the copy stops short so the two
+            // read as one block rather than two stacked slabs.
+            aside ? "pb-10 lg:pb-28" : "pb-20 md:pb-28",
+          )}
+        >
           <span className="label-caps block font-sans text-accent">{eyebrow}</span>
 
           <h1 className="mt-6 font-heading font-bold tracking-tight text-[2.6rem] leading-[1.06] md:text-6xl md:leading-[1.04]">
@@ -83,6 +97,12 @@ export function PageHero({
 
           {children}
         </div>
+
+        {aside && (
+          <div className="relative px-6 md:px-10 lg:pl-0 lg:pr-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))] pb-20 md:pb-28 lg:pt-44 flex items-center">
+            <div className="w-full max-w-xl lg:max-w-none">{aside}</div>
+          </div>
+        )}
 
         {image && (
           <div className="relative min-h-[18rem] lg:min-h-full order-first lg:order-last">

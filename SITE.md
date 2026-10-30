@@ -113,6 +113,9 @@ Tokens live in the `@theme` block of `app/globals.css`; the font is loaded in
   Poppins is gone; do not reintroduce a second family.
 - **Surfaces** — deep-teal grain bands (`TealBand`, `PageHero`, `CtaBand`,
   `Footer`) alternating with airy off-white and sand sections (`Section`).
+  `PageHero` fills its right half with either `image` (a photograph, as on `/`)
+  or `aside` (a translucent card on the band, as on `/audit`) — one or the
+  other, never both. Both drop below the copy on mobile.
 - **Accent words** — peach, on teal. `Automate.` is always peach.
 - **Mark** — palm + condensed SALTYAIR, `public/brand/logo-saltyair-*.png`,
   rendered through `components/brand/Logo.tsx`.
@@ -196,10 +199,18 @@ logos — plain type only, so nothing implies a partnership we don't have.
 - **Trade hero photography.** Roofers, landscapers, and
   `/general-contractors` currently share `stock/van-job.jpg`; swap in specific
   shots when they exist.
-- **Two `/audit` FAQs are deliberately missing.** Whether the $499 is credited
-  toward later work, and the ownership/IP terms language, are both open
-  decisions. They stay off the page until answered — a placeholder is worse
-  than an absent question.
+- **The audit credit is on the page.** `/audit` now states it in two places —
+  "What happens after" and the FAQ: sign for a build or a retainer within 14
+  days of the findings and the $499 comes off it. The 14-day window and the
+  "within 14 days *of the findings*" anchor need confirming against whatever
+  goes in the engagement letter; the page is the only place it is written down
+  today.
+- **`/terms` "Ownership & IP" is pending confirmation.** The section is live —
+  client owns the paid-for deliverables, Salty Air retains its pre-existing and
+  reusable tooling and licenses it onward — but the language has **not** been
+  signed off. There is a `PENDING CONFIRMATION` comment on it in
+  `app/terms/page.tsx`. Until it is confirmed it stays off `/audit`, which is
+  why the ownership question is still absent from that page's FAQ.
 - **No Meta Pixel or CAPI yet.** The audit spec requires both, deduplicated and
   verified in Events Manager, before `/audit` takes paid traffic. GA4 is the
   only analytics on the site today.

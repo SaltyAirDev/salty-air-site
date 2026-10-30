@@ -119,18 +119,33 @@ const sections: LegalSection[] = [
       </p>
     ),
   },
+  /*
+   * PENDING CONFIRMATION — not yet signed off by Romas.
+   *
+   * The ownership and license position below (client owns paid-for
+   * deliverables; Salty Air retains its pre-existing and reusable tooling and
+   * licenses it onward) is the intended terms language, but it has not been
+   * confirmed. Do not treat it as settled, and do not mirror it into the
+   * /audit FAQ, until it is. Tracked under "Open items" in SITE.md.
+   */
   {
-    heading: "Ownership",
+    heading: "Ownership & IP",
     body: (
       <>
         <p>
-          You own your business data and the accounts it lives in. Once
-          we&rsquo;ve been paid for a piece of work, the deliverables for that
-          work are yours.
+          You own your business data and the accounts it lives in. Once the
+          invoices for a piece of work are paid, the deliverables for that work
+          are yours — the integrations, the configuration, the code, and the
+          documents we produced for you.
         </p>
         <p>
-          We keep ownership of our own general methods, templates, and tooling —
-          the things we bring to every engagement rather than build for yours.
+          We keep ownership of what we brought with us: our pre-existing and
+          reusable tools, templates, patterns, and code, along with our general
+          methods and know-how. Where any of that is part of what we deliver,
+          you get a license to use it for your business, for as long as you use
+          the deliverable it sits inside.
+        </p>
+        <p>
           The content and branding on this site belong to Salty Air.
         </p>
       </>
