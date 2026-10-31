@@ -250,12 +250,7 @@ logos — plain type only, so nothing implies a partnership we don't have.
   **findings**, not of payment" anchor still need confirming against whatever
   goes in the engagement letter; the site is the only place it is written down
   today.
-- **`/terms` "Ownership & IP" is pending confirmation.** The section is live —
-  client owns the paid-for deliverables, Salty Air retains its pre-existing and
-  reusable tooling and licenses it onward — but the language has **not** been
-  signed off. There is a `PENDING CONFIRMATION` comment on it in
-  `app/terms/page.tsx`. Until it is confirmed it stays off `/audit`, which is
-  why the ownership question is still absent from that page's FAQ.
+
 - **No Meta Pixel or CAPI yet.** The audit spec requires both, deduplicated and
   verified in Events Manager, before `/audit` takes paid traffic. GA4 is the
   only analytics on the site today.
