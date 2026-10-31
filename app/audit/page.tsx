@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/Button";
 import { GC_PATH, tradeHref } from "@/lib/trades";
 import {
   AUDIT_CHECKOUT_URL,
+  AUDIT_CREDIT_DAYS,
   AUDIT_NAME,
   AUDIT_OFFER,
   AUDIT_PATH,
@@ -162,8 +163,9 @@ const steps = [
 
 /**
  * FAQ. The credit question is answered here now that the terms are settled:
- * the audit fee comes off a build or a retainer signed within 14 days of the
- * findings. The ownership/IP language is the one question still deliberately
+ * the audit fee comes off a build or a retainer signed within
+ * AUDIT_CREDIT_DAYS of the findings — counted from the findings, not from
+ * payment. The ownership/IP language is the one question still deliberately
  * absent — it lives on /terms, pending confirmation, and an unanswered
  * question is better off the page than on it as a placeholder.
  */
@@ -182,7 +184,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: `Is the ${AUDIT_PRICE} credited toward the work after?`,
-    a: `Yes. If you sign for a build or a retainer within 14 days of the findings, we credit the ${AUDIT_PRICE} toward it. If you do not, the document is still yours to keep and act on.`,
+    a: `Yes. If you sign for a build or a retainer within ${AUDIT_CREDIT_DAYS} days of the findings, we credit the ${AUDIT_PRICE} toward it. If you do not, the document is still yours to keep and act on.`,
   },
   {
     q: "What does the work after the audit cost?",
@@ -462,8 +464,8 @@ export default function AuditPage() {
                 we publish, and it stays that way on purpose.
               </p>
               <p>
-                If you sign for a build or a retainer within 14 days of the
-                findings, we credit the {AUDIT_PRICE} toward it — so the audit
+                If you sign for a build or a retainer within{" "}
+                {AUDIT_CREDIT_DAYS} days of the findings, we credit the {AUDIT_PRICE} toward it — so the audit
                 costs you nothing if it leads to work.
               </p>
               <p>

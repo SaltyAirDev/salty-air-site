@@ -13,7 +13,7 @@ URL still redirects; the framing does not survive the move.
 
 | Route | Content |
 |---|---|
-| `/` | Home — "We connect the systems you already pay for", the three value pillars, the two offers, the stack, both audiences, SHS, the ladder |
+| `/` | Home — one sparse column: hero, the story block, Audit → Connect → Automate, the two offers, the SHS proof strip, closing band |
 | `/audit` | **The conversion target.** The $499 Integration Audit: deliverables, how it works, who it's for, what happens after, FAQ. Book a call *or* pay via Stripe |
 | `/integrations` | The primary offer page: the three value pillars, connect / set up / build, the systems, how a project runs |
 | `/embedded` | The ongoing engagement: what embedding means, first 30/60/90 days |
@@ -25,6 +25,18 @@ URL still redirects; the framing does not survive the move.
 | `/contact` | Inquiry form + booking |
 | `/other-work` | Law + enterprise engineering (footer only) |
 | `/privacy`, `/terms` | Plain-language templates |
+
+### The main nav is three items
+
+**Home · Integration Audit · Book a call** — and that is the whole bar
+(`navLinks` in `lib/nav.ts`). "Book a call" is the external calendar link and
+renders as the bar's one peach button, so nothing appears twice. The mobile
+panel lists the same three.
+
+Integrations, Embedded, the Industries dropdown, Case Study, Pricing, About,
+and Contact all came **out** of the nav and did not lose their pages: they are
+homepage sections, inline links on the homepage, and footer columns. Keep the
+bar at three — the homepage is the index of everything else.
 
 ### Redirects (`next.config.mjs`)
 
@@ -40,12 +52,33 @@ add its slug in the other.
 
 ### The conversion path
 
-Every primary CTA on the site points at **`/audit`** — the nav button, the
-heroes, the CTA band default, and the audit offer card. `/audit` is the only
-page that links to `AUDIT_CHECKOUT_URL`, so a visitor meets the scope, the
-turnaround, and the fit questions before paying. Book-a-call
-(`CALENDAR_URL`) stays available everywhere alongside it, and `/contact` keeps
-the form.
+Every primary CTA on the site points at **`/audit`** — the page heroes, the
+homepage's one hero button, the CTA band default, and the audit offer card.
+`/audit` is the only page that links to `AUDIT_CHECKOUT_URL`, so a visitor
+meets the scope, the turnaround, and the fit questions before paying.
+Book-a-call (`CALENDAR_URL`) stays available everywhere alongside it — it is
+the nav's one button and a footer link — and `/contact` keeps the form.
+
+## The homepage
+
+One column, lots of white space, one idea per block, and **one CTA in the
+hero** (the audit). In order: hero → story block → Audit · Connect · Automate →
+the two offers → the Salty Home Services proof strip → closing band. Sections
+run `max-w-2xl mx-auto`, so the page reads as a single narrow column on every
+breakpoint.
+
+What is deliberately **not** on it: the industries grid, the system chip wall,
+the value pillars, the three-card offer ladder, the FAQ wall, a second hero
+CTA, and any photograph. Those pages are still live and still linked — inline
+from the homepage sections and from the footer — and that is where the detail
+belongs. Keep new homepage sections to the same test: does the front door need
+it to say what we do, who we are, how it runs, and where to start?
+
+The **optional team photograph** lives on `/about` only, in
+`components/site/TeamPhoto.tsx`, behind `SHOW_TEAM_PHOTO` in `lib/site.ts`. It
+is `false` and renders nothing at all; turning it on means dropping a file at
+`TEAM_PHOTO_SRC` and flipping the flag. There is no photo slot on the homepage
+and there should not be one.
 
 ## The three hard content rules
 
@@ -74,27 +107,35 @@ nothing about how it performed, because none of it has been measured. If a
 number is not measured, it does not go on the site.
 
 **3. Company voice, always "we".** No founder bio, no named operator, no
-degrees, no "built it himself", no personal shops as proof. `/about` is a
+degrees, no "built it himself", no personal shops as proof. First-person copy
+is built from `v` in `lib/voice.ts` instead of hard-coded pronouns, so the
+whole site could move to a founder's first person by flipping `VOICE` — the
+shipped voice is and stays company "we". `/about` is a
 company page about how engagements work. Salty Home Services is framed as *our
 own* home services company. The one exception is the notification address in
 `app/api/contact/route.ts`, which is an inbox, not copy.
 
 ## Content model
 
-- `lib/site.ts` — origin, slogan, hero line, positioning, the audit (name,
-  price, path, session length, turnaround), the `AUDIT_CTA` / `CALL_CTA` pair,
-  the checkout and calendar links, `QUOTED_AFTER_AUDIT`.
+- `lib/site.ts` — origin, slogan, hero line and sub, positioning, the audit
+  (name, price, path, session length, turnaround, `AUDIT_CREDIT_DAYS`), the
+  `AUDIT_CTA` / `CALL_CTA` pair, the checkout and calendar links,
+  `QUOTED_AFTER_AUDIT`, the homepage story block, and the team-photo flags.
 - `lib/systems.ts` — the stacks we connect (`systemGroups`), the three modes
   (`integrationModes`), and the symptoms owners recognise (`commonSeams`).
-  Drives `/integrations`, the homepage stack band, `/general-contractors`, and
-  the JSON-LD `knowsAbout`.
-- `lib/offers.ts` — the three-rung ladder (`offers`), the three `valuePillars`
+  Drives `/integrations`, `/embedded`, `/general-contractors`, and the JSON-LD
+  `knowsAbout`. The homepage no longer carries a chip wall.
+- `lib/offers.ts` — the three-rung ladder (`offers`), the homepage
+  `frameworkSteps` (Audit → Connect → Automate), the three `valuePillars`
   (connect what you already bought · embed don't advise · build the missing
   piece) rendered by `ValuePillars` on `/` and `/integrations`, the two
   `offerCards` rendered by `OfferSplit`, and `backOfficeSystems` (the
   trade-page back office). **`valuePillars` and `offerCards` are different
   things** — the pitch and the packaging — and the component names say so.
-- `lib/nav.ts` — main nav, footer columns, legal links.
+- `lib/nav.ts` — the three main nav items, footer columns, legal links.
+- `lib/voice.ts` — the site voice. Copy that speaks in the first person is
+  built from `v` rather than hard-coding "we", so moving the whole site to a
+  founder's first person is one line (`VOICE`). Company "we" is what ships.
 - `lib/trades.ts` — the six trades (each at a top-level route), plus `GC_PATH`,
   `GC_LABEL`, and `industryLinks` (trades + general contractors) for the
   dropdown and footer.
@@ -113,9 +154,11 @@ Tokens live in the `@theme` block of `app/globals.css`; the font is loaded in
   Poppins is gone; do not reintroduce a second family.
 - **Surfaces** — deep-teal grain bands (`TealBand`, `PageHero`, `CtaBand`,
   `Footer`) alternating with airy off-white and sand sections (`Section`).
-  `PageHero` fills its right half with either `image` (a photograph, as on `/`)
-  or `aside` (a translucent card on the band, as on `/audit`) — one or the
-  other, never both. Both drop below the copy on mobile.
+  `PageHero` fills its right half with either `image` (a photograph, as on
+  `/about`) or `aside` (a translucent card on the band, as on `/audit`) — one
+  or the other, never both. Both drop below the copy on mobile. The homepage
+  does **not** use `PageHero`: its hero is a centred, single-column teal band
+  written inline, because the two-column layout fights the sparse front door.
 - **Accent words** — peach, on teal. `Automate.` is always peach.
 - **Mark** — palm + condensed SALTYAIR, `public/brand/logo-saltyair-*.png`,
   rendered through `components/brand/Logo.tsx`.
@@ -170,7 +213,7 @@ logos — plain type only, so nothing implies a partnership we don't have.
   with an `Offer` (499 USD, InStock) on `/audit` and in the layout's
   `hasOfferCatalog` — and `FAQPage` on `/`, `/audit`, `/integrations`,
   `/embedded`, `/general-contractors`, and `/pricing` via
-  `components/seo/FaqJsonLd.tsx`. FAQ schema must match the on-page FAQ word
+  `components/seo/FaqJsonLd.tsx` — **not** `/`, which has no FAQ wall any more. FAQ schema must match the on-page FAQ word
   for word; both come from the same `faqItems` array, so keep it that way. No
   `Review` or `AggregateRating` anywhere.
 - Social cards are generated at build time by `lib/og.tsx`, which inlines the
@@ -199,11 +242,13 @@ logos — plain type only, so nothing implies a partnership we don't have.
 - **Trade hero photography.** Roofers, landscapers, and
   `/general-contractors` currently share `stock/van-job.jpg`; swap in specific
   shots when they exist.
-- **The audit credit is on the page.** `/audit` now states it in two places —
-  "What happens after" and the FAQ: sign for a build or a retainer within 14
-  days of the findings and the $499 comes off it. The 14-day window and the
-  "within 14 days *of the findings*" anchor need confirming against whatever
-  goes in the engagement letter; the page is the only place it is written down
+- **The audit credit is on the page.** `/audit` states it in two places —
+  "What happens after" and the FAQ — and the homepage offer block carries the
+  short form (`AUDIT_CREDIT_SHORT`): sign for a build or a retainer within
+  `AUDIT_CREDIT_DAYS` of the findings and the $499 comes off it. The number
+  lives in `lib/site.ts` so all three stay in step. The window and the "of the
+  **findings**, not of payment" anchor still need confirming against whatever
+  goes in the engagement letter; the site is the only place it is written down
   today.
 - **`/terms` "Ownership & IP" is pending confirmation.** The section is live —
   client owns the paid-for deliverables, Salty Air retains its pre-existing and

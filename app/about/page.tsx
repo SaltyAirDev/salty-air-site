@@ -5,6 +5,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Section, Eyebrow, Heading } from "@/components/site/Section";
 import { TealBand } from "@/components/site/TealBand";
 import { CtaBand } from "@/components/site/CtaBand";
+import { TeamPhoto } from "@/components/site/TeamPhoto";
 import { Button } from "@/components/ui/Button";
 import { AUDIT_OFFER, AUDIT_TURNAROUND, SITE_URL, SLOGAN } from "@/lib/site";
 
@@ -189,6 +190,10 @@ export default function AboutPage() {
           </div>
         </div>
       </Section>
+
+      {/* Optional, off by default — the one photo slot on the site, and it is
+          deliberately not on the homepage. See components/site/TeamPhoto.tsx. */}
+      <TeamPhoto />
 
       <CtaBand sub="If the stack sounds like yours, there's a good chance the fix is the same one." />
     </Shell>

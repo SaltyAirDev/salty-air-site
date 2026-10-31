@@ -119,6 +119,30 @@ export const valuePillars: Array<{ title: string; desc: string }> = [
 ];
 
 /**
+ * Audit → Connect → Automate. The homepage framework, in our own words: three
+ * steps in the order we actually run them, one sentence each.
+ *
+ * It is the sequence, not a brand: connecting what a business already owns is
+ * the cheapest fix available, so it comes before anything new gets built, and
+ * automation is what a connected stack makes possible rather than a product we
+ * sell on its own.
+ */
+export const frameworkSteps: Array<{ title: string; desc: string }> = [
+  {
+    title: "Audit",
+    desc: `One working session on every system in the business, then written findings: what you pay for, where your team retypes the same information, and which connections are worth making first. That is the ${AUDIT_PRICE} ${AUDIT_NAME}.`,
+  },
+  {
+    title: "Connect",
+    desc: "The systems you already run, wired together in accounts you own. Whatever was bought and never turned on, set up. Where no integration exists for how your shop works, we write one.",
+  },
+  {
+    title: "Automate",
+    desc: "Once information moves on its own, the follow-ups, the reminders, the review requests, and the reporting stop depending on somebody remembering to do them.",
+  },
+];
+
+/**
  * The two main offers, as the homepage and /pricing present them. Integrations
  * is the front door; embedded is what it becomes when a business wants us to
  * keep owning it.

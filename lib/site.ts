@@ -1,3 +1,5 @@
+import { v } from "./voice";
+
 /**
  * Canonical origin for the site.
  *
@@ -35,10 +37,20 @@ export const SLOGAN = "Work Less. Live More. Automate.";
 
 /**
  * The homepage hero headline, split so the closing phrase renders in peach the
- * way the deck sets accent words.
+ * way the deck sets accent words. Rendered as one sentence:
+ * "We connect the systems you already pay for."
  */
 export const HERO_HEADLINE = "We connect the systems you";
 export const HERO_HEADLINE_ACCENT = "already pay for.";
+
+/**
+ * The one line under the hero headline. Deliberately shorter than POSITIONING
+ * — the front door says what we connect and who for, in plain words, and the
+ * rest of the page has room to breathe. POSITIONING still carries the
+ * metadata, the OG cards, and the supporting pages.
+ */
+export const HERO_SUB =
+  "Field service software, the phones, the CRM, and the books — joined up, for trade, home service, and construction businesses.";
 
 /**
  * The positioning line, directly under the hero headline and echoed in the
@@ -101,6 +113,18 @@ export const AUDIT_CHECKOUT_URL = "https://buy.stripe.com/4gM5kC9zj2RCcpCa9fd7q0
 /** Written findings land this long after the working session. */
 export const AUDIT_TURNAROUND = "five business days";
 
+/**
+ * The credit window, counted from **delivery of the findings** — not from
+ * payment, and not from the working session. Sign for a build or a retainer
+ * inside it and the audit fee comes off the work. Single source of truth for
+ * the number: /audit states it in two places and the homepage carries the
+ * short form, and all three read from here.
+ */
+export const AUDIT_CREDIT_DAYS = 14;
+
+/** Short form of the credit, for the homepage offer area. */
+export const AUDIT_CREDIT_SHORT = `Credited toward the work: sign for a build or a retainer within ${AUDIT_CREDIT_DAYS} days of the findings and the ${AUDIT_PRICE} comes off it.`;
+
 /** Length of the live working session the audit is built around. */
 export const AUDIT_SESSION = "60–90 minutes";
 
@@ -113,3 +137,30 @@ export const QUOTED_AFTER_AUDIT = "Quoted after the audit";
 
 /** Our own home services company, whose stack we built and run. */
 export const SHS_URL = "https://www.saltyhomeservices.co";
+
+/** Our own home services company, by name. */
+export const SHS_NAME = "Salty Home Services";
+
+/**
+ * The homepage story block: an operator that builds, said once and plainly.
+ *
+ * Built from `lib/voice.ts` rather than hard-coded, so the site can move to a
+ * founder's first person in one line later. Company "we" is the shipped voice
+ * and the house style — no bio, no degrees, no named operator in copy.
+ */
+export const STORY_HEADING = `${v.We} run one of these businesses too.`;
+export const STORY_BODY = [
+  `${v.We} own and run ${SHS_NAME}, a home services company here in Salt Lake. The missed-call text-back, the web leads landing in the dispatch system, the estimate follow-up, the review requests, the scheduling — ${v.we} built that back office ${v.ourselves}, and ${v.we} still run it every day.`,
+  `So the work on this page is not a methodology. It is what ${v.we} already do for ${v.our} own company, done for yours.`,
+];
+
+/**
+ * Optional team photograph, shown on `/about` only — never on the homepage.
+ *
+ * Off until there is a real photograph to use. Turning it on is two steps:
+ * drop the file at `TEAM_PHOTO_SRC` and flip this to `true`. Until then the
+ * section does not render at all, which is better than a grey box.
+ */
+export const SHOW_TEAM_PHOTO: boolean = false;
+export const TEAM_PHOTO_SRC = "/brand/team.jpg";
+export const TEAM_PHOTO_ALT = "The Salty Air team";

@@ -1,50 +1,45 @@
 /**
  * Main nav and footer structure.
  *
- * Integrations and Embedded are the two offers, so they lead. Trades and
- * general contractors are both served from day one and both sit in the
- * Industries dropdown. Law and the other inbound work deliberately do not
- * appear in the main nav — they live in the footer only. Data work is not an
- * offer and is not listed as one anywhere.
+ * The main nav is **exactly three items**: Home, the audit, and a call. That
+ * is the whole bar. Everything the old nav carried — integrations, embedded,
+ * the industries dropdown, the case study, pricing, about, contact — is either
+ * a section on the homepage or a footer link. The pages all still exist and
+ * still rank; they just do not compete for attention in the header.
  *
- * The nav button is the audit, not the contact form: /audit is the site's one
- * conversion target, and it carries both a call and checkout.
+ * `/audit` is the site's one conversion target and carries both the call and
+ * checkout, so it is the one page in the bar.
  */
-import { AUDIT_NAME, AUDIT_PATH, AUDIT_PRICE, EMAIL, LINKEDIN_URL } from "./site";
+import { AUDIT_NAME, AUDIT_PATH, AUDIT_PRICE, CALENDAR_URL, EMAIL, LINKEDIN_URL } from "./site";
 import { industryLinks } from "./trades";
 
 export type NavLink = {
   label: string;
   href: string;
-  /** Present on dropdown parents (Industries). */
-  children?: Array<{ label: string; href: string }>;
+  /** Leaves the app: rendered as a plain anchor in a new tab. */
+  external?: boolean;
+  /** Rendered as the peach pill on the right of the bar rather than a text link. */
+  cta?: boolean;
 };
 
+/**
+ * Three items, in this order. Keep it at three — the homepage is the index of
+ * everything else. "Book a call" renders as the bar's one button, so no item
+ * appears twice.
+ */
 export const navLinks: NavLink[] = [
-  { label: "Integrations", href: "/integrations" },
-  { label: "Embedded", href: "/embedded" },
+  { label: "Home", href: "/" },
   { label: AUDIT_NAME, href: AUDIT_PATH },
-  {
-    label: "Industries",
-    href: industryLinks[0].href,
-    children: industryLinks,
-  },
-  // Pricing stays a route and a footer link, but it is no longer in the main
-  // nav: with one published price, /audit does that job and the bar was long.
-  { label: "Case Study", href: "/case-studies/salty-home-services" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Book a call", href: CALENDAR_URL, external: true, cta: true },
 ];
-
-export const navCta = { label: `Book the ${AUDIT_PRICE} audit`, href: AUDIT_PATH };
 
 export const footerColumns: Array<{ title: string; links: Array<{ label: string; href: string }> }> = [
   {
     title: "What we do",
     links: [
+      { label: `${AUDIT_PRICE} ${AUDIT_NAME}`, href: AUDIT_PATH },
       { label: "Integrations", href: "/integrations" },
       { label: "Embedded engineering", href: "/embedded" },
-      { label: `${AUDIT_PRICE} ${AUDIT_NAME}`, href: AUDIT_PATH },
       { label: "Pricing", href: "/pricing" },
       { label: "Case Study", href: "/case-studies/salty-home-services" },
     ],
@@ -59,6 +54,7 @@ export const footerColumns: Array<{ title: string; links: Array<{ label: string;
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
       { label: "Other Work", href: "/other-work" },
+      { label: "Book a call", href: CALENDAR_URL },
       { label: "LinkedIn", href: LINKEDIN_URL },
       { label: EMAIL, href: `mailto:${EMAIL}` },
     ],
