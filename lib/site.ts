@@ -150,7 +150,7 @@ export const SHS_NAME = "Salty Home Services";
  */
 export const STORY_HEADING = `${v.We} run one of these businesses too.`;
 export const STORY_BODY = [
-  `${v.We} own and run ${SHS_NAME}, a home services company here in Salt Lake. The missed-call text-back, the web leads landing in the dispatch system, the estimate follow-up, the review requests, the scheduling — ${v.we} built that back office ${v.ourselves}, and ${v.we} still run it every day.`,
+  `${v.We} own and run ${SHS_NAME}, a home services company in Utah. The missed-call text-back, the web leads landing in the dispatch system, the estimate follow-up, the review requests, the scheduling — ${v.we} built that back office ${v.ourselves}, and ${v.we} still run it every day.`,
   `So the work on this page is not a methodology. It is what ${v.we} already do for ${v.our} own company, done for yours.`,
 ];
 

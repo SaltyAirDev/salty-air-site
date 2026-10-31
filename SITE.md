@@ -11,6 +11,16 @@ practices and enterprise engineering teams are inbound-only and live on
 CTO" — plain trade and construction language only. The old `/fractional-cto`
 URL still redirects; the framing does not survive the move.
 
+**Service area is national, and the copy is remote-first.** Salty Air is not a
+Salt Lake / Utah / Wasatch / Mountain West shop in any copy, meta description,
+footer line, or schema — `areaServed` is `{ "@type": "Country", name: "United
+States" }` everywhere it appears, and embedding happens remotely by default and
+on-site when an engagement needs it. No office line, no cities served, no
+invented geography. The **one** exception is **Salty Home Services**: it really
+operates in Utah, so `/case-studies/salty-home-services`, the audit proof
+strip, and `STORY_BODY` in `lib/site.ts` describe *it* as a Utah home services
+company. Utah in the repo should only ever be a fact about SHS.
+
 | Route | Content |
 |---|---|
 | `/` | Home — one sparse column: hero, the story block, Audit → Connect → Automate, the two offers, the SHS proof strip, closing band |

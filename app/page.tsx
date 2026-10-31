@@ -89,7 +89,9 @@ export default function Home() {
             </Button>
           </div>
 
-          <p className="mt-12 label-caps font-sans text-white/55">Salt Lake, UT</p>
+          <p className="mt-12 label-caps font-sans text-white/55">
+            Remote-first &middot; United States
+          </p>
         </div>
       </section>
 
