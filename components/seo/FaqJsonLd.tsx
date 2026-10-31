@@ -1,10 +1,10 @@
-import type { FaqContent } from "@/lib/content-types";
+export type FaqItem = { q: string; a: string };
 
 /**
  * FAQPage structured data. Makes the FAQ block on a page eligible for rich
  * results, and mirrors whatever copy that page actually renders.
  */
-export function FaqJsonLd({ items }: { items: FaqContent["items"] }) {
+export function FaqJsonLd({ items }: { items: FaqItem[] }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",

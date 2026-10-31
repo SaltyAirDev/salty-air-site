@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { CALENDAR_URL, EMAIL } from "@/lib/site";
 
 export async function POST(req: NextRequest) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
-
-  let name: string, firm: string, email: string, phone: string, interest: string, message: string;
+  let name: string,
+    company: string,
+    email: string,
+    phone: string,
+    interest: string,
+    message: string;
   try {
-    ({ name, firm, email, phone, interest, message } = await req.json());
+    ({ name, company, email, phone, interest, message } = await req.json());
   } catch {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
@@ -17,7 +21,7 @@ export async function POST(req: NextRequest) {
 
   const notificationText = [
     `Name: ${name}`,
-    `Firm: ${firm || "—"}`,
+    `Company: ${company || "—"}`,
     `Email: ${email}`,
     `Phone: ${phone || "—"}`,
     `Interested in: ${interest || "—"}`,
@@ -31,16 +35,29 @@ export async function POST(req: NextRequest) {
     `Thanks for reaching out — we received your message and will be in touch within one business day.`,
     ``,
     `Here's what you submitted:`,
-    `  Firm: ${firm || "—"}`,
+    `  Company: ${company || "—"}`,
     `  Interested in: ${interest || "—"}`,
     `  Message: ${message}`,
     ``,
     `In the meantime, if you'd like to book a call directly:`,
-    `https://calendar.app.google/ipYDWHD4YrQpLedJ9`,
+    CALENDAR_URL,
     ``,
-    `— Romas at Salty Air`,
-    `hello@saltyair.co`,
+    `— Salty Air`,
+    EMAIL,
   ].join("\n");
+
+  // Constructed after validation: the Resend client throws on a missing key,
+  // which would otherwise turn every request on a deployment without the env
+  // var into an opaque 500 — including the ones we mean to reject as 400.
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("RESEND_API_KEY is not set — contact form cannot send.");
+    return NextResponse.json(
+      { error: `Our form is misconfigured. Please email us directly at ${EMAIL}.` },
+      { status: 500 },
+    );
+  }
+  const resend = new Resend(apiKey);
 
   try {
     const [notification, confirmation] = await Promise.allSettled([
@@ -48,7 +65,7 @@ export async function POST(req: NextRequest) {
         from: "Salty Air Contact <contact@saltyair.co>",
         to: "romas@saltyair.co",
         replyTo: email,
-        subject: `New inquiry from ${name}${firm ? ` — ${firm}` : ""}`,
+        subject: `New inquiry from ${name}${company ? ` — ${company}` : ""}`,
         text: notificationText,
       }),
       resend.emails.send({
@@ -64,7 +81,10 @@ export async function POST(req: NextRequest) {
 
     if (notifFailed && confirmFailed) {
       console.error("Both emails failed:", notification, confirmation);
-      return NextResponse.json({ error: "Failed to send. Please email us directly at hello@saltyair.co." }, { status: 500 });
+      return NextResponse.json(
+        { error: `Failed to send. Please email us directly at ${EMAIL}.` },
+        { status: 500 },
+      );
     }
 
     if (notifFailed) console.error("Notification email failed:", notification);
@@ -73,6 +93,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Contact form error:", err);
-    return NextResponse.json({ error: "Failed to send. Please email us directly at hello@saltyair.co." }, { status: 500 });
+    return NextResponse.json(
+      { error: `Failed to send. Please email us directly at ${EMAIL}.` },
+      { status: 500 },
+    );
   }
 }
