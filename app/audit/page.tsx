@@ -40,7 +40,7 @@ import {
 
 const TITLE = `${AUDIT_PRICE} ${AUDIT_NAME} for Trades & GCs`;
 const DESCRIPTION =
-  "A $499 Integration Audit maps the software you pay for, finds where your team retypes data, and ranks what to connect first. For trades and GCs across the US.";
+  "A $499 Integration Audit maps the software you pay for, finds where your team retypes data, and ranks what to connect first. For trades and GCs.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -194,10 +194,6 @@ const faqItems: FaqItem[] = [
     q: "What if the audit says we do not need you?",
     a: `Then that is what it will say, and you will have a document worth more than ${AUDIT_PRICE} either way. If the fix is to turn on something you already pay for, we would rather tell you that than sell you a project.`,
   },
-  {
-    q: "Where do you work?",
-    a: "Anywhere in the US. We are remote-first: the working session and the findings happen over a call and a shared screen, and the build work after it runs the same way. When an engagement needs us on-site — a plan room, a dispatch desk, a crew walkthrough — we come out for it.",
-  },
 ];
 
 const audiences = [
@@ -228,7 +224,6 @@ export default function AuditPage() {
         name: AUDIT_NAME,
         serviceType: "Systems integration audit",
         provider: { "@id": `${SITE_URL}/#organization` },
-        areaServed: { "@type": "Country", name: "United States" },
         audience: {
           "@type": "BusinessAudience",
           audienceType: "Trade contractors and general contractors",
@@ -496,7 +491,7 @@ export default function AuditPage() {
             <Heading>A stack we built and still run.</Heading>
             <p className="mt-6 font-sans text-lg leading-relaxed text-body">
               We built and run the back office and systems for Salty Home
-              Services, a Utah home services company — AI answering and
+              Services, our own home services company — AI answering and
               missed-call text-back, web leads into Housecall Pro, estimate
               follow-up, review requests, and their website. We did not advise
               on it. We built it, and we still run it.

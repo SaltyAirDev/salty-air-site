@@ -88,10 +88,6 @@ export default function Home() {
               {AUDIT_CTA.label}
             </Button>
           </div>
-
-          <p className="mt-12 label-caps font-sans text-white/55">
-            Remote-first &middot; United States
-          </p>
         </div>
       </section>
 

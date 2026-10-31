@@ -110,7 +110,6 @@ export default function IntegrationsPage() {
         description: DESCRIPTION,
         serviceType: SERVICE_TYPE,
         provider: { "@id": `${SITE_URL}/#organization` },
-        areaServed: { "@type": "Country", name: "United States" },
         url: `${SITE_URL}${PATH}`,
       },
       {

@@ -90,10 +90,9 @@ export default function AboutPage() {
             </p>
             <p>
               The common thread is that the software has become somebody&rsquo;s
-              second job, usually the owner&rsquo;s. We are remote-first and
-              work with businesses across the United States. A small amount
-              of inbound work outside those two audiences is handled case by
-              case on the Other Work page.
+              second job, usually the owner&rsquo;s. A small amount of inbound
+              work outside those two audiences is handled case by case on the
+              Other Work page.
             </p>
           </div>
         </div>

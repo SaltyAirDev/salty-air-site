@@ -11,15 +11,18 @@ practices and enterprise engineering teams are inbound-only and live on
 CTO" — plain trade and construction language only. The old `/fractional-cto`
 URL still redirects; the framing does not survive the move.
 
-**Service area is national, and the copy is remote-first.** Salty Air is not a
-Salt Lake / Utah / Wasatch / Mountain West shop in any copy, meta description,
-footer line, or schema — `areaServed` is `{ "@type": "Country", name: "United
-States" }` everywhere it appears, and embedding happens remotely by default and
-on-site when an engagement needs it. No office line, no cities served, no
-invented geography. The **one** exception is **Salty Home Services**: it really
-operates in Utah, so `/case-studies/salty-home-services`, the audit proof
-strip, and `STORY_BODY` in `lib/site.ts` describe *it* as a Utah home services
-company. Utah in the repo should only ever be a fact about SHS.
+**The site has no location references outside the SHS case study.** No city,
+state, or region; no "remote-first", "nationwide", "United States", "across the
+US", or "anywhere in the US" in any copy, meta description, footer line, hero
+footnote, FAQ, or schema. There is no `areaServed` and no `address` /
+`PostalAddress` in any JSON-LD block — removed, not replaced with a country.
+No office line, no cities served, no service-area claim, no invented geography.
+Copy describes **who** we serve — trades, home services, construction GCs and
+specialty subs — never **where**. The **one** exception is
+`/case-studies/salty-home-services`, which keeps the real Utah facts about our
+own home services company. Everywhere else, including the homepage
+`STORY_BODY` in `lib/site.ts` and the audit proof strip, SHS is *our own home
+services company* with no geography attached.
 
 | Route | Content |
 |---|---|
@@ -122,8 +125,9 @@ is built from `v` in `lib/voice.ts` instead of hard-coded pronouns, so the
 whole site could move to a founder's first person by flipping `VOICE` — the
 shipped voice is and stays company "we". `/about` is a
 company page about how engagements work. Salty Home Services is framed as *our
-own* home services company. The one exception is the notification address in
-`app/api/contact/route.ts`, which is an inbox, not copy.
+own* home services company, with no location attached outside its case study.
+The one exception is the notification address in `app/api/contact/route.ts`,
+which is an inbox, not copy.
 
 ## Content model
 

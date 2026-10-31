@@ -86,10 +86,6 @@ export default function ContactPage() {
               >
                 {EMAIL}
               </a>
-              <p className="mt-6 label-caps font-sans text-body/60">Where we work</p>
-              <p className="mt-2 font-sans text-[15px] text-body">
-                Remote-first, with shops across the United States
-              </p>
             </div>
           </aside>
         </div>

@@ -66,7 +66,6 @@ export function Footer() {
         <div className="border-t border-white/15 pt-7 flex flex-col md:flex-row items-center justify-between gap-4 label-caps font-sans text-white/55">
           <p>
             Salty Air Co. <span className="mx-2 text-white/25">|</span> © {year}
-            <span className="mx-2 text-white/25">|</span> Remote-first, United States
           </p>
           {/* Real anchors — these two were plain text in the old footer, which
               is why /privacy and /terms read as 404s to anyone who tried. */}
