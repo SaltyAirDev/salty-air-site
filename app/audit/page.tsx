@@ -40,7 +40,7 @@ import {
 
 const TITLE = `${AUDIT_PRICE} ${AUDIT_NAME} for Trades & GCs`;
 const DESCRIPTION =
-  "A $499 Integration Audit maps the software you pay for, finds where your team retypes data, and ranks what to connect first. For Utah trades and GCs.";
+  "A $499 Integration Audit maps the software you pay for, finds where your team retypes data, and ranks what to connect first. For trades and GCs.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -194,10 +194,6 @@ const faqItems: FaqItem[] = [
     q: "What if the audit says we do not need you?",
     a: `Then that is what it will say, and you will have a document worth more than ${AUDIT_PRICE} either way. If the fix is to turn on something you already pay for, we would rather tell you that than sell you a project.`,
   },
-  {
-    q: "Do you work outside Utah?",
-    a: "We are focused on the Wasatch Front and the Mountain West. If you are further out, ask — embedded work has a travel component, so distance matters more here than it would for a software vendor.",
-  },
 ];
 
 const audiences = [
@@ -228,7 +224,6 @@ export default function AuditPage() {
         name: AUDIT_NAME,
         serviceType: "Systems integration audit",
         provider: { "@id": `${SITE_URL}/#organization` },
-        areaServed: { "@type": "State", name: "Utah" },
         audience: {
           "@type": "BusinessAudience",
           audienceType: "Trade contractors and general contractors",
@@ -417,11 +412,11 @@ export default function AuditPage() {
                 It is the right fit if
               </h3>
               <p className="mt-3 font-sans text-[15px] leading-relaxed text-body">
-                You are somewhere on the Wasatch Front or nearby, you already
-                run real software, and nobody on payroll owns it. It is probably
-                not the right fit if you are pre-software, if you are happy with
-                how everything runs, or if you want someone to pick a brand-new
-                platform and migrate you onto it.
+                You run a trade, home service, or construction business, you
+                already run real software, and nobody on payroll owns it. It is
+                probably not the right fit if you are pre-software, if you are
+                happy with how everything runs, or if you want someone to pick a
+                brand-new platform and migrate you onto it.
               </p>
             </div>
             <div className="rounded-3xl bg-seafoam/35 p-8">
@@ -496,7 +491,7 @@ export default function AuditPage() {
             <Heading>A stack we built and still run.</Heading>
             <p className="mt-6 font-sans text-lg leading-relaxed text-body">
               We built and run the back office and systems for Salty Home
-              Services, a Utah home services company — AI answering and
+              Services, our own home services company — AI answering and
               missed-call text-back, web leads into Housecall Pro, estimate
               follow-up, review requests, and their website. We did not advise
               on it. We built it, and we still run it.

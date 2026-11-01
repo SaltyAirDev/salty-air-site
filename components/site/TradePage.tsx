@@ -56,7 +56,6 @@ export function TradePageView({ trade }: { trade: Trade }) {
         description: trade.description,
         serviceType: SERVICE_TYPE,
         provider: { "@id": `${SITE_URL}/#organization` },
-        areaServed: { "@type": "Country", name: "United States" },
         audience: { "@type": "BusinessAudience", audienceType: trade.label },
         url: `${SITE_URL}${tradeHref(trade.slug)}`,
       },

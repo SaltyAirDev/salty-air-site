@@ -134,7 +134,6 @@ export default function ConstructionPage() {
         description: DESCRIPTION,
         serviceType: SERVICE_TYPE,
         provider: { "@id": `${SITE_URL}/#organization` },
-        areaServed: { "@type": "Country", name: "United States" },
         audience: {
           "@type": "Audience",
           audienceType: "General contractors and specialty subcontractors",

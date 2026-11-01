@@ -27,7 +27,7 @@ const montserrat = Montserrat({
 
 const TITLE = "Systems Integration for Contractors & Trades | Salty Air";
 const DESCRIPTION =
-  "We connect the systems you already pay for — Housecall Pro, Jobber, ServiceTitan, Procore, QuickBooks. Integrations for Utah trades and GCs. $499 audit.";
+  "We connect the systems you already pay for — Housecall Pro, Jobber, ServiceTitan, Procore, QuickBooks. Integrations for trades, home services, and construction GCs. $499 audit.";
 
 export const metadata: Metadata = {
   // `%s` is filled by each page's own title; `/` uses the default.
@@ -106,7 +106,6 @@ export default function RootLayout({
     email: EMAIL,
     slogan: SLOGAN,
     serviceType: SERVICE_TYPE,
-    areaServed: { "@type": "Country", name: "United States" },
     sameAs: [LINKEDIN_URL],
     audience: {
       "@type": "BusinessAudience",

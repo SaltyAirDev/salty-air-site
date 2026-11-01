@@ -46,7 +46,7 @@ export const trades: Trade[] = [
     label: "Electricians",
     title: "Software Integration for Electrical Contractors",
     description:
-      "Housecall Pro, Jobber, ServiceTitan and QuickBooks, connected. Integrations for Utah electrical contractors. Start with a $499 Integration Audit.",
+      "Housecall Pro, Jobber, ServiceTitan and QuickBooks, connected. Integrations for electrical contractors. Start with a $499 Integration Audit.",
     headline: "The panel upgrade call you missed is already someone else's",
     headlineAccent: "job.",
     sub: "You're in a crawlspace with your hands full. The phone rings, goes to voicemail, and the homeowner calls the next electrician on the list. That's the whole problem, and it's fixable.",
@@ -82,7 +82,7 @@ export const trades: Trade[] = [
     label: "Plumbers",
     title: "Software Integration for Plumbing Companies",
     description:
-      "Connect your scheduling, phones and QuickBooks so a plumbing job gets entered once. Integrations for Utah plumbing companies. $499 Integration Audit.",
+      "Connect your scheduling, phones and QuickBooks so a plumbing job gets entered once. Integrations for plumbing companies. $499 Integration Audit.",
     headline: "Emergency calls don't wait for you to get back to the",
     headlineAccent: "truck.",
     sub: "A burst line is the one call a homeowner will absolutely make twice — to you, and to whoever answers first. Make sure that's you, even when both your hands are on a wrench.",
@@ -118,7 +118,7 @@ export const trades: Trade[] = [
     label: "HVAC",
     title: "Software Integration for HVAC Companies",
     description:
-      "Maintenance plans, scheduling and QuickBooks that stay in sync. Systems integration for Utah HVAC companies. Start with a $499 Integration Audit.",
+      "Maintenance plans, scheduling and QuickBooks that stay in sync. Systems integration for HVAC companies. Start with a $499 Integration Audit.",
     headline: "The first heat wave books out whoever answers the phone",
     headlineAccent: "first.",
     sub: "Your season is decided in a handful of weeks. When every call matters most is exactly when your crews are too busy to pick up.",
@@ -154,7 +154,7 @@ export const trades: Trade[] = [
     label: "Handyman",
     title: "Software Integration for Handyman Businesses",
     description:
-      "Calls, quotes and scheduling in one place instead of six text threads. Systems integration for Utah handyman businesses. $499 Integration Audit.",
+      "Calls, quotes and scheduling in one place instead of six text threads. Systems integration for handyman businesses. $499 Integration Audit.",
     headline: "You are the crew, the dispatcher, and the office",
     headlineAccent: "manager.",
     sub: "Small jobs, lots of them, and every one needs a call, a quote, and a follow-up. The admin is the bottleneck, and it's all landing on you.",
@@ -190,7 +190,7 @@ export const trades: Trade[] = [
     label: "Roofers",
     title: "Software Integration for Roofing Companies",
     description:
-      "Storm-season calls, bids and QuickBooks that keep up with the crews. Systems integration for Utah roofing companies. $499 Integration Audit.",
+      "Storm-season calls, bids and QuickBooks that keep up with the crews. Systems integration for roofing companies. $499 Integration Audit.",
     headline: "After a storm, the only roofer who matters is the one who picks",
     headlineAccent: "up.",
     sub: "Storm work arrives in a flood and leaves just as fast. If the calls stack up in voicemail, the season moves to the next company on the list.",
@@ -226,7 +226,7 @@ export const trades: Trade[] = [
     label: "Landscapers",
     title: "Software Integration for Landscaping Companies",
     description:
-      "Spring signups, renewals and bids that follow themselves up. Systems integration for Utah landscaping companies. $499 Integration Audit to start.",
+      "Spring signups, renewals and bids that follow themselves up. Systems integration for landscaping companies. $499 Integration Audit to start.",
     headline: "Spring signups decide the whole year, and they all come in at",
     headlineAccent: "once.",
     sub: "Maintenance contracts, cleanups, and install bids all land in the same few weeks — while your crews are already out and the phone is ringing in an empty office.",
