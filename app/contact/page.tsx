@@ -4,6 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Section } from "@/components/site/Section";
 import { ContactForm } from "@/components/ui/ContactForm";
 import { Button } from "@/components/ui/Button";
+import { turnstileSiteKey } from "@/lib/turnstile";
 import {
   AUDIT_CTA,
   AUDIT_OFFER,
@@ -44,7 +45,7 @@ export default function ContactPage() {
       <Section>
         <div className="grid lg:grid-cols-3 gap-14">
           <div className="lg:col-span-2">
-            <ContactForm />
+            <ContactForm turnstileSiteKey={turnstileSiteKey()} />
           </div>
 
           <aside className="flex flex-col gap-8">
