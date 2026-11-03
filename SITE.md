@@ -214,6 +214,57 @@ Add it to the right group in `systemGroups` (`lib/systems.ts`). It appears in
 the chip rows, the `/integrations` breakdown, and the organisation JSON-LD. No
 logos — plain type only, so nothing implies a partnership we don't have.
 
+## The contact form
+
+`/contact` posts JSON to `app/api/contact/route.ts`, which emails the inquiry
+to `romas@saltyair.co` and a confirmation to the submitter via Resend. Five
+spam checks run in front of that, cheapest first:
+
+1. **Rate limit** — 5 posts per IP per 10 minutes, over limit → 429. The
+   counter is a `Map` in module scope, so it is **per instance** and
+   best-effort: Vercel runs several lambdas, and a flood spread across them
+   gets more through. A real quota needs KV/Redis, which this site does not run.
+2. **Honeypot** — an off-screen `website` field (`aria-hidden`, `tabIndex={-1}`).
+   Filled → **fake 200**, nothing sent.
+3. **Timing** — the form records its mount time and the server drops anything
+   filled in under three seconds with a **fake 200**. The timestamp is the
+   client's own unsigned clock, so this is best-effort: it stops the scripted
+   instant post, not a patient bot.
+4. **Validation** — length caps per field, an email format check, and at most
+   three `http(s)` links in the message. These are honest 400s with a message
+   the form shows.
+5. **Cloudflare Turnstile** — widget above the submit button; the token is
+   verified server-side against siteverify with the visitor's first forwarded
+   IP as `remoteip`. Failure → 400, and the widget resets because tokens are
+   single-use.
+
+Honeypot and timing answer with success on purpose — a bot that learns which
+trip-wire it hit just edits its script.
+
+**Env vars** (Vercel project settings, never the repo):
+
+| Var | Side | Purpose |
+|---|---|---|
+| `RESEND_API_KEY` | server | sending at all; missing → 500 with a mailto fallback |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | public | the widget's sitekey |
+| `TURNSTILE_SECRET_KEY` | **server only** | siteverify; never `NEXT_PUBLIC_` |
+
+`lib/turnstile.ts` is the only place keys are resolved, and it resolves them as
+a **pair** so the client and the route can never disagree:
+
+- both set → live keys
+- either missing and `VERCEL_ENV !== "production"` → Cloudflare's always-pass
+  test pair (`1x00000000000000000000AA` / `1x0000…AA`), so `npm run dev` on a
+  fresh clone has a working widget with no secrets
+- either missing **in production** → Turnstile is skipped with a logged
+  warning and the form still sends. The other four checks stay on, so a
+  missing env var degrades the defence instead of breaking the form.
+
+The contact page is a server component: it calls `turnstileSiteKey()` and
+passes the sitekey down, so the secret half never has to be reasoned about in
+the browser. `null` means skipped, and the form drops the widget and the
+token requirement.
+
 ## SEO
 
 - Titles use a `%s | Salty Air` template in `app/layout.tsx` — **page titles

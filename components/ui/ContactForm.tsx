@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Turnstile } from "@/components/ui/Turnstile";
 import { AUDIT_NAME, AUDIT_PRICE, EMAIL } from "@/lib/site";
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -16,9 +17,32 @@ export const CONTACT_INTERESTS = [
   "Something else",
 ];
 
-export function ContactForm() {
+type Props = {
+  /**
+   * Resolved server-side by `turnstileSiteKey()` and passed in, so the secret
+   * half of the pair never has to be reasoned about in the browser. `null`
+   * means Turnstile is skipped (production with keys unset) — the form then
+   * submits without a token and the other spam checks carry the load.
+   */
+  turnstileSiteKey: string | null;
+};
+
+export function ContactForm({ turnstileSiteKey }: Props) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [token, setToken] = useState("");
+  const [resetSignal, setResetSignal] = useState(0);
+  /** Turnstile's script never arrived — blocked or offline. */
+  const [checkUnavailable, setCheckUnavailable] = useState(false);
+  /** Decoy field. Humans never see it; bots that fill every input do. */
+  const [website, setWebsite] = useState("");
+  /**
+   * Mount time, not render time: the contact page is prerendered, so reading
+   * the clock during render would bake the build timestamp into the HTML. A
+   * ref rather than state — nothing renders from it, and the server is the
+   * only reader. It treats a sub-3s fill as a bot.
+   */
+  const formRenderedAt = useRef(0);
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -27,6 +51,10 @@ export function ContactForm() {
     interest: "",
     message: "",
   });
+
+  useEffect(() => {
+    formRenderedAt.current = Date.now();
+  }, []);
 
   const set =
     (field: keyof typeof form) =>
@@ -44,7 +72,12 @@ export function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          website,
+          formRenderedAt: formRenderedAt.current,
+          turnstileToken: token,
+        }),
       });
       const text = await res.text();
       const data = text ? JSON.parse(text) : {};
@@ -56,6 +89,9 @@ export function ContactForm() {
       }
       setStatus("success");
     } catch (err) {
+      // Turnstile tokens are single-use, so a retry needs a fresh one.
+      setToken("");
+      setResetSignal((n) => n + 1);
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
       setStatus("error");
     }
@@ -64,6 +100,8 @@ export function ContactForm() {
   const inputClass =
     "w-full bg-white border border-primary/15 rounded-xl px-4 py-3 font-sans text-[15px] text-ink placeholder:text-body/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors";
   const labelClass = "label-caps block font-sans text-body/70 mb-2";
+
+  const awaitingCheck = Boolean(turnstileSiteKey) && !token;
 
   if (status === "success") {
     return (
@@ -179,11 +217,50 @@ export function ContactForm() {
         />
       </div>
 
+      {/* Honeypot. Positioned off-screen rather than display:none — bots that
+          bother to check visibility usually only check for hidden/none — and
+          kept out of the tab order and the accessibility tree. */}
+      <div
+        aria-hidden="true"
+        className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden"
+      >
+        <label htmlFor="cf-website">Website</label>
+        <input
+          id="cf-website"
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+        />
+      </div>
+
+      {turnstileSiteKey && (
+        <div className="md:col-span-2">
+          <span className={labelClass}>Quick human check</span>
+          <Turnstile
+            siteKey={turnstileSiteKey}
+            onToken={setToken}
+            resetSignal={resetSignal}
+            onScriptError={() => setCheckUnavailable(true)}
+            className="max-w-sm"
+          />
+          {checkUnavailable && (
+            <p className="mt-3 font-sans text-sm text-burnt">
+              The check couldn&rsquo;t load — an ad blocker or network filter
+              is the usual cause. Email us at{" "}
+              <a href={`mailto:${EMAIL}`} className="underline">
+                {EMAIL}
+              </a>{" "}
+              and we&rsquo;ll pick it up there.
+            </p>
+          )}
+        </div>
+      )}
+
       {status === "error" && (
-        <p
-          role="alert"
-          className="md:col-span-2 font-sans text-sm text-burnt"
-        >
+        <p role="alert" className="md:col-span-2 font-sans text-sm text-burnt">
           {errorMsg}
         </p>
       )}
@@ -191,11 +268,16 @@ export function ContactForm() {
       <div className="md:col-span-2">
         <button
           type="submit"
-          disabled={status === "sending"}
+          disabled={status === "sending" || awaitingCheck}
           className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-primary text-white font-sans font-semibold text-[15px] transition-all duration-300 hover:bg-teal-deep hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
         >
           {status === "sending" ? "Sending…" : "Send inquiry"}
         </button>
+        {awaitingCheck && !checkUnavailable && (
+          <p className="mt-3 font-sans text-sm text-body/70">
+            Finish the quick check above and the button turns on.
+          </p>
+        )}
       </div>
     </form>
   );
